@@ -1,0 +1,739 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1200CA821E7E4BEE00A96469 /* ZYCEssenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1200CA5B1E7E4BEE00A96469 /* ZYCEssenceViewController.m */; };
+		1200CA831E7E4BEE00A96469 /* ZYCFriendTrendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1200CA611E7E4BEE00A96469 /* ZYCFriendTrendsViewController.m */; };
+		1200CA841E7E4BEE00A96469 /* ZYCMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1200CA671E7E4BEE00A96469 /* ZYCMeViewController.m */; };
+		1200CA851E7E4BEE00A96469 /* ZYCNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1200CA6D1E7E4BEE00A96469 /* ZYCNewViewController.m */; };
+		1200CA861E7E4BEE00A96469 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1200CA721E7E4BEE00A96469 /* AppDelegate.m */; };
+		1200CA871E7E4BEE00A96469 /* UIBarButtonItem+ZYCExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = 1200CA751E7E4BEE00A96469 /* UIBarButtonItem+ZYCExtention.m */; };
+		1200CA881E7E4BEE00A96469 /* UIView+ZYCExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = 1200CA771E7E4BEE00A96469 /* UIView+ZYCExtention.m */; };
+		1200CA891E7E4BEE00A96469 /* ZYCTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1200CA7A1E7E4BEE00A96469 /* ZYCTabBarController.m */; };
+		1200CA8B1E7E4BEE00A96469 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1200CA7C1E7E4BEE00A96469 /* main.m */; };
+		1200CA8C1E7E4BEE00A96469 /* ZYCTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1200CA811E7E4BEE00A96469 /* ZYCTabBar.m */; };
+		12A2FDC61E8147F8007BF7FE /* ZYCFriendTrendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12A2FDC51E8147F8007BF7FE /* ZYCFriendTrendsViewController.xib */; };
+		12B24F941E77FFF4006CBFF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12B24F931E77FFF4006CBFF5 /* Assets.xcassets */; };
+		12B24FA21E77FFF4006CBFF5 /* _1______Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B24FA11E77FFF4006CBFF5 /* _1______Tests.m */; };
+		12B24FAD1E77FFF4006CBFF5 /* _1______UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B24FAC1E77FFF4006CBFF5 /* _1______UITests.m */; };
+		12CDFC171E7EA7E50056401F /* ZYCNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CDFC161E7EA7E50056401F /* ZYCNavigationController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		12B24F9E1E77FFF4006CBFF5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12B24F7C1E77FFF3006CBFF5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 12B24F831E77FFF3006CBFF5;
+			remoteInfo = "01-百思不得姐";
+		};
+		12B24FA91E77FFF4006CBFF5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12B24F7C1E77FFF3006CBFF5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 12B24F831E77FFF3006CBFF5;
+			remoteInfo = "01-百思不得姐";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1200CA5A1E7E4BEE00A96469 /* ZYCEssenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCEssenceViewController.h; sourceTree = "<group>"; };
+		1200CA5B1E7E4BEE00A96469 /* ZYCEssenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCEssenceViewController.m; sourceTree = "<group>"; };
+		1200CA601E7E4BEE00A96469 /* ZYCFriendTrendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCFriendTrendsViewController.h; sourceTree = "<group>"; };
+		1200CA611E7E4BEE00A96469 /* ZYCFriendTrendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCFriendTrendsViewController.m; sourceTree = "<group>"; };
+		1200CA661E7E4BEE00A96469 /* ZYCMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCMeViewController.h; sourceTree = "<group>"; };
+		1200CA671E7E4BEE00A96469 /* ZYCMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCMeViewController.m; sourceTree = "<group>"; };
+		1200CA6C1E7E4BEE00A96469 /* ZYCNewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCNewViewController.h; sourceTree = "<group>"; };
+		1200CA6D1E7E4BEE00A96469 /* ZYCNewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCNewViewController.m; sourceTree = "<group>"; };
+		1200CA711E7E4BEE00A96469 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1200CA721E7E4BEE00A96469 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1200CA741E7E4BEE00A96469 /* UIBarButtonItem+ZYCExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+ZYCExtention.h"; sourceTree = "<group>"; };
+		1200CA751E7E4BEE00A96469 /* UIBarButtonItem+ZYCExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+ZYCExtention.m"; sourceTree = "<group>"; };
+		1200CA761E7E4BEE00A96469 /* UIView+ZYCExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ZYCExtention.h"; sourceTree = "<group>"; };
+		1200CA771E7E4BEE00A96469 /* UIView+ZYCExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZYCExtention.m"; sourceTree = "<group>"; };
+		1200CA791E7E4BEE00A96469 /* ZYCTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCTabBarController.h; sourceTree = "<group>"; };
+		1200CA7A1E7E4BEE00A96469 /* ZYCTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCTabBarController.m; sourceTree = "<group>"; };
+		1200CA7C1E7E4BEE00A96469 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1200CA7E1E7E4BEE00A96469 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		1200CA801E7E4BEE00A96469 /* ZYCTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCTabBar.h; sourceTree = "<group>"; };
+		1200CA811E7E4BEE00A96469 /* ZYCTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCTabBar.m; sourceTree = "<group>"; };
+		1200CA931E7E5BE000A96469 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		12A2FDC51E8147F8007BF7FE /* ZYCFriendTrendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZYCFriendTrendsViewController.xib; sourceTree = "<group>"; };
+		12B24F841E77FFF4006CBFF5 /* 01-百思不得姐.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "01-百思不得姐.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		12B24F931E77FFF4006CBFF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		12B24F9D1E77FFF4006CBFF5 /* 01-百思不得姐Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "01-百思不得姐Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		12B24FA11E77FFF4006CBFF5 /* _1______Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "_1______Tests.m"; sourceTree = "<group>"; };
+		12B24FA31E77FFF4006CBFF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		12B24FA81E77FFF4006CBFF5 /* 01-百思不得姐UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "01-百思不得姐UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		12B24FAC1E77FFF4006CBFF5 /* _1______UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "_1______UITests.m"; sourceTree = "<group>"; };
+		12B24FAE1E77FFF4006CBFF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		12CDFC151E7EA7E50056401F /* ZYCNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCNavigationController.h; sourceTree = "<group>"; };
+		12CDFC161E7EA7E50056401F /* ZYCNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCNavigationController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		12B24F811E77FFF3006CBFF5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12B24F9A1E77FFF4006CBFF5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12B24FA51E77FFF4006CBFF5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1200CA571E7E4BEE00A96469 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				1200CA581E7E4BEE00A96469 /* Essence-精华 */,
+				1200CA5E1E7E4BEE00A96469 /* FriendTrends-关注 */,
+				1200CA641E7E4BEE00A96469 /* Me-我 */,
+				1200CA6A1E7E4BEE00A96469 /* New-新帖 */,
+				1200CA701E7E4BEE00A96469 /* Other */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		1200CA581E7E4BEE00A96469 /* Essence-精华 */ = {
+			isa = PBXGroup;
+			children = (
+				1200CA591E7E4BEE00A96469 /* Controller */,
+				1200CA5C1E7E4BEE00A96469 /* Model */,
+				1200CA5D1E7E4BEE00A96469 /* View */,
+			);
+			path = "Essence-精华";
+			sourceTree = "<group>";
+		};
+		1200CA591E7E4BEE00A96469 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1200CA5A1E7E4BEE00A96469 /* ZYCEssenceViewController.h */,
+				1200CA5B1E7E4BEE00A96469 /* ZYCEssenceViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1200CA5C1E7E4BEE00A96469 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1200CA5D1E7E4BEE00A96469 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1200CA5E1E7E4BEE00A96469 /* FriendTrends-关注 */ = {
+			isa = PBXGroup;
+			children = (
+				1200CA5F1E7E4BEE00A96469 /* Controller */,
+				1200CA621E7E4BEE00A96469 /* Model */,
+				1200CA631E7E4BEE00A96469 /* View */,
+			);
+			path = "FriendTrends-关注";
+			sourceTree = "<group>";
+		};
+		1200CA5F1E7E4BEE00A96469 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1200CA601E7E4BEE00A96469 /* ZYCFriendTrendsViewController.h */,
+				1200CA611E7E4BEE00A96469 /* ZYCFriendTrendsViewController.m */,
+				12A2FDC51E8147F8007BF7FE /* ZYCFriendTrendsViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1200CA621E7E4BEE00A96469 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1200CA631E7E4BEE00A96469 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1200CA641E7E4BEE00A96469 /* Me-我 */ = {
+			isa = PBXGroup;
+			children = (
+				1200CA651E7E4BEE00A96469 /* Controller */,
+				1200CA681E7E4BEE00A96469 /* Model */,
+				1200CA691E7E4BEE00A96469 /* View */,
+			);
+			path = "Me-我";
+			sourceTree = "<group>";
+		};
+		1200CA651E7E4BEE00A96469 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1200CA661E7E4BEE00A96469 /* ZYCMeViewController.h */,
+				1200CA671E7E4BEE00A96469 /* ZYCMeViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1200CA681E7E4BEE00A96469 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1200CA691E7E4BEE00A96469 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1200CA6A1E7E4BEE00A96469 /* New-新帖 */ = {
+			isa = PBXGroup;
+			children = (
+				1200CA6B1E7E4BEE00A96469 /* Controller */,
+				1200CA6E1E7E4BEE00A96469 /* Model */,
+				1200CA6F1E7E4BEE00A96469 /* View */,
+			);
+			path = "New-新帖";
+			sourceTree = "<group>";
+		};
+		1200CA6B1E7E4BEE00A96469 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1200CA6C1E7E4BEE00A96469 /* ZYCNewViewController.h */,
+				1200CA6D1E7E4BEE00A96469 /* ZYCNewViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1200CA6E1E7E4BEE00A96469 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1200CA6F1E7E4BEE00A96469 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1200CA701E7E4BEE00A96469 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				1200CA731E7E4BEE00A96469 /* Categery */,
+				1200CA781E7E4BEE00A96469 /* Controller */,
+				1200CA7D1E7E4BEE00A96469 /* Model */,
+				1200CA7F1E7E4BEE00A96469 /* View */,
+				1200CA931E7E5BE000A96469 /* Info.plist */,
+				1200CA7E1E7E4BEE00A96469 /* PrefixHeader.pch */,
+				1200CA7C1E7E4BEE00A96469 /* main.m */,
+				1200CA711E7E4BEE00A96469 /* AppDelegate.h */,
+				1200CA721E7E4BEE00A96469 /* AppDelegate.m */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		1200CA731E7E4BEE00A96469 /* Categery */ = {
+			isa = PBXGroup;
+			children = (
+				1200CA741E7E4BEE00A96469 /* UIBarButtonItem+ZYCExtention.h */,
+				1200CA751E7E4BEE00A96469 /* UIBarButtonItem+ZYCExtention.m */,
+				1200CA761E7E4BEE00A96469 /* UIView+ZYCExtention.h */,
+				1200CA771E7E4BEE00A96469 /* UIView+ZYCExtention.m */,
+			);
+			path = Categery;
+			sourceTree = "<group>";
+		};
+		1200CA781E7E4BEE00A96469 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1200CA791E7E4BEE00A96469 /* ZYCTabBarController.h */,
+				1200CA7A1E7E4BEE00A96469 /* ZYCTabBarController.m */,
+				12CDFC151E7EA7E50056401F /* ZYCNavigationController.h */,
+				12CDFC161E7EA7E50056401F /* ZYCNavigationController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1200CA7D1E7E4BEE00A96469 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1200CA7F1E7E4BEE00A96469 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1200CA801E7E4BEE00A96469 /* ZYCTabBar.h */,
+				1200CA811E7E4BEE00A96469 /* ZYCTabBar.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		12B24F7B1E77FFF3006CBFF5 = {
+			isa = PBXGroup;
+			children = (
+				12B24F861E77FFF4006CBFF5 /* 01-百思不得姐 */,
+				12B24FA01E77FFF4006CBFF5 /* 01-百思不得姐Tests */,
+				12B24FAB1E77FFF4006CBFF5 /* 01-百思不得姐UITests */,
+				12B24F851E77FFF4006CBFF5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		12B24F851E77FFF4006CBFF5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				12B24F841E77FFF4006CBFF5 /* 01-百思不得姐.app */,
+				12B24F9D1E77FFF4006CBFF5 /* 01-百思不得姐Tests.xctest */,
+				12B24FA81E77FFF4006CBFF5 /* 01-百思不得姐UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		12B24F861E77FFF4006CBFF5 /* 01-百思不得姐 */ = {
+			isa = PBXGroup;
+			children = (
+				1200CA571E7E4BEE00A96469 /* Classes */,
+				12B24F871E77FFF4006CBFF5 /* Supporting Files */,
+			);
+			path = "01-百思不得姐";
+			sourceTree = "<group>";
+		};
+		12B24F871E77FFF4006CBFF5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				12B24F931E77FFF4006CBFF5 /* Assets.xcassets */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		12B24FA01E77FFF4006CBFF5 /* 01-百思不得姐Tests */ = {
+			isa = PBXGroup;
+			children = (
+				12B24FA11E77FFF4006CBFF5 /* _1______Tests.m */,
+				12B24FA31E77FFF4006CBFF5 /* Info.plist */,
+			);
+			path = "01-百思不得姐Tests";
+			sourceTree = "<group>";
+		};
+		12B24FAB1E77FFF4006CBFF5 /* 01-百思不得姐UITests */ = {
+			isa = PBXGroup;
+			children = (
+				12B24FAC1E77FFF4006CBFF5 /* _1______UITests.m */,
+				12B24FAE1E77FFF4006CBFF5 /* Info.plist */,
+			);
+			path = "01-百思不得姐UITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		12B24F831E77FFF3006CBFF5 /* 01-百思不得姐 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12B24FB11E77FFF4006CBFF5 /* Build configuration list for PBXNativeTarget "01-百思不得姐" */;
+			buildPhases = (
+				12B24F801E77FFF3006CBFF5 /* Sources */,
+				12B24F811E77FFF3006CBFF5 /* Frameworks */,
+				12B24F821E77FFF3006CBFF5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "01-百思不得姐";
+			productName = "01-百思不得姐";
+			productReference = 12B24F841E77FFF4006CBFF5 /* 01-百思不得姐.app */;
+			productType = "com.apple.product-type.application";
+		};
+		12B24F9C1E77FFF4006CBFF5 /* 01-百思不得姐Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12B24FB41E77FFF4006CBFF5 /* Build configuration list for PBXNativeTarget "01-百思不得姐Tests" */;
+			buildPhases = (
+				12B24F991E77FFF4006CBFF5 /* Sources */,
+				12B24F9A1E77FFF4006CBFF5 /* Frameworks */,
+				12B24F9B1E77FFF4006CBFF5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				12B24F9F1E77FFF4006CBFF5 /* PBXTargetDependency */,
+			);
+			name = "01-百思不得姐Tests";
+			productName = "01-百思不得姐Tests";
+			productReference = 12B24F9D1E77FFF4006CBFF5 /* 01-百思不得姐Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		12B24FA71E77FFF4006CBFF5 /* 01-百思不得姐UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12B24FB71E77FFF4006CBFF5 /* Build configuration list for PBXNativeTarget "01-百思不得姐UITests" */;
+			buildPhases = (
+				12B24FA41E77FFF4006CBFF5 /* Sources */,
+				12B24FA51E77FFF4006CBFF5 /* Frameworks */,
+				12B24FA61E77FFF4006CBFF5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				12B24FAA1E77FFF4006CBFF5 /* PBXTargetDependency */,
+			);
+			name = "01-百思不得姐UITests";
+			productName = "01-百思不得姐UITests";
+			productReference = 12B24FA81E77FFF4006CBFF5 /* 01-百思不得姐UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		12B24F7C1E77FFF3006CBFF5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = ZYC;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = wpzyc;
+				TargetAttributes = {
+					12B24F831E77FFF3006CBFF5 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+					12B24F9C1E77FFF4006CBFF5 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 12B24F831E77FFF3006CBFF5;
+					};
+					12B24FA71E77FFF4006CBFF5 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 12B24F831E77FFF3006CBFF5;
+					};
+				};
+			};
+			buildConfigurationList = 12B24F7F1E77FFF3006CBFF5 /* Build configuration list for PBXProject "01-百思不得姐" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 12B24F7B1E77FFF3006CBFF5;
+			productRefGroup = 12B24F851E77FFF4006CBFF5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				12B24F831E77FFF3006CBFF5 /* 01-百思不得姐 */,
+				12B24F9C1E77FFF4006CBFF5 /* 01-百思不得姐Tests */,
+				12B24FA71E77FFF4006CBFF5 /* 01-百思不得姐UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		12B24F821E77FFF3006CBFF5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12A2FDC61E8147F8007BF7FE /* ZYCFriendTrendsViewController.xib in Resources */,
+				12B24F941E77FFF4006CBFF5 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12B24F9B1E77FFF4006CBFF5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12B24FA61E77FFF4006CBFF5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		12B24F801E77FFF3006CBFF5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1200CA851E7E4BEE00A96469 /* ZYCNewViewController.m in Sources */,
+				1200CA821E7E4BEE00A96469 /* ZYCEssenceViewController.m in Sources */,
+				1200CA871E7E4BEE00A96469 /* UIBarButtonItem+ZYCExtention.m in Sources */,
+				1200CA881E7E4BEE00A96469 /* UIView+ZYCExtention.m in Sources */,
+				1200CA8C1E7E4BEE00A96469 /* ZYCTabBar.m in Sources */,
+				1200CA831E7E4BEE00A96469 /* ZYCFriendTrendsViewController.m in Sources */,
+				1200CA841E7E4BEE00A96469 /* ZYCMeViewController.m in Sources */,
+				1200CA891E7E4BEE00A96469 /* ZYCTabBarController.m in Sources */,
+				1200CA8B1E7E4BEE00A96469 /* main.m in Sources */,
+				1200CA861E7E4BEE00A96469 /* AppDelegate.m in Sources */,
+				12CDFC171E7EA7E50056401F /* ZYCNavigationController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12B24F991E77FFF4006CBFF5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12B24FA21E77FFF4006CBFF5 /* _1______Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12B24FA41E77FFF4006CBFF5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12B24FAD1E77FFF4006CBFF5 /* _1______UITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		12B24F9F1E77FFF4006CBFF5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 12B24F831E77FFF3006CBFF5 /* 01-百思不得姐 */;
+			targetProxy = 12B24F9E1E77FFF4006CBFF5 /* PBXContainerItemProxy */;
+		};
+		12B24FAA1E77FFF4006CBFF5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 12B24F831E77FFF3006CBFF5 /* 01-百思不得姐 */;
+			targetProxy = 12B24FA91E77FFF4006CBFF5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		12B24FAF1E77FFF4006CBFF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		12B24FB01E77FFF4006CBFF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		12B24FB21E77FFF4006CBFF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/01-百思不得姐/Classes/Other/PrefixHeader.pch";
+				INFOPLIST_FILE = "01-百思不得姐/Classes/Other/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wpzyc.-1------";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		12B24FB31E77FFF4006CBFF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/01-百思不得姐/Classes/Other/PrefixHeader.pch";
+				INFOPLIST_FILE = "01-百思不得姐/Classes/Other/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wpzyc.-1------";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		12B24FB51E77FFF4006CBFF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "01-百思不得姐Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wpzyc.-1------Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/01-百思不得姐.app/01-百思不得姐";
+			};
+			name = Debug;
+		};
+		12B24FB61E77FFF4006CBFF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "01-百思不得姐Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wpzyc.-1------Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/01-百思不得姐.app/01-百思不得姐";
+			};
+			name = Release;
+		};
+		12B24FB81E77FFF4006CBFF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "01-百思不得姐UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wpzyc.-1------UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "01-百思不得姐";
+			};
+			name = Debug;
+		};
+		12B24FB91E77FFF4006CBFF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "01-百思不得姐UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wpzyc.-1------UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "01-百思不得姐";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		12B24F7F1E77FFF3006CBFF5 /* Build configuration list for PBXProject "01-百思不得姐" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12B24FAF1E77FFF4006CBFF5 /* Debug */,
+				12B24FB01E77FFF4006CBFF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		12B24FB11E77FFF4006CBFF5 /* Build configuration list for PBXNativeTarget "01-百思不得姐" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12B24FB21E77FFF4006CBFF5 /* Debug */,
+				12B24FB31E77FFF4006CBFF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		12B24FB41E77FFF4006CBFF5 /* Build configuration list for PBXNativeTarget "01-百思不得姐Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12B24FB51E77FFF4006CBFF5 /* Debug */,
+				12B24FB61E77FFF4006CBFF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		12B24FB71E77FFF4006CBFF5 /* Build configuration list for PBXNativeTarget "01-百思不得姐UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12B24FB81E77FFF4006CBFF5 /* Debug */,
+				12B24FB91E77FFF4006CBFF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 12B24F7C1E77FFF3006CBFF5 /* Project object */;
+}

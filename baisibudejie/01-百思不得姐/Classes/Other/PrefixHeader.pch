@@ -1,0 +1,28 @@
+//
+//  PrefixHeader.pch
+//  01-百思不得姐
+//
+//  Created by wpzyc on 2017/3/18.
+//  Copyright © 2017年 wpzyc. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "UIView+ZYCExtention.h"
+
+#import "UIBarButtonItem+ZYCExtention.h"
+
+#ifdef DEBUG
+#define ZYCLog(...) NSLog(__VA_ARGS__)
+#else
+#define ZYCLog(...)
+#endif
+
+#define ZYCLogFunc ZYCLog(@"%s",__func__)
+
+#define ZYCRGBColor(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+
+#define ZYCGlobalBG ZYCRGBColor(223,223,223)
+
+#endif /* PrefixHeader_pch */
