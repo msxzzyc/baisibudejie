@@ -59,6 +59,7 @@
 		124AFD0D1EDF1C1200F26593 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 124AFD081EDF1C1200F26593 /* SVProgressHUD.m */; };
 		124AFD111EDF1C4000F26593 /* ZYCRecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 124AFD0F1EDF1C4000F26593 /* ZYCRecommendViewController.m */; };
 		124AFD121EDF1C4000F26593 /* ZYCRecommendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 124AFD101EDF1C4000F26593 /* ZYCRecommendViewController.xib */; };
+		124AFD141EDF211D00F26593 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 124AFD131EDF211D00F26593 /* Foundation+Log.m */; };
 		12A2FDC61E8147F8007BF7FE /* ZYCFriendTrendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12A2FDC51E8147F8007BF7FE /* ZYCFriendTrendsViewController.xib */; };
 		12B24F941E77FFF4006CBFF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12B24F931E77FFF4006CBFF5 /* Assets.xcassets */; };
 		12B24FA21E77FFF4006CBFF5 /* _1______Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B24FA11E77FFF4006CBFF5 /* _1______Tests.m */; };
@@ -184,6 +185,7 @@
 		124AFD0E1EDF1C4000F26593 /* ZYCRecommendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCRecommendViewController.h; sourceTree = "<group>"; };
 		124AFD0F1EDF1C4000F26593 /* ZYCRecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCRecommendViewController.m; sourceTree = "<group>"; };
 		124AFD101EDF1C4000F26593 /* ZYCRecommendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZYCRecommendViewController.xib; sourceTree = "<group>"; };
+		124AFD131EDF211D00F26593 /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Foundation+Log.m"; path = "../../../../../../../06-网络 - 关注公众号iOS开发：iOSDevTip/0713JSONXML解压缩/自写代码/05- 多值参数/05- 多值参数/Foundation+Log.m"; sourceTree = "<group>"; };
 		12A2FDC51E8147F8007BF7FE /* ZYCFriendTrendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZYCFriendTrendsViewController.xib; sourceTree = "<group>"; };
 		12B24F841E77FFF4006CBFF5 /* 01-百思不得姐.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "01-百思不得姐.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B24F931E77FFF4006CBFF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 		1200CA731E7E4BEE00A96469 /* Categery */ = {
 			isa = PBXGroup;
 			children = (
+				124AFD131EDF211D00F26593 /* Foundation+Log.m */,
 				1200CA741E7E4BEE00A96469 /* UIBarButtonItem+ZYCExtention.h */,
 				1200CA751E7E4BEE00A96469 /* UIBarButtonItem+ZYCExtention.m */,
 				1200CA761E7E4BEE00A96469 /* UIView+ZYCExtention.h */,
@@ -767,6 +770,7 @@
 				124AFCC71EDF1BE200F26593 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				1200CA871E7E4BEE00A96469 /* UIBarButtonItem+ZYCExtention.m in Sources */,
 				124AFCFD1EDF1BFE00F26593 /* UIImageView+HighlightedWebCache.m in Sources */,
+				124AFD141EDF211D00F26593 /* Foundation+Log.m in Sources */,
 				1200CA881E7E4BEE00A96469 /* UIView+ZYCExtention.m in Sources */,
 				124AFCC41EDF1BE200F26593 /* AFURLSessionManager.m in Sources */,
 				124AFCBE1EDF1BE200F26593 /* AFHTTPSessionManager.m in Sources */,

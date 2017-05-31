@@ -7,7 +7,7 @@
 //
 
 #import "ZYCFriendTrendsViewController.h"
-
+#import "ZYCRecommendViewController.h"
 @interface ZYCFriendTrendsViewController ()
 
 @end
@@ -31,15 +31,17 @@
 }
 - (void)friendsClick
 {
-    NSLog(@"%s",__func__);
+    ZYCRecommendViewController *vc = [[ZYCRecommendViewController alloc]init];
+    
+    [self.navigationController pushViewController:vc animated:YES];
     
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     
-    UIViewController *vc = [[UIViewController alloc]init];
-    vc.view.backgroundColor = ZYCRGBColor(200, 120, 35);
+    ZYCRecommendViewController *vc = [[ZYCRecommendViewController alloc]init];
+    vc.view.backgroundColor = ZYCGlobalBG;
     [self.navigationController pushViewController:vc animated:YES];
     
 }

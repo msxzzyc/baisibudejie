@@ -7,7 +7,8 @@
 //
 
 #import "ZYCRecommendViewController.h"
-
+#import "SVProgressHUD.h"
+#import "AFNetworking.h"
 @interface ZYCRecommendViewController ()
 
 @end
@@ -16,22 +17,38 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    self.title = @"推荐关注";
+    
+    //设置背景色
+    self.view.backgroundColor = ZYCGlobalBG;
+    
+    //显示指示器
+    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeBlack];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    params[@"a"] = @"category";
+    params[@"c"] = @"subscribe";
+    //发送请求
+    [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        ZYCLog(@"%@",responseObject);
+        //隐藏hud
+        [SVProgressHUD dismiss];
+        
+        
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        //显示失败信息
+        [SVProgressHUD showErrorWithStatus:@"加载推荐信息失败"];
+    }];
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+
 
 @end
