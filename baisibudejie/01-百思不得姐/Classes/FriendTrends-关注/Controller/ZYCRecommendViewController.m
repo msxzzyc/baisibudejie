@@ -14,27 +14,28 @@
 
 #import "MJExtension.h"
 #import "ZYCRecommendCategory.h"
-@interface ZYCRecommendViewController ()<UITableViewDataSource,UITabBarDelegate>
+
+#import "ZYCRecommendUserCell.h"
+
+#import "ZYCRecommendUser.h"
+@interface ZYCRecommendViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 /** 左边的类别数据 */
 @property(nonatomic,strong)NSArray *categories;
 @property (weak, nonatomic) IBOutlet UITableView *categoryTableView;
+//右边的用户表格
+@property (weak, nonatomic) IBOutlet UITableView *userTableView;
+@property(nonatomic,strong)NSArray *users;
 @end
 
 @implementation ZYCRecommendViewController
 static NSString *const ZYCCategoryId = @"category";
-
+static NSString *const ZYCUserId = @"user";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //注册cell
-    [self.categoryTableView registerNib:[UINib nibWithNibName:NSStringFromClass([ZYCRecommendCategoryCell class]) bundle:nil]  forCellReuseIdentifier:ZYCCategoryId];
-    
-    
-    self.title = @"推荐关注";
-    
-    //设置背景色
-    self.view.backgroundColor = ZYCGlobalBG;
+    // 初始化tableview
+    [self setUpTableView];
     
     //显示指示器
     [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeBlack];
@@ -43,10 +44,11 @@ static NSString *const ZYCCategoryId = @"category";
     
     params[@"a"] = @"category";
     params[@"c"] = @"subscribe";
+   
+    
     //发送请求
     [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
         
-        ZYCLog(@"%@",responseObject);
         //隐藏hud
         [SVProgressHUD dismiss];
         
@@ -67,23 +69,84 @@ static NSString *const ZYCCategoryId = @"category";
     
 }
 
+// 初始化tableview
+- (void)setUpTableView
+{
+    //注册cell
+    [self.categoryTableView registerNib:[UINib nibWithNibName:NSStringFromClass([ZYCRecommendCategoryCell class]) bundle:nil]  forCellReuseIdentifier:ZYCCategoryId];
+    
+    [self.userTableView registerNib:[UINib nibWithNibName:NSStringFromClass([ZYCRecommendUserCell class]) bundle:nil]  forCellReuseIdentifier:ZYCUserId];
+    
+    //设置inset
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.categoryTableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+    self.userTableView.contentInset = self.categoryTableView.contentInset;
+    self.userTableView.rowHeight = 70;
+    //设置标题
+    self.title = @"推荐关注";
+    
+    //设置背景色
+    self.view.backgroundColor = ZYCGlobalBG;
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
+    if (tableView == _categoryTableView){//左边的类别表格
     return self.categories.count;
+        
+    }else{//右边的用户表格
+        return self.users.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ZYCRecommendCategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:ZYCCategoryId];
+    if (tableView == _categoryTableView){//左边的类别表格
+        ZYCRecommendCategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:ZYCCategoryId];
+        
+        cell.category = self.categories[indexPath.row];
+        return cell;
+        
+    }else{//右边的用户表格
+        ZYCRecommendUserCell *cell = [tableView dequeueReusableCellWithIdentifier:ZYCUserId];
+        
+        cell.user = self.users[indexPath.row];
+        
+        return cell;
+    }
     
-    cell.category = self.categories[indexPath.row];
-    return cell;
+    
     
 }
 
+#pragma mark - UITableViewDelegate
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ZYCRecommendCategory *c = self.categories[indexPath.row];
+   
+    
+    
+    //发送请求给服务器，加载右侧的数据
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    params[@"a"] = @"list";
+    params[@"c"] = @"subscribe";
+    params[@"category_id"] = @(c.id);
+    
+    
+    
+    [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+        ZYCLog(@"%@",responseObject[@"list"]);
+        
+        self.users = [ZYCRecommendUser objectArrayWithKeyValuesArray:responseObject[@"list"]];
+        //刷新右边的表格
+        [self.userTableView reloadData];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        ZYCLog(@"%@",error);
+    }];
+    }
 
 @end

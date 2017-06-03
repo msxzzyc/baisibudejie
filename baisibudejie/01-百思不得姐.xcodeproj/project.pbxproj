@@ -19,6 +19,9 @@
 		1200CA8C1E7E4BEE00A96469 /* ZYCTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1200CA811E7E4BEE00A96469 /* ZYCTabBar.m */; };
 		124AFD111EDF1C4000F26593 /* ZYCRecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 124AFD0F1EDF1C4000F26593 /* ZYCRecommendViewController.m */; };
 		124AFD121EDF1C4000F26593 /* ZYCRecommendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 124AFD101EDF1C4000F26593 /* ZYCRecommendViewController.xib */; };
+		124B187E1EE193ED00E48EC5 /* ZYCRecommendUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 124B187C1EE193ED00E48EC5 /* ZYCRecommendUserCell.m */; };
+		124B187F1EE193ED00E48EC5 /* ZYCRecommendUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 124B187D1EE193ED00E48EC5 /* ZYCRecommendUserCell.xib */; };
+		124B18821EE1A21600E48EC5 /* ZYCRecommendUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 124B18811EE1A21600E48EC5 /* ZYCRecommendUser.m */; };
 		1289B5581EDFCBA400571E14 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 1289B52F1EDFCBA400571E14 /* LICENSE */; };
 		1289B5591EDFCBA400571E14 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 1289B5301EDFCBA400571E14 /* README.md */; };
 		1289B55A1EDFCBA400571E14 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 1289B5331EDFCBA400571E14 /* NSData+ImageContentType.m */; };
@@ -122,6 +125,11 @@
 		124AFD0E1EDF1C4000F26593 /* ZYCRecommendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCRecommendViewController.h; sourceTree = "<group>"; };
 		124AFD0F1EDF1C4000F26593 /* ZYCRecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCRecommendViewController.m; sourceTree = "<group>"; };
 		124AFD101EDF1C4000F26593 /* ZYCRecommendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZYCRecommendViewController.xib; sourceTree = "<group>"; };
+		124B187B1EE193ED00E48EC5 /* ZYCRecommendUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZYCRecommendUserCell.h; path = "01-百思不得姐/Classes/FriendTrends-关注/ZYCRecommendUserCell.h"; sourceTree = SOURCE_ROOT; };
+		124B187C1EE193ED00E48EC5 /* ZYCRecommendUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZYCRecommendUserCell.m; path = "01-百思不得姐/Classes/FriendTrends-关注/ZYCRecommendUserCell.m"; sourceTree = SOURCE_ROOT; };
+		124B187D1EE193ED00E48EC5 /* ZYCRecommendUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ZYCRecommendUserCell.xib; path = "01-百思不得姐/Classes/FriendTrends-关注/ZYCRecommendUserCell.xib"; sourceTree = SOURCE_ROOT; };
+		124B18801EE1A21600E48EC5 /* ZYCRecommendUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZYCRecommendUser.h; path = "01-百思不得姐/Classes/FriendTrends-关注/ZYCRecommendUser.h"; sourceTree = SOURCE_ROOT; };
+		124B18811EE1A21600E48EC5 /* ZYCRecommendUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZYCRecommendUser.m; path = "01-百思不得姐/Classes/FriendTrends-关注/ZYCRecommendUser.m"; sourceTree = SOURCE_ROOT; };
 		1289B52F1EDFCBA400571E14 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		1289B5301EDFCBA400571E14 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1289B5321EDFCBA400571E14 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -334,6 +342,8 @@
 			children = (
 				1289B5AE1EDFD58100571E14 /* ZYCRecommendCategory.h */,
 				1289B5AF1EDFD58100571E14 /* ZYCRecommendCategory.m */,
+				124B18801EE1A21600E48EC5 /* ZYCRecommendUser.h */,
+				124B18811EE1A21600E48EC5 /* ZYCRecommendUser.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -344,6 +354,9 @@
 				1289B5D01EDFD9DE00571E14 /* ZYCRecommendCategoryCell.h */,
 				1289B5D11EDFD9DE00571E14 /* ZYCRecommendCategoryCell.m */,
 				1289B5D21EDFD9DE00571E14 /* ZYCRecommendCategoryCell.xib */,
+				124B187B1EE193ED00E48EC5 /* ZYCRecommendUserCell.h */,
+				124B187C1EE193ED00E48EC5 /* ZYCRecommendUserCell.m */,
+				124B187D1EE193ED00E48EC5 /* ZYCRecommendUserCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -802,6 +815,7 @@
 				1289B56B1EDFCBA400571E14 /* SVProgressHUD.bundle in Resources */,
 				1289B5C61EDFD72000571E14 /* LICENSE in Resources */,
 				124AFD121EDF1C4000F26593 /* ZYCRecommendViewController.xib in Resources */,
+				124B187F1EE193ED00E48EC5 /* ZYCRecommendUserCell.xib in Resources */,
 				1289B59F1EDFCBB000571E14 /* LICENSE in Resources */,
 				1289B5581EDFCBA400571E14 /* LICENSE in Resources */,
 				1289B5D41EDFD9DE00571E14 /* ZYCRecommendCategoryCell.xib in Resources */,
@@ -831,6 +845,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				124B187E1EE193ED00E48EC5 /* ZYCRecommendUserCell.m in Sources */,
 				1289B5C91EDFD72000571E14 /* MJProperty.m in Sources */,
 				1289B5A61EDFCBB000571E14 /* UIProgressView+AFNetworking.m in Sources */,
 				1200CA851E7E4BEE00A96469 /* ZYCNewViewController.m in Sources */,
@@ -870,6 +885,7 @@
 				1289B5961EDFCBB000571E14 /* AFHTTPRequestOperation.m in Sources */,
 				1289B59E1EDFCBB000571E14 /* AFURLSessionManager.m in Sources */,
 				1289B5C71EDFD72000571E14 /* MJConst.m in Sources */,
+				124B18821EE1A21600E48EC5 /* ZYCRecommendUser.m in Sources */,
 				1289B5A11EDFCBB000571E14 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				1200CA8B1E7E4BEE00A96469 /* main.m in Sources */,
 				1289B5631EDFCBA400571E14 /* UIImage+GIF.m in Sources */,
