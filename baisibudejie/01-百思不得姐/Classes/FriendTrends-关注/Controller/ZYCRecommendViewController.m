@@ -18,6 +18,8 @@
 #import "ZYCRecommendUserCell.h"
 
 #import "ZYCRecommendUser.h"
+
+
 @interface ZYCRecommendViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 /** 左边的类别数据 */
@@ -25,7 +27,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *categoryTableView;
 //右边的用户表格
 @property (weak, nonatomic) IBOutlet UITableView *userTableView;
-@property(nonatomic,strong)NSArray *users;
+
+
 @end
 
 @implementation ZYCRecommendViewController
@@ -97,7 +100,9 @@ static NSString *const ZYCUserId = @"user";
     return self.categories.count;
         
     }else{//右边的用户表格
-        return self.users.count;
+        //左边被选中的类别模型
+        ZYCRecommendCategory *c = self.categories[self.categoryTableView.indexPathForSelectedRow.row];
+        return c.users.count;
     }
 }
 
@@ -112,7 +117,9 @@ static NSString *const ZYCUserId = @"user";
     }else{//右边的用户表格
         ZYCRecommendUserCell *cell = [tableView dequeueReusableCellWithIdentifier:ZYCUserId];
         
-        cell.user = self.users[indexPath.row];
+        //左边被选中的类别模型
+        ZYCRecommendCategory *c = self.categories[self.categoryTableView.indexPathForSelectedRow.row];
+        cell.user = c.users[indexPath.row];
         
         return cell;
     }
@@ -128,25 +135,37 @@ static NSString *const ZYCUserId = @"user";
     ZYCRecommendCategory *c = self.categories[indexPath.row];
    
     
-    
-    //发送请求给服务器，加载右侧的数据
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    
-    params[@"a"] = @"list";
-    params[@"c"] = @"subscribe";
-    params[@"category_id"] = @(c.id);
-    
-    
-    
-    [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
-        ZYCLog(@"%@",responseObject[@"list"]);
+    if (c.users.count) {
         
-        self.users = [ZYCRecommendUser objectArrayWithKeyValuesArray:responseObject[@"list"]];
-        //刷新右边的表格
+        //显示曾经的数据
+        
         [self.userTableView reloadData];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        ZYCLog(@"%@",error);
-    }];
+        
+    } else {
+        
+            //发送请求给服务器，加载右侧的数据
+            NSMutableDictionary *params = [NSMutableDictionary dictionary];
+            
+            params[@"a"] = @"list";
+            params[@"c"] = @"subscribe";
+            params[@"category_id"] = @(c.id);
+            
+            
+            [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+                ZYCLog(@"%@",responseObject[@"list"]);
+                //字典数组->模型数组
+                NSArray *users = [ZYCRecommendUser objectArrayWithKeyValuesArray:responseObject[@"list"]];
+                //添加到当前类别对应的用户数组中
+                [c.users addObjectsFromArray:users];
+                //刷新右边的表格
+                [self.userTableView reloadData];
+            } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                ZYCLog(@"%@",error);
+            }];
+
+        
+        
     }
+        }
 
 @end

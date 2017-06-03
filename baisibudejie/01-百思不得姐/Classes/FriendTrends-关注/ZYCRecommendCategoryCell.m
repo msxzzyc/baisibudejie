@@ -39,6 +39,7 @@
     _category = category;
     
     self.textLabel.text = category.name;
+    
 }
 
 - (void)layoutSubviews
@@ -48,8 +49,8 @@
     self.textLabel.y = 2;
     
     self.textLabel.height = self.contentView.height - 2*self.textLabel.y;
-    
-    
+
+  
 }
 
 //可以在这个方法中监听cell的选中和取消选中
