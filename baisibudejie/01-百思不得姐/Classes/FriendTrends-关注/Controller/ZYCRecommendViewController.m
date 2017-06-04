@@ -97,7 +97,7 @@ static NSString *const ZYCUserId = @"user";
     params[@"a"] = @"list";
     params[@"c"] = @"subscribe";
     params[@"category_id"] = @([ZYCSelectedCategory id]);
-    params[@"page"] = @"2";
+    params[@"page"] = @(++category.currentPage);
     
     
     [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -108,8 +108,15 @@ static NSString *const ZYCUserId = @"user";
         [category.users addObjectsFromArray:users];
         //刷新右边的表格
         [self.userTableView reloadData];
-        //让底部控件结束刷新
-        [self.userTableView.footer endRefreshing];
+        
+        if (category.users.count == category.total) {//全部加载完毕
+            
+            [self.userTableView.footer noticeNoMoreData];
+        }else{
+            //让底部控件结束刷新
+            [self.userTableView.footer endRefreshing];
+        }
+        
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         ZYCLog(@"%@",error);
     }];
@@ -141,6 +148,7 @@ static NSString *const ZYCUserId = @"user";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (tableView == _categoryTableView){//左边的类别表格
+        
     return self.categories.count;
         
     }else{//右边的用户表格
@@ -197,6 +205,8 @@ static NSString *const ZYCUserId = @"user";
         //赶紧刷新表格，目的是：马上显示当前category的用户数据，不让用户看到上一个category的残留数据
         [self.userTableView reloadData];
         
+        //设置当前页码为1
+        c.currentPage = 1;
       
             //发送请求给服务器，加载右侧的数据
             NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -204,23 +214,31 @@ static NSString *const ZYCUserId = @"user";
             params[@"a"] = @"list";
             params[@"c"] = @"subscribe";
             params[@"category_id"] = @(c.id);
-            
-            
+            params[@"page"] = @(c.currentPage);
+        
             [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
-                ZYCLog(@"%@",responseObject[@"list"]);
+                
+                ZYCLog(@"%@",responseObject);
                 //字典数组->模型数组
                 NSArray *users = [ZYCRecommendUser objectArrayWithKeyValuesArray:responseObject[@"list"]];
                 //添加到当前类别对应的用户数组中
                 [c.users addObjectsFromArray:users];
+                
+                // 保存总数
+                c.total = [responseObject[@"total"] integerValue];
                 //刷新右边的表格
                 [self.userTableView reloadData];
+             
+                if (c.users.count == c.total) {//全部加载完毕
+                    
+                    [self.userTableView.footer noticeNoMoreData];
+                }
+               
             } failure:^(NSURLSessionDataTask *task, NSError *error) {
                 ZYCLog(@"%@",error);
             }];
 
     
-        
-        
         
     }
         }

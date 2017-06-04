@@ -12,4 +12,6 @@
 
 /** 用户模型数据 */
 @property(nonatomic,strong)ZYCRecommendUser *user;
+
+
 @end
