@@ -20,7 +20,7 @@
 
 #import "ZYCRecommendUser.h"
 
-
+//左边被选中的类别模型
 #define ZYCSelectedCategory self.categories[self.categoryTableView.indexPathForSelectedRow.row]
 @interface ZYCRecommendViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -79,6 +79,7 @@ static NSString *const ZYCUserId = @"user";
 /** 添加刷新控件 */
 - (void)setUpRefresh
 {
+    self.userTableView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewUsers)];
     
     self.userTableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreUsers)];
 
@@ -86,9 +87,65 @@ static NSString *const ZYCUserId = @"user";
     self.userTableView.footer.hidden = YES;
     
 }
+
+
 #pragma mark - 加载用户数据
+
+- (void)loadNewUsers
+{
+    
+    ZYCRecommendCategory *category = ZYCSelectedCategory;
+    //设置当前页码为1
+    category.currentPage = 1;
+    
+    //请求参数
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"a"] = @"list";
+    params[@"c"] = @"subscribe";
+    params[@"category_id"] = @(category.id);
+    params[@"page"] = @(category.currentPage);
+    
+    //发送请求给服务器，加载右侧的数据
+    [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        ZYCLog(@"%@",responseObject);
+        //字典数组->模型数组
+        NSArray *users = [ZYCRecommendUser objectArrayWithKeyValuesArray:responseObject[@"list"]];
+        
+        //清除所有旧数据
+        [category.users removeAllObjects];
+        
+        //添加到当前类别对应的用户数组中
+        [category.users addObjectsFromArray:users];
+        
+        // 保存总数
+        category.total = [responseObject[@"total"] integerValue];
+        //刷新右边的表格
+        [self.userTableView reloadData];
+        //头部控件结束刷新
+         [self.userTableView.header endRefreshing];
+        
+        //监测footer的状态
+        [self checkFooterState];
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        //失败提醒
+        [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
+        
+        //结束刷新
+        [self.userTableView.header endRefreshing];
+    }];
+    
+    
+    
+    
+}
+
 - (void)loadMoreUsers
 {
+    
+    
     ZYCRecommendCategory *category = ZYCSelectedCategory;
     
     //发送请求给服务器，加载右侧的数据
@@ -109,16 +166,15 @@ static NSString *const ZYCUserId = @"user";
         //刷新右边的表格
         [self.userTableView reloadData];
         
-        if (category.users.count == category.total) {//全部加载完毕
-            
-            [self.userTableView.footer noticeNoMoreData];
-        }else{
-            //让底部控件结束刷新
-            [self.userTableView.footer endRefreshing];
-        }
+        //监测footer的状态
+        [self checkFooterState];
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        ZYCLog(@"%@",error);
+        //失败提醒
+        [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
+        
+        //结束刷新
+        [self.userTableView.header endRefreshing];
     }];
 
     
@@ -143,6 +199,24 @@ static NSString *const ZYCUserId = @"user";
     self.view.backgroundColor = ZYCGlobalBG;
 }
 
+/** 时刻监测footer的状态 */
+- (void)checkFooterState
+{
+    ZYCRecommendCategory *category = ZYCSelectedCategory;
+    //每次刷新右边数据时，都控制footer的显示或者隐藏
+    self.userTableView.footer.hidden = (category.users.count == 0);
+    
+    //让底部控件结束刷新
+    if (category.users.count == category.total) {//全部数据已经加载完毕
+        
+        [self.userTableView.footer noticeNoMoreData];
+    }else{//还没有加载完毕
+        
+        [self.userTableView.footer endRefreshing];
+    }
+    
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -152,15 +226,10 @@ static NSString *const ZYCUserId = @"user";
     return self.categories.count;
         
     }else{//右边的用户表格
-        //左边被选中的类别模型
-//        ZYCRecommendCategory *c = self.categories[self.categoryTableView.indexPathForSelectedRow.row];
         
-        NSInteger count = [ZYCSelectedCategory users].count;
-        
-        //每次刷新右边数据时，都控制footer的显示或者隐藏
-        self.userTableView.footer.hidden = (count == 0);
-        
-        return count;
+        //监测footer的状态
+        [self checkFooterState];
+        return [ZYCSelectedCategory users].count;
     }
 }
 
@@ -205,40 +274,8 @@ static NSString *const ZYCUserId = @"user";
         //赶紧刷新表格，目的是：马上显示当前category的用户数据，不让用户看到上一个category的残留数据
         [self.userTableView reloadData];
         
-        //设置当前页码为1
-        c.currentPage = 1;
-      
-            //发送请求给服务器，加载右侧的数据
-            NSMutableDictionary *params = [NSMutableDictionary dictionary];
-            
-            params[@"a"] = @"list";
-            params[@"c"] = @"subscribe";
-            params[@"category_id"] = @(c.id);
-            params[@"page"] = @(c.currentPage);
-        
-            [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
-                
-                ZYCLog(@"%@",responseObject);
-                //字典数组->模型数组
-                NSArray *users = [ZYCRecommendUser objectArrayWithKeyValuesArray:responseObject[@"list"]];
-                //添加到当前类别对应的用户数组中
-                [c.users addObjectsFromArray:users];
-                
-                // 保存总数
-                c.total = [responseObject[@"total"] integerValue];
-                //刷新右边的表格
-                [self.userTableView reloadData];
-             
-                if (c.users.count == c.total) {//全部加载完毕
-                    
-                    [self.userTableView.footer noticeNoMoreData];
-                }
-               
-            } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                ZYCLog(@"%@",error);
-            }];
-
-    
+        //进入下拉刷新状态
+        [self.userTableView.header beginRefreshing];
         
     }
         }
