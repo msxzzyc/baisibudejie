@@ -30,7 +30,10 @@
 //右边的用户表格
 @property (weak, nonatomic) IBOutlet UITableView *userTableView;
 
-
+/** 请求参数 */
+@property(nonatomic,strong)NSMutableDictionary *params;
+/** AFN请求管理者 */
+@property(nonatomic,strong)AFHTTPSessionManager *manager;
 @end
 
 @implementation ZYCRecommendViewController
@@ -45,6 +48,14 @@ static NSString *const ZYCUserId = @"user";
     //添加刷新控件
     [self setUpRefresh];
     
+    //加载左侧的类别数据
+    [self loadCategories];
+}
+/** 
+ *加载左侧的类别数据
+ */
+- (void)loadCategories
+{
     //显示指示器
     [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeBlack];
     
@@ -52,10 +63,10 @@ static NSString *const ZYCUserId = @"user";
     
     params[@"a"] = @"category";
     params[@"c"] = @"subscribe";
-   
+    
     
     //发送请求
-    [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self.manager  GET:@"http://api.budejie.com/api/api_open.php" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
         
         //隐藏hud
         [SVProgressHUD dismiss];
@@ -74,7 +85,7 @@ static NSString *const ZYCUserId = @"user";
         //显示失败信息
         [SVProgressHUD showErrorWithStatus:@"加载推荐信息失败"];
     }];
-    
+
 }
 /** 添加刷新控件 */
 - (void)setUpRefresh
@@ -104,9 +115,12 @@ static NSString *const ZYCUserId = @"user";
     params[@"c"] = @"subscribe";
     params[@"category_id"] = @(category.id);
     params[@"page"] = @(category.currentPage);
+    self.params = params;
     
     //发送请求给服务器，加载右侧的数据
-    [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self.manager GET:@"http://api.budejie.com/api/api_open.php" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        if (self.params != params) return ;
         
         ZYCLog(@"%@",responseObject);
         //字典数组->模型数组
@@ -129,6 +143,8 @@ static NSString *const ZYCUserId = @"user";
         [self checkFooterState];
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        if (self.params != params) return ;
         
         //失败提醒
         [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
@@ -155,9 +171,12 @@ static NSString *const ZYCUserId = @"user";
     params[@"c"] = @"subscribe";
     params[@"category_id"] = @([ZYCSelectedCategory id]);
     params[@"page"] = @(++category.currentPage);
+    self.params = params;
     
-    
-    [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self.manager GET:@"http://api.budejie.com/api/api_open.php" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        if (self.params != params) return ;
+        
         ZYCLog(@"%@",responseObject[@"list"]);
         //字典数组->模型数组
         NSArray *users = [ZYCRecommendUser objectArrayWithKeyValuesArray:responseObject[@"list"]];
@@ -170,6 +189,9 @@ static NSString *const ZYCUserId = @"user";
         [self checkFooterState];
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        if (self.params != params) return ;
+        
         //失败提醒
         [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
         
@@ -260,6 +282,10 @@ static NSString *const ZYCUserId = @"user";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //结束刷新
+    [self.userTableView.header endRefreshing];
+    [self.userTableView.footer endRefreshing];
+    
     ZYCRecommendCategory *c = self.categories[indexPath.row];
    
     
@@ -278,6 +304,19 @@ static NSString *const ZYCUserId = @"user";
         [self.userTableView.header beginRefreshing];
         
     }
-        }
+    
+}
+
+#pragma mark - 控制器的销毁
+- (void)dealloc
+{
+    //停止所有操作
+    [self.manager.operationQueue cancelAllOperations];
+    
+}
+
+
+    
+
 
 @end
