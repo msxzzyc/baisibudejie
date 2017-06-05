@@ -39,6 +39,16 @@
 @implementation ZYCRecommendViewController
 static NSString *const ZYCCategoryId = @"category";
 static NSString *const ZYCUserId = @"user";
+
+
+- (AFHTTPSessionManager *)manager
+{
+    if (!_manager) {
+        _manager = [AFHTTPSessionManager manager];
+    }
+    return _manager;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -151,6 +161,7 @@ static NSString *const ZYCUserId = @"user";
         
         //结束刷新
         [self.userTableView.header endRefreshing];
+        
     }];
     
     
