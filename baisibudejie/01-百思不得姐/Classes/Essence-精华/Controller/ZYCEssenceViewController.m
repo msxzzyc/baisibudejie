@@ -7,7 +7,9 @@
 //
 
 #import "ZYCEssenceViewController.h"
+#import "ZYCRecommendTagsViewController.h"
 
+#import "ZYCTestView.h"
 @interface ZYCEssenceViewController ()
 
 @end
@@ -16,6 +18,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    ZYCTestView *test = [ZYCTestView testView];
+    
+    test.frame = CGRectMake(100, 100, 10, 10);
+    test.backgroundColor = [UIColor redColor];
+    [self.view addSubview:test];
+    
     //设置导航栏标题
     self.navigationItem.titleView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"MainTitle"]];
     
@@ -32,8 +41,9 @@
 
 - (void)tagClick
 {
-    
-    NSLog(@"%s",__func__);
+    ZYCRecommendTagsViewController *tags = [[ZYCRecommendTagsViewController alloc]init];
+    //加载推荐标签页
+    [self.navigationController pushViewController:tags animated:YES];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
