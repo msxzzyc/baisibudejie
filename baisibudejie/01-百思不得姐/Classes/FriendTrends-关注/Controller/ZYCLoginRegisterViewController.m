@@ -9,6 +9,7 @@
 #import "ZYCLoginRegisterViewController.h"
 
 @interface ZYCLoginRegisterViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *phoneField;
 
 @end
 
@@ -16,7 +17,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+//    //文字属性
+//    NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
+//    attrs[NSForegroundColorAttributeName] = [UIColor grayColor];
+//    //NSAttributedString：带有属性的文本（富文本属性）
+//    NSAttributedString *placeholder = [[NSAttributedString alloc]initWithString:@"手机号" attributes:attrs];
+//    
+//    self.phoneField.attributedPlaceholder = placeholder;
+    
+    
+    NSMutableAttributedString *placeholder = [[NSMutableAttributedString alloc]initWithString:@"手机号"];
+    
+    [placeholder setAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]} range:NSMakeRange(0, 1)];
+    
+    [placeholder setAttributes:@{NSForegroundColorAttributeName : [UIColor greenColor],
+                                 NSFontAttributeName : [UIFont systemFontOfSize:26]                       } range:NSMakeRange(1, 1)];
+    [placeholder setAttributes:@{NSForegroundColorAttributeName : [UIColor yellowColor]} range:NSMakeRange(2, 1)];
+    self.phoneField.attributedPlaceholder = placeholder;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,6 +43,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+//设置状态栏颜色
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     
