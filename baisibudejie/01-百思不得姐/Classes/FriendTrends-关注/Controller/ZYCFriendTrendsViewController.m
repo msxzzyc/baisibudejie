@@ -8,11 +8,19 @@
 
 #import "ZYCFriendTrendsViewController.h"
 #import "ZYCRecommendViewController.h"
+#import "ZYCLoginRegisterViewController.h"
 @interface ZYCFriendTrendsViewController ()
 
 @end
 
 @implementation ZYCFriendTrendsViewController
+- (IBAction)loginRegisterBtn:(id)sender {
+    
+    ZYCLoginRegisterViewController *login = [[ZYCLoginRegisterViewController alloc]init];
+    
+    [self presentViewController:login animated:YES completion:nil];
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
