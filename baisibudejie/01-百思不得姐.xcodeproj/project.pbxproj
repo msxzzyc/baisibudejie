@@ -109,6 +109,7 @@
 		12BC227A1EE8373C008C598E /* ZYCLoginRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12BC22781EE8373C008C598E /* ZYCLoginRegisterViewController.m */; };
 		12BC227B1EE8373C008C598E /* ZYCLoginRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12BC22791EE8373C008C598E /* ZYCLoginRegisterViewController.xib */; };
 		12BC227E1EE84614008C598E /* ZYCVerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 12BC227D1EE84614008C598E /* ZYCVerticalButton.m */; };
+		12C30BC41EE92A4E00E626C3 /* ZYCTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C30BC31EE92A4E00E626C3 /* ZYCTextField.m */; };
 		12CDFC171E7EA7E50056401F /* ZYCNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CDFC161E7EA7E50056401F /* ZYCNavigationController.m */; };
 /* End PBXBuildFile section */
 
@@ -323,6 +324,8 @@
 		12BC22791EE8373C008C598E /* ZYCLoginRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZYCLoginRegisterViewController.xib; sourceTree = "<group>"; };
 		12BC227C1EE84614008C598E /* ZYCVerticalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZYCVerticalButton.h; path = "01-百思不得姐/Classes/FriendTrends-关注/Controller/ZYCVerticalButton.h"; sourceTree = SOURCE_ROOT; };
 		12BC227D1EE84614008C598E /* ZYCVerticalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZYCVerticalButton.m; path = "01-百思不得姐/Classes/FriendTrends-关注/Controller/ZYCVerticalButton.m"; sourceTree = SOURCE_ROOT; };
+		12C30BC21EE92A4E00E626C3 /* ZYCTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZYCTextField.h; path = "01-百思不得姐/Classes/FriendTrends-关注/ZYCTextField.h"; sourceTree = SOURCE_ROOT; };
+		12C30BC31EE92A4E00E626C3 /* ZYCTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZYCTextField.m; path = "01-百思不得姐/Classes/FriendTrends-关注/ZYCTextField.m"; sourceTree = SOURCE_ROOT; };
 		12CDFC151E7EA7E50056401F /* ZYCNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCNavigationController.h; sourceTree = "<group>"; };
 		12CDFC161E7EA7E50056401F /* ZYCNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -454,6 +457,8 @@
 				124B187D1EE193ED00E48EC5 /* ZYCRecommendUserCell.xib */,
 				12BC227C1EE84614008C598E /* ZYCVerticalButton.h */,
 				12BC227D1EE84614008C598E /* ZYCVerticalButton.m */,
+				12C30BC21EE92A4E00E626C3 /* ZYCTextField.h */,
+				12C30BC31EE92A4E00E626C3 /* ZYCTextField.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1122,6 +1127,7 @@
 				1259800A1EE3036700FF00D1 /* UIScrollView+MJRefresh.m in Sources */,
 				1289B59D1EDFCBB000571E14 /* AFURLResponseSerialization.m in Sources */,
 				125980031EE3036700FF00D1 /* MJRefreshBackStateFooter.m in Sources */,
+				12C30BC41EE92A4E00E626C3 /* ZYCTextField.m in Sources */,
 				12597FFA1EE3036700FF00D1 /* MJRefreshBackFooter.m in Sources */,
 				125980091EE3036700FF00D1 /* UIScrollView+MJExtension.m in Sources */,
 				12597FFF1EE3036700FF00D1 /* MJRefreshAutoNormalFooter.m in Sources */,

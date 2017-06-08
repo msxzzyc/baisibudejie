@@ -9,7 +9,7 @@
 #import "ZYCLoginRegisterViewController.h"
 
 @interface ZYCLoginRegisterViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *phoneField;
+//@property (weak, nonatomic) IBOutlet UITextField *phoneField;
 
 @end
 
@@ -27,14 +27,14 @@
 //    self.phoneField.attributedPlaceholder = placeholder;
     
     
-    NSMutableAttributedString *placeholder = [[NSMutableAttributedString alloc]initWithString:@"手机号"];
-    
-    [placeholder setAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]} range:NSMakeRange(0, 1)];
-    
-    [placeholder setAttributes:@{NSForegroundColorAttributeName : [UIColor greenColor],
-                                 NSFontAttributeName : [UIFont systemFontOfSize:26]                       } range:NSMakeRange(1, 1)];
-    [placeholder setAttributes:@{NSForegroundColorAttributeName : [UIColor yellowColor]} range:NSMakeRange(2, 1)];
-    self.phoneField.attributedPlaceholder = placeholder;
+//    NSMutableAttributedString *placeholder = [[NSMutableAttributedString alloc]initWithString:@"手机号"];
+//    
+//    [placeholder setAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]} range:NSMakeRange(0, 1)];
+//    
+//    [placeholder setAttributes:@{NSForegroundColorAttributeName : [UIColor greenColor],
+//                                 NSFontAttributeName : [UIFont systemFontOfSize:26]                       } range:NSMakeRange(1, 1)];
+//    [placeholder setAttributes:@{NSForegroundColorAttributeName : [UIColor yellowColor]} range:NSMakeRange(2, 1)];
+//    self.phoneField.attributedPlaceholder = placeholder;
 
 }
 
