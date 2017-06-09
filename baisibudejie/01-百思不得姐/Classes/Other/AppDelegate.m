@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 #import "ZYCTabBarController.h"
+#import "ZYCPushGuideView.h"
 @interface AppDelegate ()
 
 @end
@@ -28,6 +29,10 @@
     
     //显示窗口
     [self.window makeKeyAndVisible];
+    
+
+    //显示推送引导
+    [ZYCPushGuideView show];
     
     
     
