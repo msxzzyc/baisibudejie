@@ -28,18 +28,40 @@ static NSString *const ZYCPlaceholderColorKeyPath = @"_placeholderLabel.textColo
 {
     unsigned int count = 0;
     //拷贝出所有成员变量列表
+    objc_property_t *properties = class_copyPropertyList([UITextField class], &count);
+    
+    for (int i = 0; i < count; i++) {
+        //取出属性
+        //数组名就是指向数组首元素的指针（ivars）
+        objc_property_t property = properties[i];
+        
+        //打印属性名字/类型
+        ZYCLog(@"%s ------ %s",property_getName(property),property_getAttributes(property));
+    }
+    
+    //释放内存
+    free(properties);
+}
+
+- (void)getIvars
+{
+    unsigned int count = 0;
+    //拷贝出所有成员变量列表
     Ivar *ivars = class_copyIvarList([UITextField class], &count);
     for (int i = 0; i < count; i++) {
         //取出成员变量
-        Ivar ivar = *(ivars + i);
+        //数组名就是指向数组首元素的指针（ivars）
+        //        Ivar ivar = *(ivars + i);
+        Ivar ivar = ivars[i];
         //打印成员变量名字
         ZYCLog(@"%s",ivar_getName(ivar));
     }
     
     //释放内存
     free(ivars);
+    
+    
 }
-
 
 - (void)awakeFromNib
 {

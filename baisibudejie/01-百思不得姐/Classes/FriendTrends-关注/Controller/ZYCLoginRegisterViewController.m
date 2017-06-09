@@ -10,10 +10,39 @@
 
 @interface ZYCLoginRegisterViewController ()
 //@property (weak, nonatomic) IBOutlet UITextField *phoneField;
-
+/** 登录框距离控制器view左边框的间距*/
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftMargin;
 @end
 
 @implementation ZYCLoginRegisterViewController
+- (IBAction)loginOrRegister: (UIButton *)button
+{
+    //退出键盘
+    [self.view endEditing:YES];
+    
+    if (self.leftMargin.constant == 0) {//显示注册界面
+        self.leftMargin.constant = - self.view.width;
+//        [button setTitle:@"已有账号？" forState:UIControlStateNormal];
+        
+        button.selected = YES;
+        
+    } else {//显示登录界面
+        self.leftMargin.constant = 0;
+//        [button setTitle:@"注册账号" forState:UIControlStateNormal];
+        button.selected = NO;
+        
+    }
+  
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        [self.view layoutIfNeeded];
+    }];
+    
+}
+- (IBAction)back:(id)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
