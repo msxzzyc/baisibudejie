@@ -47,7 +47,6 @@
 		128091891EE5B552005E1F1F /* ZYCRecommendTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 128091871EE5B552005E1F1F /* ZYCRecommendTagCell.m */; };
 		1280918A1EE5B552005E1F1F /* ZYCRecommendTagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 128091881EE5B552005E1F1F /* ZYCRecommendTagCell.xib */; };
 		1280918D1EE5B5EE005E1F1F /* ZYCRecommendTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 1280918C1EE5B5EE005E1F1F /* ZYCRecommendTag.m */; };
-		128091901EE5C9B3005E1F1F /* ZYCTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1280918F1EE5C9B3005E1F1F /* ZYCTestView.m */; };
 		1289B5581EDFCBA400571E14 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 1289B52F1EDFCBA400571E14 /* LICENSE */; };
 		1289B5591EDFCBA400571E14 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 1289B5301EDFCBA400571E14 /* README.md */; };
 		1289B55A1EDFCBA400571E14 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 1289B5331EDFCBA400571E14 /* NSData+ImageContentType.m */; };
@@ -209,8 +208,6 @@
 		128091881EE5B552005E1F1F /* ZYCRecommendTagCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ZYCRecommendTagCell.xib; path = "01-百思不得姐/Classes/Essence-精华/ZYCRecommendTagCell.xib"; sourceTree = SOURCE_ROOT; };
 		1280918B1EE5B5EE005E1F1F /* ZYCRecommendTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZYCRecommendTag.h; path = "01-百思不得姐/Classes/Essence-精华/ZYCRecommendTag.h"; sourceTree = SOURCE_ROOT; };
 		1280918C1EE5B5EE005E1F1F /* ZYCRecommendTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZYCRecommendTag.m; path = "01-百思不得姐/Classes/Essence-精华/ZYCRecommendTag.m"; sourceTree = SOURCE_ROOT; };
-		1280918E1EE5C9B3005E1F1F /* ZYCTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZYCTestView.h; path = "01-百思不得姐/Classes/Essence-精华/ZYCTestView.h"; sourceTree = SOURCE_ROOT; };
-		1280918F1EE5C9B3005E1F1F /* ZYCTestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZYCTestView.m; path = "01-百思不得姐/Classes/Essence-精华/ZYCTestView.m"; sourceTree = SOURCE_ROOT; };
 		1289B52F1EDFCBA400571E14 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		1289B5301EDFCBA400571E14 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1289B5321EDFCBA400571E14 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -408,8 +405,6 @@
 				128091861EE5B552005E1F1F /* ZYCRecommendTagCell.h */,
 				128091871EE5B552005E1F1F /* ZYCRecommendTagCell.m */,
 				128091881EE5B552005E1F1F /* ZYCRecommendTagCell.xib */,
-				1280918E1EE5C9B3005E1F1F /* ZYCTestView.h */,
-				1280918F1EE5C9B3005E1F1F /* ZYCTestView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1086,7 +1081,6 @@
 				1289B5CD1EDFD72000571E14 /* NSObject+MJProperty.m in Sources */,
 				1200CA8C1E7E4BEE00A96469 /* ZYCTabBar.m in Sources */,
 				1289B55F1EDFCBA400571E14 /* SDWebImageDownloaderOperation.m in Sources */,
-				128091901EE5C9B3005E1F1F /* ZYCTestView.m in Sources */,
 				125980041EE3036700FF00D1 /* MJRefreshGifHeader.m in Sources */,
 				1289B5CE1EDFD72000571E14 /* NSString+MJExtension.m in Sources */,
 				124AFD111EDF1C4000F26593 /* ZYCRecommendViewController.m in Sources */,
