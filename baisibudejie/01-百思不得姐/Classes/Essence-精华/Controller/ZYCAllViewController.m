@@ -26,7 +26,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 50;
+    return 100;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -41,10 +41,17 @@
     }
     
     cell.textLabel.text = [NSString stringWithFormat:@"%@----%zd",[self class],indexPath.row];
+    
+    cell.backgroundColor = [UIColor blueColor];
     return cell;
 }
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ZYCLog(@"%@",NSStringFromCGRect(tableView.frame));
+    ZYCLog(@"%@",NSStringFromUIEdgeInsets(tableView.contentInset));
+    
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
