@@ -13,6 +13,9 @@
 @interface ZYCEssenceViewController ()
 //标签栏底部的红色指示器
 @property(nonatomic,weak)UIView *indicator;
+
+//当前选中的按钮
+@property(nonatomic,weak)UIButton *selectedButton;
 @end
 
 @implementation ZYCEssenceViewController
@@ -44,7 +47,16 @@
     
     //内部的子标签
     NSArray *titles = @[@"全部",@"视频",@"声音",@"图片",@"段子"];
+    //底部的红色指示器
+    UIView *indicator = [[UIView alloc]init];
     
+    indicator.backgroundColor = [UIColor redColor];
+    indicator.height = 2;
+    indicator.y = titlesView.height - indicator.height;
+    
+    
+    [titlesView addSubview:indicator];
+    self.indicator = indicator;
     for ( NSInteger i = 0; i < titles.count; i++) {
         UIButton *button = [[UIButton alloc]init];
         
@@ -54,34 +66,49 @@
         button.x = i *button.width;
         
         [button setTitle:titles[i] forState:UIControlStateNormal];
+        
+//        [button layoutIfNeeded];//强制布局（强制更新子控件的frame）
+        [button setTitleColor:[UIColor redColor] forState:UIControlStateDisabled];
         [button setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         button.titleLabel.font = [UIFont systemFontOfSize:14];
         
         [button addTarget:self action:@selector(titleClick:) forControlEvents:UIControlEventTouchUpInside];
         [titlesView addSubview:button];
+        
+        //默认选中第一个按钮
+        if (i == 0) {
+            button.enabled = NO;
+            self.selectedButton = button;
+            //让按钮内部的label根据文字内容来计算尺寸
+            [button.titleLabel sizeToFit];
+            self.indicator.width = button.titleLabel.width;
+            self.indicator.centerX = button.centerX;
+
+        }
     }
     
-    //底部的红色指示器
-    UIView *indicator = [[UIView alloc]init];
     
-    indicator.backgroundColor = [UIColor redColor];
-    indicator.height = 2;
-    indicator.y = titlesView.height - indicator.height;
-   
-    
-    [titlesView addSubview:indicator];
-    self.indicator = indicator;
 }
 
 - (void)titleClick:(UIButton *)button
 {
+    //修改按钮状态
+    self.selectedButton.enabled = YES;
+    
+    button.enabled = NO;
+    self.selectedButton = button;
+    
+    //动画
     [UIView animateWithDuration:0.25 animations:^{
-        self.indicator.centerX = button.centerX;
         
         self.indicator.width = button.titleLabel.width;
+        self.indicator.centerX = button.centerX;
+        
+        
 
     }];
   
+    
 }
 
 //设置导航栏
