@@ -16,6 +16,9 @@
 
 //当前选中的按钮
 @property(nonatomic,weak)UIButton *selectedButton;
+
+//标签栏
+@property(nonatomic,weak)UIView *titlesView;
 @end
 
 @implementation ZYCEssenceViewController
@@ -29,12 +32,33 @@
     //设置顶部标签
     [self titlesView];
     
+    //设置scrollView
+    [self setUpContentView];
     
     
 }
-
+//设置scrollView
+-(void)setUpContentView
+{
+    //不要自动调整inset
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    UIScrollView *contentView = [[UIScrollView alloc]init];
+    
+    contentView.backgroundColor = [UIColor blueColor];
+    
+    contentView.frame = self.view.bounds;
+    
+    //设置内边距
+    CGFloat top = CGRectGetMaxY(self.titlesView.frame);
+    CGFloat bottom = self.view.height - self.tabBarController.tabBar.height;
+    contentView.contentInset = UIEdgeInsetsMake(top, 0, bottom, 0);
+    
+    [self.view insertSubview:contentView atIndex:0];
+    
+}
 //设置顶部标签
-- (void)titlesView
+- (void)setTitlesView
 {
     //标签栏整体
     UIView *titlesView = [[UIView alloc]init];
@@ -42,11 +66,11 @@
 //    titlesView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
 //    titlesView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
     titlesView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.5];
+    self.titlesView = titlesView;
     
     [self.view addSubview:titlesView];
     
-    //内部的子标签
-    NSArray *titles = @[@"全部",@"视频",@"声音",@"图片",@"段子"];
+    
     //底部的红色指示器
     UIView *indicator = [[UIView alloc]init];
     
@@ -57,6 +81,9 @@
     
     [titlesView addSubview:indicator];
     self.indicator = indicator;
+    
+    //内部的子标签
+    NSArray *titles = @[@"全部",@"视频",@"声音",@"图片",@"段子"];
     for ( NSInteger i = 0; i < titles.count; i++) {
         UIButton *button = [[UIButton alloc]init];
         
@@ -80,8 +107,11 @@
             button.enabled = NO;
             self.selectedButton = button;
             //让按钮内部的label根据文字内容来计算尺寸
-            [button.titleLabel sizeToFit];
-            self.indicator.width = button.titleLabel.width;
+//            [button.titleLabel sizeToFit];
+//            self.indicator.width = button.titleLabel.width;
+            
+            //直接拿出title计算其所占宽度
+            self.indicator.width = [titles[i] sizeWithAttributes:@{ NSFontAttributeName : button.titleLabel.font }].width;
             self.indicator.centerX = button.centerX;
 
         }
