@@ -9,8 +9,14 @@
 #import "ZYCEssenceViewController.h"
 #import "ZYCRecommendTagsViewController.h"
 
+#import "ZYCAllViewController.h"
+#import "ZYCVideoViewController.h"
+#import "ZYCPictureViewController.h"
+#import "ZYCVoiceViewController.h"
+#import "ZYCWordViewController.h"
 
-@interface ZYCEssenceViewController ()
+
+@interface ZYCEssenceViewController ()<UIScrollViewDelegate>
 //标签栏底部的红色指示器
 @property(nonatomic,weak)UIView *indicator;
 
@@ -19,6 +25,10 @@
 
 //标签栏
 @property(nonatomic,weak)UIView *titlesView;
+
+//中间的scrollView
+@property(nonatomic,weak)UIScrollView *contentView;
+
 @end
 
 @implementation ZYCEssenceViewController
@@ -30,13 +40,37 @@
     [self setUpNav];
     
     //设置顶部标签
-    [self titlesView];
+    [self setTitlesView];
+    
+    //设置子控件
+    [self setUpChildVces];
     
     //设置scrollView
     [self setUpContentView];
     
     
 }
+//设置子控件
+- (void)setUpChildVces
+{
+    ZYCAllViewController *all = [[ZYCAllViewController alloc]init];
+    [self addChildViewController:all];
+    
+    ZYCVideoViewController *video = [[ZYCVideoViewController alloc]init];
+    [self addChildViewController:video];
+    
+    ZYCVoiceViewController *voice = [[ZYCVoiceViewController alloc]init];
+    [self addChildViewController:voice];
+    
+    ZYCPictureViewController *picture = [[ZYCPictureViewController alloc]init];
+    [self addChildViewController:picture];
+    
+    ZYCWordViewController *word = [[ZYCWordViewController alloc]init];
+    [self addChildViewController:word];
+    
+    
+}
+
 //设置scrollView
 -(void)setUpContentView
 {
@@ -45,16 +79,22 @@
     
     UIScrollView *contentView = [[UIScrollView alloc]init];
     
-    contentView.backgroundColor = [UIColor blueColor];
+//    contentView.backgroundColor = [UIColor blueColor];
     
     contentView.frame = self.view.bounds;
     
-    //设置内边距
-    CGFloat top = CGRectGetMaxY(self.titlesView.frame);
-    CGFloat bottom = self.view.height - self.tabBarController.tabBar.height;
-    contentView.contentInset = UIEdgeInsetsMake(top, 0, bottom, 0);
-    
+    contentView.delegate =self;
+    //分页
+    contentView.pagingEnabled = YES;
     [self.view insertSubview:contentView atIndex:0];
+    
+    contentView.contentSize = CGSizeMake(contentView.width * self.childViewControllers.count, contentView.height);
+
+    self.contentView = contentView;
+    
+    //添加第一个控制器的view
+    [self scrollViewDidEndScrollingAnimation:contentView];
+    
     
 }
 //设置顶部标签
@@ -66,9 +106,10 @@
 //    titlesView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
 //    titlesView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
     titlesView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.5];
-    self.titlesView = titlesView;
     
+    self.titlesView = titlesView;
     [self.view addSubview:titlesView];
+    
     
     
     //底部的红色指示器
@@ -79,14 +120,14 @@
     indicator.y = titlesView.height - indicator.height;
     
     
-    [titlesView addSubview:indicator];
+    
     self.indicator = indicator;
     
     //内部的子标签
     NSArray *titles = @[@"全部",@"视频",@"声音",@"图片",@"段子"];
     for ( NSInteger i = 0; i < titles.count; i++) {
         UIButton *button = [[UIButton alloc]init];
-        
+        button.tag = i;
 //        button.y = titlesView.y;
         button.width = self.view.width/titles.count;
         button.height = titlesView.height;
@@ -117,7 +158,7 @@
         }
     }
     
-    
+    [titlesView addSubview:indicator];//保证按钮在指示器前面
 }
 
 - (void)titleClick:(UIButton *)button
@@ -133,11 +174,12 @@
         
         self.indicator.width = button.titleLabel.width;
         self.indicator.centerX = button.centerX;
-        
-        
-
     }];
   
+    //滚动
+    CGPoint offset = self.contentView.contentOffset;
+    offset = CGPointMake(_contentView.width * button.tag, 0);
+    [self.contentView setContentOffset:offset animated:YES];
     
 }
 
@@ -154,8 +196,7 @@
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImage:@"MainTagSubIcon" highImage:@"MainTagSubIcon" target:self action:@selector(tagClick)];
     //设置背景色
     self.view.backgroundColor = ZYCGlobalBG;
-    
-    
+  
 }
 
 - (void)tagClick
@@ -175,19 +216,39 @@
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+#pragma mark - UIScrollViewDelegate
+//点击按钮滚动动画结束时运行
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+{
+    
+    //当前的索引
+    NSInteger index = scrollView.contentOffset.x/scrollView.width;
+    
+    //取出子控制器
+    UITableViewController *vc = self.childViewControllers[index];
+    vc.view.x = scrollView.contentOffset.x;
+    //添加子控制器的view
+    [scrollView addSubview:vc.view];
+    
+//    设置内边距
+        CGFloat top = CGRectGetMaxY(self.titlesView.frame);
+        CGFloat bottom = self.view.height - self.tabBarController.tabBar.height;
+        vc.tableView.contentInset = UIEdgeInsetsMake(top, 0, bottom, 0);
+    
 }
-*/
+//左右拖动动画结束时运行
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+   
+  
+    [self scrollViewDidEndScrollingAnimation:scrollView];
+    
+    //点击按钮
+    NSInteger index = scrollView.contentOffset.x/scrollView.width;
+    [self titleClick:self.titlesView.subviews[index]];//要保证按钮在指示器前面
+}
 
 @end

@@ -102,6 +102,11 @@
 		1289B5D31EDFD9DE00571E14 /* ZYCRecommendCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1289B5D11EDFD9DE00571E14 /* ZYCRecommendCategoryCell.m */; };
 		1289B5D41EDFD9DE00571E14 /* ZYCRecommendCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1289B5D21EDFD9DE00571E14 /* ZYCRecommendCategoryCell.xib */; };
 		12A2FDC61E8147F8007BF7FE /* ZYCFriendTrendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12A2FDC51E8147F8007BF7FE /* ZYCFriendTrendsViewController.xib */; };
+		12B046881EED55D00017B46A /* ZYCAllViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B046871EED55D00017B46A /* ZYCAllViewController.m */; };
+		12B0468B1EED55F80017B46A /* ZYCVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B0468A1EED55F80017B46A /* ZYCVideoViewController.m */; };
+		12B0468E1EED56250017B46A /* ZYCPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B0468D1EED56250017B46A /* ZYCPictureViewController.m */; };
+		12B046911EED564D0017B46A /* ZYCVoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B046901EED564D0017B46A /* ZYCVoiceViewController.m */; };
+		12B046941EED566F0017B46A /* ZYCWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B046931EED566F0017B46A /* ZYCWordViewController.m */; };
 		12B24F941E77FFF4006CBFF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12B24F931E77FFF4006CBFF5 /* Assets.xcassets */; };
 		12B24FA21E77FFF4006CBFF5 /* _1______Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B24FA11E77FFF4006CBFF5 /* _1______Tests.m */; };
 		12B24FAD1E77FFF4006CBFF5 /* _1______UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B24FAC1E77FFF4006CBFF5 /* _1______UITests.m */; };
@@ -310,6 +315,16 @@
 		1289B5D11EDFD9DE00571E14 /* ZYCRecommendCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZYCRecommendCategoryCell.m; path = "01-百思不得姐/Classes/FriendTrends-关注/ZYCRecommendCategoryCell.m"; sourceTree = SOURCE_ROOT; };
 		1289B5D21EDFD9DE00571E14 /* ZYCRecommendCategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ZYCRecommendCategoryCell.xib; path = "01-百思不得姐/Classes/FriendTrends-关注/ZYCRecommendCategoryCell.xib"; sourceTree = SOURCE_ROOT; };
 		12A2FDC51E8147F8007BF7FE /* ZYCFriendTrendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZYCFriendTrendsViewController.xib; sourceTree = "<group>"; };
+		12B046861EED55D00017B46A /* ZYCAllViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCAllViewController.h; sourceTree = "<group>"; };
+		12B046871EED55D00017B46A /* ZYCAllViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCAllViewController.m; sourceTree = "<group>"; };
+		12B046891EED55F80017B46A /* ZYCVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCVideoViewController.h; sourceTree = "<group>"; };
+		12B0468A1EED55F80017B46A /* ZYCVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCVideoViewController.m; sourceTree = "<group>"; };
+		12B0468C1EED56250017B46A /* ZYCPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCPictureViewController.h; sourceTree = "<group>"; };
+		12B0468D1EED56250017B46A /* ZYCPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCPictureViewController.m; sourceTree = "<group>"; };
+		12B0468F1EED564D0017B46A /* ZYCVoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCVoiceViewController.h; sourceTree = "<group>"; };
+		12B046901EED564D0017B46A /* ZYCVoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCVoiceViewController.m; sourceTree = "<group>"; };
+		12B046921EED566F0017B46A /* ZYCWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCWordViewController.h; sourceTree = "<group>"; };
+		12B046931EED566F0017B46A /* ZYCWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCWordViewController.m; sourceTree = "<group>"; };
 		12B24F841E77FFF4006CBFF5 /* 01-百思不得姐.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "01-百思不得姐.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B24F931E77FFF4006CBFF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		12B24F9D1E77FFF4006CBFF5 /* 01-百思不得姐Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "01-百思不得姐Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -386,6 +401,16 @@
 				1200CA5B1E7E4BEE00A96469 /* ZYCEssenceViewController.m */,
 				128091801EE5AA9A005E1F1F /* ZYCRecommendTagsViewController.h */,
 				128091811EE5AA9A005E1F1F /* ZYCRecommendTagsViewController.m */,
+				12B046861EED55D00017B46A /* ZYCAllViewController.h */,
+				12B046871EED55D00017B46A /* ZYCAllViewController.m */,
+				12B046891EED55F80017B46A /* ZYCVideoViewController.h */,
+				12B0468A1EED55F80017B46A /* ZYCVideoViewController.m */,
+				12B0468C1EED56250017B46A /* ZYCPictureViewController.h */,
+				12B0468D1EED56250017B46A /* ZYCPictureViewController.m */,
+				12B0468F1EED564D0017B46A /* ZYCVoiceViewController.h */,
+				12B046901EED564D0017B46A /* ZYCVoiceViewController.m */,
+				12B046921EED566F0017B46A /* ZYCWordViewController.h */,
+				12B046931EED566F0017B46A /* ZYCWordViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1064,6 +1089,7 @@
 				1289B5C91EDFD72000571E14 /* MJProperty.m in Sources */,
 				125980001EE3036700FF00D1 /* MJRefreshAutoStateFooter.m in Sources */,
 				1289B5A61EDFCBB000571E14 /* UIProgressView+AFNetworking.m in Sources */,
+				12B0468E1EED56250017B46A /* ZYCPictureViewController.m in Sources */,
 				1200CA851E7E4BEE00A96469 /* ZYCNewViewController.m in Sources */,
 				1289B5A71EDFCBB000571E14 /* UIRefreshControl+AFNetworking.m in Sources */,
 				125980051EE3036700FF00D1 /* MJRefreshNormalHeader.m in Sources */,
@@ -1088,6 +1114,7 @@
 				1289B55B1EDFCBA400571E14 /* SDImageCache.m in Sources */,
 				12597FFD1EE3036700FF00D1 /* MJRefreshHeader.m in Sources */,
 				1289B5AA1EDFCBEF00571E14 /* Foundation+Log.m in Sources */,
+				12B046911EED564D0017B46A /* ZYCVoiceViewController.m in Sources */,
 				1200CA831E7E4BEE00A96469 /* ZYCFriendTrendsViewController.m in Sources */,
 				12BC227A1EE8373C008C598E /* ZYCLoginRegisterViewController.m in Sources */,
 				12597FFC1EE3036700FF00D1 /* MJRefreshFooter.m in Sources */,
@@ -1098,6 +1125,7 @@
 				1289B5651EDFCBA400571E14 /* UIImageView+HighlightedWebCache.m in Sources */,
 				1289B5981EDFCBB000571E14 /* AFHTTPSessionManager.m in Sources */,
 				1289B5CC1EDFD72000571E14 /* NSObject+MJKeyValue.m in Sources */,
+				12B0468B1EED55F80017B46A /* ZYCVideoViewController.m in Sources */,
 				1289B5691EDFCBA400571E14 /* README.md in Sources */,
 				1289B5991EDFCBB000571E14 /* AFNetworkReachabilityManager.m in Sources */,
 				1289B55C1EDFCBA400571E14 /* SDWebImageCompat.m in Sources */,
@@ -1141,6 +1169,8 @@
 				1259800B1EE3036700FF00D1 /* UIView+MJExtension.m in Sources */,
 				1289B5B01EDFD58100571E14 /* ZYCRecommendCategory.m in Sources */,
 				1289B5671EDFCBA400571E14 /* UIView+WebCacheOperation.m in Sources */,
+				12B046881EED55D00017B46A /* ZYCAllViewController.m in Sources */,
+				12B046941EED566F0017B46A /* ZYCWordViewController.m in Sources */,
 				1289B5641EDFCBA400571E14 /* UIImage+MultiFormat.m in Sources */,
 				1289B55D1EDFCBA400571E14 /* SDWebImageDecoder.m in Sources */,
 				1289B56C1EDFCBA400571E14 /* SVProgressHUD.m in Sources */,
