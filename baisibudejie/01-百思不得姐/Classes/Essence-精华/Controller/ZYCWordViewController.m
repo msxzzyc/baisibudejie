@@ -8,8 +8,11 @@
 
 #import "ZYCWordViewController.h"
 
+#import "AFNetworking.h"
+#import "UIImageView+WebCache.h"
 @interface ZYCWordViewController ()
-
+/** 帖子数据 */
+@property(nonatomic,strong)NSArray *topics;
 @end
 
 @implementation ZYCWordViewController
@@ -17,11 +20,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //参数
+    NSMutableDictionary *parames = [NSMutableDictionary dictionary];
+    parames[@"a"] = @"list";
+    parames[@"c"] = @"data";
+    parames[@"type"] = @"29";
+    //发送请求
+    [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:parames success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
+        ZYCLog(@"%@",responseObject);
+
+//        [responseObject writeToFile:@"/Users/zyc/Desktop/未命名文件夹/duanzi.plist" atomically:YES];
+        
+        self.topics = responseObject[@"list"];
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        ZYCLog(@"%@",error);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,7 +47,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 50;
+    return self.topics.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -42,12 +56,17 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if (cell == nil) {
         
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
         
         return cell;
     }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@----%zd",[self class],indexPath.row];
+//    cell.textLabel.text = [NSString stringWithFormat:@"%@----%zd",[self class],indexPath.row];
+    
+    NSDictionary *topic = self.topics[indexPath.row];
+    cell.textLabel.text = topic[@"name"];
+    cell.detailTextLabel.text = topic[@"text"];
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:topic[@"profile_image"]] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];
     return cell;
 }
 /*
