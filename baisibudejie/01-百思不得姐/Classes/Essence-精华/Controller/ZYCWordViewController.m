@@ -21,7 +21,8 @@
 @property(nonatomic,assign)NSInteger page;
 /** 加载下一页时会传该参数 */
 @property(nonatomic,assign)NSInteger maxtime;
-
+/** 上一次的请求参数 */
+@property(nonatomic,strong)NSDictionary *params;
 @end
 
 @implementation ZYCWordViewController
@@ -58,7 +59,9 @@
  */
 - (void)loadMoreTopics
 {
-
+    //先结束下拉刷新
+    [self.tableView.header endRefreshing];
+    
     self.page++;
     //参数
     NSMutableDictionary *parames = [NSMutableDictionary dictionary];
@@ -68,8 +71,12 @@
     parames[@"page"] = @(self.page);
     parames[@"maxtime"] = @(self.maxtime);
     
+    self.params = parames;
     //发送请求
     [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:parames success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
+        
+        if (self.params != parames) return ;
+        
         ZYCLog(@"%@",responseObject);
         //存储maxtime
         self.maxtime = responseObject[@"info"][@"maxtime"];
@@ -83,25 +90,41 @@
         //结束刷新
         [self.tableView.footer endRefreshing];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if (self.params != parames) return ;
         ZYCLog(@"%@",error);
+        //恢复页码
+        self.page--;
+        
         [self.tableView.footer endRefreshing];
     }];
 }
+
+//先下拉刷新，再上拉刷新第5页数据出现问题
+
+//下拉刷新成功回来：只有第一页数据，page = 0；
+//上拉刷新后成功回来：最前面那页+第5页数据
+
+//解决方案：限制同时进行上拉下拉两种刷新
 /**
  *加载新的帖子数据 下拉刷新
  */
 - (void)loadNewTopics
 {
-    self.page = 0;
+    //先结束上拉刷新
+    [self.tableView.footer endRefreshing];
+    
     //参数
     NSMutableDictionary *parames = [NSMutableDictionary dictionary];
     parames[@"a"] = @"list";
     parames[@"c"] = @"data";
     parames[@"type"] = @"29";
 
+    self.params = parames;
     //发送请求
     [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:parames success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
         
+        if (self.params != parames) return ;
+            
         ZYCLog(@"%@",responseObject);
         
         //        [responseObject writeToFile:@"/Users/zyc/Desktop/未命名文件夹/duanzi.plist" atomically:YES];
@@ -113,9 +136,13 @@
         
         //刷新表格
         [self.tableView reloadData];
+        
         //结束刷新
         [self.tableView.header endRefreshing];
+        //加载成功后清空页码
+        self.page = 0;
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if (self.params != parames) return ;
         ZYCLog(@"%@",error);
         [self.tableView.header endRefreshing];
     }];
