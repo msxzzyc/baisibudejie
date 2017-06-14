@@ -10,37 +10,119 @@
 
 #import "AFNetworking.h"
 #import "UIImageView+WebCache.h"
+#import "MJExtension.h"
+#import "MJRefresh.h"
+
+#import "ZYCTopic.h"
 @interface ZYCWordViewController ()
-/** 帖子数据 */
-@property(nonatomic,strong)NSArray *topics;
+/** 帖子模型数组 */
+@property(nonatomic,strong)NSMutableArray *topics;
+/** 当前页码 */
+@property(nonatomic,assign)NSInteger page;
+/** 加载下一页时会传该参数 */
+@property(nonatomic,assign)NSInteger maxtime;
+
 @end
 
 @implementation ZYCWordViewController
 
+- (NSMutableArray *)topics
+{
+    if (!_topics) {
+        _topics = [NSMutableArray array];
+    }
+    return _topics;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //添加刷新控件
+    [self setUpRefresh];
+}
+
+- (void)setUpRefresh
+{
+    
+    self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewTopics)];
+    //自动改变透明度
+    self.tableView.header.autoChangeAlpha = YES;
+    [self.tableView.header beginRefreshing];
+    
+    self.tableView.footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreTopics)];
+    
+}
+#pragma mark - 数据处理
+/**
+ *加载更多的帖子数据 上拉刷新
+ */
+- (void)loadMoreTopics
+{
+
+    self.page++;
     //参数
     NSMutableDictionary *parames = [NSMutableDictionary dictionary];
     parames[@"a"] = @"list";
     parames[@"c"] = @"data";
     parames[@"type"] = @"29";
+    parames[@"page"] = @(self.page);
+    parames[@"maxtime"] = @(self.maxtime);
+    
     //发送请求
     [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:parames success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
         ZYCLog(@"%@",responseObject);
-
-//        [responseObject writeToFile:@"/Users/zyc/Desktop/未命名文件夹/duanzi.plist" atomically:YES];
+        //存储maxtime
+        self.maxtime = responseObject[@"info"][@"maxtime"];
         
-        self.topics = responseObject[@"list"];
-        
+        //        [responseObject writeToFile:@"/Users/zyc/Desktop/未命名文件夹/duanzi.plist" atomically:YES];
+        //字典转模型
+        NSArray *newTopics = [ZYCTopic objectArrayWithKeyValuesArray:responseObject[@"list"]];
+        [self.topics addObjectsFromArray:newTopics];
+        //刷新表格
+        [self.tableView reloadData];
+        //结束刷新
+        [self.tableView.footer endRefreshing];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         ZYCLog(@"%@",error);
+        [self.tableView.footer endRefreshing];
     }];
 }
+/**
+ *加载新的帖子数据 下拉刷新
+ */
+- (void)loadNewTopics
+{
+    self.page = 0;
+    //参数
+    NSMutableDictionary *parames = [NSMutableDictionary dictionary];
+    parames[@"a"] = @"list";
+    parames[@"c"] = @"data";
+    parames[@"type"] = @"29";
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    //发送请求
+    [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:parames success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
+        
+        ZYCLog(@"%@",responseObject);
+        
+        //        [responseObject writeToFile:@"/Users/zyc/Desktop/未命名文件夹/duanzi.plist" atomically:YES];
+        
+        //存储maxtime
+        self.maxtime = responseObject[@"info"][@"maxtime"];
+        //字典转模型 (下拉刷新直接覆盖数据)
+         self.topics = [ZYCTopic objectArrayWithKeyValuesArray:responseObject[@"list"]];
+        
+        //刷新表格
+        [self.tableView reloadData];
+        //结束刷新
+        [self.tableView.header endRefreshing];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        ZYCLog(@"%@",error);
+        [self.tableView.header endRefreshing];
+    }];
+
+    
+    
+    
 }
 
 #pragma mark - Table view data source
@@ -63,10 +145,11 @@
     
 //    cell.textLabel.text = [NSString stringWithFormat:@"%@----%zd",[self class],indexPath.row];
     
-    NSDictionary *topic = self.topics[indexPath.row];
-    cell.textLabel.text = topic[@"name"];
-    cell.detailTextLabel.text = topic[@"text"];
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:topic[@"profile_image"]] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];
+    ZYCTopic *topic = self.topics[indexPath.row];
+    ZYCLog(@"%@",topic.maxtime);
+    cell.textLabel.text = topic.name;
+    cell.detailTextLabel.text = topic.text;
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:topic.profile_image] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];
     return cell;
 }
 /*
