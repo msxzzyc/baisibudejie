@@ -46,7 +46,7 @@
     //设置其他控件
     [self.profileImageView sd_setImageWithURL:[NSURL URLWithString:topic.profile_image] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];
     self.nameLabel.text = topic.name;
-    self.creatTimeLabel.text = topic.created_time;
+    self.creatTimeLabel.text = topic.create_time;
     
     
     //设置按钮文字

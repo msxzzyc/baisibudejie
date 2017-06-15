@@ -16,7 +16,7 @@
 /** 头像 */
 @property(nonatomic,copy)NSString *profile_image;
 /** 发帖时间 */
-@property(nonatomic,copy)NSString *created_time;
+@property(nonatomic,copy)NSString *create_time;
 /** 顶的数量 */
 @property(nonatomic,assign)NSInteger ding;
 /** 踩的数量 */
