@@ -14,6 +14,7 @@
 #import "MJRefresh.h"
 
 #import "ZYCTopic.h"
+#import "ZYCTopicCell.h"
 @interface ZYCWordViewController ()
 /** 帖子模型数组 */
 @property(nonatomic,strong)NSMutableArray *topics;
@@ -46,6 +47,7 @@
     
 }
 //初始化表格
+static NSString *const ZYCTopicCellID = @"topic";
 - (void)setUpTableView
 {
     //    设置内边距
@@ -56,6 +58,14 @@
     //设置滚动条的内边距
     self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
 
+    //设置分割线
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    self.tableView.backgroundColor = [UIColor clearColor];
+    
+    //注册cell
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ZYCTopicCell class]) bundle:nil] forCellReuseIdentifier:ZYCTopicCellID];
+    
     
 }
 - (void)setUpRefresh
@@ -181,24 +191,18 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *ID = @"cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    if (cell == nil) {
-        
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
-        
-        return cell;
-    }
     
-//    cell.textLabel.text = [NSString stringWithFormat:@"%@----%zd",[self class],indexPath.row];
-    
-    ZYCTopic *topic = self.topics[indexPath.row];
-    ZYCLog(@"%@",topic.maxtime);
-    cell.textLabel.text = topic.name;
-    cell.detailTextLabel.text = topic.text;
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:topic.profile_image] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];
+    ZYCTopicCell *cell = [tableView dequeueReusableCellWithIdentifier:ZYCTopicCellID];
+    cell.topic = self.topics[indexPath.row];
     return cell;
+}
+#pragma mark - 代理方法
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 200;
+    
+    
 }
 /*
 // Override to support conditional editing of the table view.

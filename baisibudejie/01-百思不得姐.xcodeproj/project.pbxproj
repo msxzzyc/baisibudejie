@@ -28,8 +28,6 @@
 		121917921EEECE9B00016382 /* ZYCRecommendUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1219178A1EEECE9B00016382 /* ZYCRecommendUserCell.xib */; };
 		121917931EEECE9B00016382 /* ZYCTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1219178C1EEECE9B00016382 /* ZYCTextField.m */; };
 		121917961EEED67F00016382 /* ZYCTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 121917951EEED67F00016382 /* ZYCTopic.m */; };
-		1219179A1EEEDFB300016382 /* ZYCTopicViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 121917981EEEDFB300016382 /* ZYCTopicViewCell.m */; };
-		1219179B1EEEDFB300016382 /* ZYCTopicViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 121917991EEEDFB300016382 /* ZYCTopicViewCell.xib */; };
 		124AFD111EDF1C4000F26593 /* ZYCRecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 124AFD0F1EDF1C4000F26593 /* ZYCRecommendViewController.m */; };
 		124AFD121EDF1C4000F26593 /* ZYCRecommendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 124AFD101EDF1C4000F26593 /* ZYCRecommendViewController.xib */; };
 		12597FF81EE3036700FF00D1 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 12597FC91EE3036700FF00D1 /* LICENSE */; };
@@ -120,6 +118,8 @@
 		12BC227B1EE8373C008C598E /* ZYCLoginRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12BC22791EE8373C008C598E /* ZYCLoginRegisterViewController.xib */; };
 		12CDFC171E7EA7E50056401F /* ZYCNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CDFC161E7EA7E50056401F /* ZYCNavigationController.m */; };
 		12F21B241EF26886000EB24E /* ZYCConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F21B231EF26886000EB24E /* ZYCConst.m */; };
+		12F21B281EF27430000EB24E /* ZYCTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F21B261EF27430000EB24E /* ZYCTopicCell.m */; };
+		12F21B291EF27430000EB24E /* ZYCTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12F21B271EF27430000EB24E /* ZYCTopicCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,9 +180,6 @@
 		1219178C1EEECE9B00016382 /* ZYCTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCTextField.m; sourceTree = "<group>"; };
 		121917941EEED67F00016382 /* ZYCTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCTopic.h; sourceTree = "<group>"; };
 		121917951EEED67F00016382 /* ZYCTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCTopic.m; sourceTree = "<group>"; };
-		121917971EEEDFB300016382 /* ZYCTopicViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCTopicViewCell.h; sourceTree = "<group>"; };
-		121917981EEEDFB300016382 /* ZYCTopicViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCTopicViewCell.m; sourceTree = "<group>"; };
-		121917991EEEDFB300016382 /* ZYCTopicViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZYCTopicViewCell.xib; sourceTree = "<group>"; };
 		124AFD0E1EDF1C4000F26593 /* ZYCRecommendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCRecommendViewController.h; sourceTree = "<group>"; };
 		124AFD0F1EDF1C4000F26593 /* ZYCRecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCRecommendViewController.m; sourceTree = "<group>"; };
 		124AFD101EDF1C4000F26593 /* ZYCRecommendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZYCRecommendViewController.xib; sourceTree = "<group>"; };
@@ -353,6 +350,9 @@
 		12CDFC161E7EA7E50056401F /* ZYCNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCNavigationController.m; sourceTree = "<group>"; };
 		12F21B221EF26886000EB24E /* ZYCConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCConst.h; sourceTree = "<group>"; };
 		12F21B231EF26886000EB24E /* ZYCConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCConst.m; sourceTree = "<group>"; };
+		12F21B251EF27430000EB24E /* ZYCTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCTopicCell.h; sourceTree = "<group>"; };
+		12F21B261EF27430000EB24E /* ZYCTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCTopicCell.m; sourceTree = "<group>"; };
+		12F21B271EF27430000EB24E /* ZYCTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZYCTopicCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -560,9 +560,9 @@
 				121917791EEEC84200016382 /* ZYCRecommendTagCell.h */,
 				1219177A1EEEC84200016382 /* ZYCRecommendTagCell.m */,
 				1219177B1EEEC84200016382 /* ZYCRecommendTagCell.xib */,
-				121917971EEEDFB300016382 /* ZYCTopicViewCell.h */,
-				121917981EEEDFB300016382 /* ZYCTopicViewCell.m */,
-				121917991EEEDFB300016382 /* ZYCTopicViewCell.xib */,
+				12F21B251EF27430000EB24E /* ZYCTopicCell.h */,
+				12F21B261EF27430000EB24E /* ZYCTopicCell.m */,
+				12F21B271EF27430000EB24E /* ZYCTopicCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1031,8 +1031,8 @@
 				125980071EE3036700FF00D1 /* MJRefresh.bundle in Resources */,
 				12B872C11EEAE74000684317 /* ZYCPushGuideView.xib in Resources */,
 				1289B5C61EDFD72000571E14 /* LICENSE in Resources */,
-				1219179B1EEEDFB300016382 /* ZYCTopicViewCell.xib in Resources */,
 				124AFD121EDF1C4000F26593 /* ZYCRecommendViewController.xib in Resources */,
+				12F21B291EF27430000EB24E /* ZYCTopicCell.xib in Resources */,
 				12597FF81EE3036700FF00D1 /* LICENSE in Resources */,
 				1219177E1EEEC84200016382 /* ZYCRecommendTagCell.xib in Resources */,
 				12BC227B1EE8373C008C598E /* ZYCLoginRegisterViewController.xib in Resources */,
@@ -1070,6 +1070,7 @@
 				1289B5C91EDFD72000571E14 /* MJProperty.m in Sources */,
 				125980001EE3036700FF00D1 /* MJRefreshAutoStateFooter.m in Sources */,
 				1289B5A61EDFCBB000571E14 /* UIProgressView+AFNetworking.m in Sources */,
+				12F21B281EF27430000EB24E /* ZYCTopicCell.m in Sources */,
 				12B0468E1EED56250017B46A /* ZYCPictureViewController.m in Sources */,
 				1200CA851E7E4BEE00A96469 /* ZYCNewViewController.m in Sources */,
 				1289B5A71EDFCBB000571E14 /* UIRefreshControl+AFNetworking.m in Sources */,
@@ -1139,7 +1140,6 @@
 				1289B5621EDFCBA400571E14 /* UIButton+WebCache.m in Sources */,
 				1289B5A81EDFCBB000571E14 /* UIWebView+AFNetworking.m in Sources */,
 				1289B5A21EDFCBB000571E14 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
-				1219179A1EEEDFB300016382 /* ZYCTopicViewCell.m in Sources */,
 				1259800A1EE3036700FF00D1 /* UIScrollView+MJRefresh.m in Sources */,
 				12F21B241EF26886000EB24E /* ZYCConst.m in Sources */,
 				1289B59D1EDFCBB000571E14 /* AFURLResponseSerialization.m in Sources */,
