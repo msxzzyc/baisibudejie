@@ -40,11 +40,13 @@
     //设置导航栏
     [self setUpNav];
     
+    //设置子控件
+    [self setUpChildVces];
+    
     //设置顶部标签
     [self setTitlesView];
     
-    //设置子控件
-    [self setUpChildVces];
+    
     
     //设置scrollView
     [self setUpContentView];
@@ -55,18 +57,23 @@
 - (void)setUpChildVces
 {
     ZYCAllViewController *all = [[ZYCAllViewController alloc]init];
+    all.title = @"全部";
     [self addChildViewController:all];
     
     ZYCVideoViewController *video = [[ZYCVideoViewController alloc]init];
+    video.title = @"视频";
     [self addChildViewController:video];
     
     ZYCVoiceViewController *voice = [[ZYCVoiceViewController alloc]init];
+    voice.title = @"声音";
     [self addChildViewController:voice];
     
     ZYCPictureViewController *picture = [[ZYCPictureViewController alloc]init];
+    picture.title = @"图片";
     [self addChildViewController:picture];
     
     ZYCWordViewController *word = [[ZYCWordViewController alloc]init];
+    word.title = @"段子";
     [self addChildViewController:word];
     
     
@@ -125,16 +132,17 @@
     self.indicator = indicator;
     
     //内部的子标签
-    NSArray *titles = @[@"全部",@"视频",@"声音",@"图片",@"段子"];
-    for ( NSInteger i = 0; i < titles.count; i++) {
+    
+    for ( NSInteger i = 0; i < self.childViewControllers.count; i++) {
         UIButton *button = [[UIButton alloc]init];
         button.tag = i;
 //        button.y = titlesView.y;
-        button.width = self.view.width/titles.count;
+        button.width = self.view.width/self.childViewControllers.count;
         button.height = titlesView.height;
         button.x = i *button.width;
         
-        [button setTitle:titles[i] forState:UIControlStateNormal];
+        UIViewController *vc = self.childViewControllers[i];
+        [button setTitle:vc.title forState:UIControlStateNormal];
         
 //        [button layoutIfNeeded];//强制布局（强制更新子控件的frame）
         [button setTitleColor:[UIColor redColor] forState:UIControlStateDisabled];
@@ -153,7 +161,8 @@
 //            self.indicator.width = button.titleLabel.width;
             
             //直接拿出title计算其所占宽度
-            self.indicator.width = [titles[i] sizeWithAttributes:@{ NSFontAttributeName : button.titleLabel.font }].width;
+            UIViewController *vc = self.childViewControllers[i];
+            self.indicator.width = [vc.title sizeWithAttributes:@{ NSFontAttributeName : button.titleLabel.font }].width;
             self.indicator.centerX = button.centerX;
 
         }

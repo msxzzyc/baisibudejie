@@ -27,8 +27,8 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egD-1x-gRz" userLabel="昵称">
-                        <rect key="frame" x="63" y="18" width="35.5" height="17"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <rect key="frame" x="63" y="18" width="37.5" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -160,9 +160,13 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="headImageView" destination="qlf-uX-h1B" id="nLq-Wr-8DK"/>
+                <outlet property="caiButton" destination="sY0-tc-Qfl" id="ZPY-Zn-t1l"/>
+                <outlet property="commentButton" destination="IKO-Lb-G9V" id="98e-eP-xTs"/>
+                <outlet property="creatTimeLabel" destination="USk-wl-A1m" id="YSz-EV-WRt"/>
+                <outlet property="dingButton" destination="51J-z7-wSl" id="Zhi-Gs-dHw"/>
                 <outlet property="nameLabel" destination="egD-1x-gRz" id="zrF-IP-Btx"/>
-                <outlet property="timeLabel" destination="USk-wl-A1m" id="Fit-rg-odQ"/>
+                <outlet property="profileImageView" destination="qlf-uX-h1B" id="3Sk-cz-Kya"/>
+                <outlet property="shareButton" destination="G3q-cN-cpX" id="Kxo-NE-0gd"/>
             </connections>
             <point key="canvasLocation" x="28" y="94.5"/>
         </tableViewCell>
