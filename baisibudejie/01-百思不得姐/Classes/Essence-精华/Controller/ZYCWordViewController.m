@@ -38,10 +38,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //初始化表格
+    [self setUpTableView];
+    
     //添加刷新控件
     [self setUpRefresh];
+    
 }
+//初始化表格
+- (void)setUpTableView
+{
+    //    设置内边距
+    CGFloat top = ZYCTitlesViewY + ZYCTitlesViewH;
+    CGFloat bottom = self.view.height - self.tabBarController.tabBar.height;
+    self.tableView.contentInset = UIEdgeInsetsMake(top, 0, bottom, 0);
+    
+    //设置滚动条的内边距
+    self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
 
+    
+}
 - (void)setUpRefresh
 {
     
@@ -50,7 +66,7 @@
     self.tableView.header.autoChangeAlpha = YES;
     [self.tableView.header beginRefreshing];
     
-    self.tableView.footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreTopics)];
+    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreTopics)];
     
 }
 #pragma mark - 数据处理
@@ -62,13 +78,15 @@
     //先结束下拉刷新
     [self.tableView.header endRefreshing];
     
-    self.page++;
+//    self.page++;
     //参数
     NSMutableDictionary *parames = [NSMutableDictionary dictionary];
     parames[@"a"] = @"list";
     parames[@"c"] = @"data";
     parames[@"type"] = @"29";
-    parames[@"page"] = @(self.page);
+//    parames[@"page"] = @(self.page);
+    NSInteger page = self.page + 1;
+    parames[@"page"] = @(page);
     parames[@"maxtime"] = @(self.maxtime);
     
     self.params = parames;
@@ -89,11 +107,13 @@
         [self.tableView reloadData];
         //结束刷新
         [self.tableView.footer endRefreshing];
+        
+        self.page = page;
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         if (self.params != parames) return ;
         ZYCLog(@"%@",error);
-        //恢复页码
-        self.page--;
+//        恢复页码
+//        self.page--;
         
         [self.tableView.footer endRefreshing];
     }];
@@ -156,6 +176,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
+    self.tableView.footer.hidden = self.topics.count == 0;
     return self.topics.count;
 }
 

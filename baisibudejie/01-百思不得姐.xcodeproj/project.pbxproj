@@ -119,6 +119,7 @@
 		12BC227A1EE8373C008C598E /* ZYCLoginRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12BC22781EE8373C008C598E /* ZYCLoginRegisterViewController.m */; };
 		12BC227B1EE8373C008C598E /* ZYCLoginRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12BC22791EE8373C008C598E /* ZYCLoginRegisterViewController.xib */; };
 		12CDFC171E7EA7E50056401F /* ZYCNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CDFC161E7EA7E50056401F /* ZYCNavigationController.m */; };
+		12F21B241EF26886000EB24E /* ZYCConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F21B231EF26886000EB24E /* ZYCConst.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -350,6 +351,8 @@
 		12BC22791EE8373C008C598E /* ZYCLoginRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZYCLoginRegisterViewController.xib; sourceTree = "<group>"; };
 		12CDFC151E7EA7E50056401F /* ZYCNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCNavigationController.h; sourceTree = "<group>"; };
 		12CDFC161E7EA7E50056401F /* ZYCNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCNavigationController.m; sourceTree = "<group>"; };
+		12F21B221EF26886000EB24E /* ZYCConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCConst.h; sourceTree = "<group>"; };
+		12F21B231EF26886000EB24E /* ZYCConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCConst.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -504,6 +507,8 @@
 				1200CA751E7E4BEE00A96469 /* UIBarButtonItem+ZYCExtention.m */,
 				1200CA761E7E4BEE00A96469 /* UIView+ZYCExtention.h */,
 				1200CA771E7E4BEE00A96469 /* UIView+ZYCExtention.m */,
+				12F21B221EF26886000EB24E /* ZYCConst.h */,
+				12F21B231EF26886000EB24E /* ZYCConst.m */,
 			);
 			path = Categery;
 			sourceTree = "<group>";
@@ -1136,6 +1141,7 @@
 				1289B5A21EDFCBB000571E14 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				1219179A1EEEDFB300016382 /* ZYCTopicViewCell.m in Sources */,
 				1259800A1EE3036700FF00D1 /* UIScrollView+MJRefresh.m in Sources */,
+				12F21B241EF26886000EB24E /* ZYCConst.m in Sources */,
 				1289B59D1EDFCBB000571E14 /* AFURLResponseSerialization.m in Sources */,
 				125980031EE3036700FF00D1 /* MJRefreshBackStateFooter.m in Sources */,
 				12597FFA1EE3036700FF00D1 /* MJRefreshBackFooter.m in Sources */,

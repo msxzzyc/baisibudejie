@@ -103,7 +103,7 @@
 {
     //标签栏整体
     UIView *titlesView = [[UIView alloc]init];
-    titlesView.frame = CGRectMake(0, 64, self.view.width, 35);
+    titlesView.frame = CGRectMake(0, ZYCTitlesViewY, self.view.width, ZYCTitlesViewH);
 //    titlesView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
 //    titlesView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
     titlesView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.5];
@@ -234,14 +234,7 @@
     vc.view.y = 0;//设置控制器view的y值为0（自己创建的view的y默认为20）
     vc.view.height = scrollView.height;//设置控制器的view的height值为整个屏幕的高度（默认高度比屏幕高度少20）
     
-    //    设置内边距
-    CGFloat top = CGRectGetMaxY(self.titlesView.frame);
-    CGFloat bottom = self.view.height - self.tabBarController.tabBar.height;
-    vc.tableView.contentInset = UIEdgeInsetsMake(top, 0, bottom, 0);
-    
-    //设置滚动条的内边距
-    scrollView.scrollIndicatorInsets = vc.tableView.contentInset;
-    
+        
     //添加子控制器的view
     [scrollView addSubview:vc.view];
     

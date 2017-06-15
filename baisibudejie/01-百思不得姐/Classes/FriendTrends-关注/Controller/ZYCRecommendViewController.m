@@ -106,9 +106,6 @@ static NSString *const ZYCUserId = @"user";
     
     self.userTableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreUsers)];
 
-    
-    self.userTableView.footer.hidden = YES;
-    
 }
 
 
