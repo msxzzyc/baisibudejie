@@ -48,14 +48,23 @@
     self.nameLabel.text = topic.name;
     self.creatTimeLabel.text = topic.create_time;
     
+//    //日期格式化类
+//    NSDateFormatter *fmt = [[NSDateFormatter alloc]init];
+//    //设置日期格式
+//    fmt.dateFormat = @"yyyy-MM-dd-HH-mm-ss";
     //当前时间
     NSDate *now = [NSDate date];
     //发帖时间
-    NSDateFormatter *fmt = [[NSDateFormatter alloc]init];
-    //设置日期格式
-    fmt.dateFormat = @"yyyy-MM-dd-HH-mm-ss";
-    NSDate *create = [fmt dateFromString:topic.create_time];
+//    NSDate *create = [fmt dateFromString:topic.create_time];
     
+//    NSTimeInterval delta = [now timeIntervalSinceDate:create];
+    
+    //日历
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    NSInteger year = [calendar component:NSCalendarUnitYear fromDate:now];
+    NSInteger month = [calendar component:NSCalendarUnitMonth fromDate:now];
+    NSInteger day = [calendar component:NSCalendarUnitDay fromDate:now];
     //设置按钮文字
     [self setUpButtonTitle:self.dingButton count:topic.ding placeholder:@"顶"];
     [self setUpButtonTitle:self.caiButton count:topic.cai placeholder:@"踩"];
