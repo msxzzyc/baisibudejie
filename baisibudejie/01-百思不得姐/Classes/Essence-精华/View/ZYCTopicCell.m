@@ -74,6 +74,9 @@
     
     //比较时间
     ZYCLog(@"%@",[now deltaFrom:create]);
+    ZYCLog(@"%d",[create isThisYear]);
+    ZYCLog(@"%d",[create isToday]);
+    ZYCLog(@"%d",[create isYestoday]);
     
     //设置按钮文字
     [self setUpButtonTitle:self.dingButton count:topic.ding placeholder:@"顶"];
