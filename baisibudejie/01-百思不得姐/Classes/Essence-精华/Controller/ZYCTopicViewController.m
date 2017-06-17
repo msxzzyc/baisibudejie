@@ -21,7 +21,7 @@
 /** 当前页码 */
 @property(nonatomic,assign)NSInteger page;
 /** 加载下一页时会传该参数 */
-@property(nonatomic,assign)NSInteger maxtime;
+@property(nonatomic,copy)NSString *maxtime;
 /** 上一次的请求参数 */
 @property(nonatomic,strong)NSDictionary *params;
 @end
@@ -99,7 +99,7 @@ static NSString *const ZYCTopicCellID = @"topic";
     //    parames[@"page"] = @(self.page);
     NSInteger page = self.page + 1;
     parames[@"page"] = @(page);
-    parames[@"maxtime"] = @(self.maxtime);
+    parames[@"maxtime"] = self.maxtime;
     
     self.params = parames;
     //发送请求
