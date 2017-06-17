@@ -25,6 +25,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 /** 评论 */
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;
+/** 新浪加v */
+@property (weak, nonatomic) IBOutlet UIImageView *sinaVview;
 
 @end
 @implementation ZYCTopicCell
@@ -51,6 +53,10 @@
 
 //    NSTimeInterval delta = [now timeIntervalSinceDate:create];
 
+//    topic.is_vip = arc4random_uniform(100) % 2;
+    //新浪加v
+    self.sinaVview.hidden == !topic.isVip;
+    
     //设置按钮文字
     [self setUpButtonTitle:self.dingButton count:topic.ding placeholder:@"顶"];
     [self setUpButtonTitle:self.caiButton count:topic.cai placeholder:@"踩"];

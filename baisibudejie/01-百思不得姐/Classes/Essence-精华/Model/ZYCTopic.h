@@ -27,6 +27,7 @@
 @property(nonatomic,assign)NSInteger comment;
 /** 上一页时间 */
 @property(nonatomic,copy)NSString *maxtime;
-
+/** 是否为新浪加v用户*/
+@property(nonatomic,assign,getter = isVip)BOOL is_vip;
 @end
 
