@@ -46,38 +46,11 @@
     //设置其他控件
     [self.profileImageView sd_setImageWithURL:[NSURL URLWithString:topic.profile_image] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];
     self.nameLabel.text = topic.name;
-    self.creatTimeLabel.text = topic.create_time;
-    
-    //日期格式化类
-    NSDateFormatter *fmt = [[NSDateFormatter alloc]init];
-    //设置日期格式
-    fmt.dateFormat = @"yyyy-MM-dd-HH-mm-ss";
-    //当前时间
-    NSDate *now = [NSDate date];
     //发帖时间
-    NSDate *create = [fmt dateFromString:topic.create_time];
-    
+    self.creatTimeLabel.text = topic.create_time;
+
 //    NSTimeInterval delta = [now timeIntervalSinceDate:create];
-    
-    //日历
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    
-//    NSInteger year = [calendar component:NSCalendarUnitYear fromDate:now];
-//    NSInteger month = [calendar component:NSCalendarUnitMonth fromDate:now];
-//    NSInteger day = [calendar component:NSCalendarUnitDay fromDate:now];
-    //比较时间
-//    NSCalendarUnit unit = NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute|NSCalendarUnitSecond;
-//    NSDateComponents *cmp = [calendar components:unit fromDate:create toDate:now options:nil];
-    
-//    ZYCLog(@"%@ %@",create,now);
-//    ZYCLog(@"%zd %zd %zd %zd %zd %zd",cmp.year,cmp.month,cmp.day,cmp.hour,cmp.minute,cmp.second);
-    
-    //比较时间
-    ZYCLog(@"%@",[now deltaFrom:create]);
-    ZYCLog(@"%d",[create isThisYear]);
-    ZYCLog(@"%d",[create isToday]);
-    ZYCLog(@"%d",[create isYestoday]);
-    
+
     //设置按钮文字
     [self setUpButtonTitle:self.dingButton count:topic.ding placeholder:@"顶"];
     [self setUpButtonTitle:self.caiButton count:topic.cai placeholder:@"踩"];

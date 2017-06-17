@@ -29,3 +29,4 @@
 @property(nonatomic,copy)NSString *maxtime;
 
 @end
+
