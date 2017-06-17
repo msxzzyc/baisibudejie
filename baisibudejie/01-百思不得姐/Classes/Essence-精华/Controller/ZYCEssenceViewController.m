@@ -9,11 +9,7 @@
 #import "ZYCEssenceViewController.h"
 #import "ZYCRecommendTagsViewController.h"
 
-#import "ZYCAllViewController.h"
-#import "ZYCVideoViewController.h"
-#import "ZYCPictureViewController.h"
-#import "ZYCVoiceViewController.h"
-#import "ZYCWordViewController.h"
+#import "ZYCTopicViewController.h"
 
 
 @interface ZYCEssenceViewController ()<UIScrollViewDelegate>
@@ -56,24 +52,29 @@
 //设置子控件
 - (void)setUpChildVces
 {
-    ZYCAllViewController *all = [[ZYCAllViewController alloc]init];
+    ZYCTopicViewController *all = [[ZYCTopicViewController alloc]init];
     all.title = @"全部";
+    all.type = ZYCTopicTypeAll;
     [self addChildViewController:all];
     
-    ZYCVideoViewController *video = [[ZYCVideoViewController alloc]init];
+    ZYCTopicViewController *video = [[ZYCTopicViewController alloc]init];
     video.title = @"视频";
+    video.type = ZYCTopicTypeVideo;
     [self addChildViewController:video];
     
-    ZYCVoiceViewController *voice = [[ZYCVoiceViewController alloc]init];
+    ZYCTopicViewController *voice = [[ZYCTopicViewController alloc]init];
     voice.title = @"声音";
+    voice.type = ZYCTopicTypeVoice;
     [self addChildViewController:voice];
     
-    ZYCPictureViewController *picture = [[ZYCPictureViewController alloc]init];
+    ZYCTopicViewController *picture = [[ZYCTopicViewController alloc]init];
     picture.title = @"图片";
+    picture.type = ZYCTopicTypePicture;
     [self addChildViewController:picture];
     
-    ZYCWordViewController *word = [[ZYCWordViewController alloc]init];
+    ZYCTopicViewController *word = [[ZYCTopicViewController alloc]init];
     word.title = @"段子";
+    word.type = ZYCTopicTypeWord;
     [self addChildViewController:word];
     
     

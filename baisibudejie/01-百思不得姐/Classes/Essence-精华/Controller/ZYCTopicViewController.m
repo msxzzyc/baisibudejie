@@ -4,7 +4,7 @@
 //
 //  Created by wpzyc on 2017/6/11.
 //  Copyright © 2017年 wpzyc. All rights reserved.
-// 帖子基本控制器
+// 
 
 #import "ZYCTopicViewController.h"
 
@@ -28,12 +28,7 @@
 
 @implementation ZYCTopicViewController
 
-/** 帖子类型 */
-- (NSString *)type
-{
-    
-    return nil;
-}
+
 
 - (NSMutableArray *)topics
 {
@@ -100,7 +95,7 @@ static NSString *const ZYCTopicCellID = @"topic";
     NSMutableDictionary *parames = [NSMutableDictionary dictionary];
     parames[@"a"] = @"list";
     parames[@"c"] = @"data";
-    parames[@"type"] = self.type;
+    parames[@"type"] = @(self.type);
     //    parames[@"page"] = @(self.page);
     NSInteger page = self.page + 1;
     parames[@"page"] = @(page);
@@ -154,7 +149,7 @@ static NSString *const ZYCTopicCellID = @"topic";
     NSMutableDictionary *parames = [NSMutableDictionary dictionary];
     parames[@"a"] = @"list";
     parames[@"c"] = @"data";
-    parames[@"type"] = self.type;
+    parames[@"type"] = @(self.type);
     
     self.params = parames;
     //发送请求
