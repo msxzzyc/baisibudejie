@@ -17,6 +17,7 @@
 		1200CA891E7E4BEE00A96469 /* ZYCTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1200CA7A1E7E4BEE00A96469 /* ZYCTabBarController.m */; };
 		1200CA8B1E7E4BEE00A96469 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1200CA7C1E7E4BEE00A96469 /* main.m */; };
 		1200CA8C1E7E4BEE00A96469 /* ZYCTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1200CA811E7E4BEE00A96469 /* ZYCTabBar.m */; };
+		1209F7DC1EF5062E00657A55 /* NSDate+ZYCExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = 1209F7DB1EF5062E00657A55 /* NSDate+ZYCExtention.m */; };
 		1219177C1EEEC84200016382 /* ZYCRecommendTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 121917771EEEC84200016382 /* ZYCRecommendTag.m */; };
 		1219177D1EEEC84200016382 /* ZYCRecommendTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1219177A1EEEC84200016382 /* ZYCRecommendTagCell.m */; };
 		1219177E1EEEC84200016382 /* ZYCRecommendTagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1219177B1EEEC84200016382 /* ZYCRecommendTagCell.xib */; };
@@ -161,6 +162,8 @@
 		1200CA801E7E4BEE00A96469 /* ZYCTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCTabBar.h; sourceTree = "<group>"; };
 		1200CA811E7E4BEE00A96469 /* ZYCTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCTabBar.m; sourceTree = "<group>"; };
 		1200CA931E7E5BE000A96469 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1209F7DA1EF5062E00657A55 /* NSDate+ZYCExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+ZYCExtention.h"; sourceTree = "<group>"; };
+		1209F7DB1EF5062E00657A55 /* NSDate+ZYCExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ZYCExtention.m"; sourceTree = "<group>"; };
 		121917761EEEC84200016382 /* ZYCRecommendTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCRecommendTag.h; sourceTree = "<group>"; };
 		121917771EEEC84200016382 /* ZYCRecommendTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCRecommendTag.m; sourceTree = "<group>"; };
 		121917791EEEC84200016382 /* ZYCRecommendTagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCRecommendTagCell.h; sourceTree = "<group>"; };
@@ -509,6 +512,8 @@
 				1200CA771E7E4BEE00A96469 /* UIView+ZYCExtention.m */,
 				12F21B221EF26886000EB24E /* ZYCConst.h */,
 				12F21B231EF26886000EB24E /* ZYCConst.m */,
+				1209F7DA1EF5062E00657A55 /* NSDate+ZYCExtention.h */,
+				1209F7DB1EF5062E00657A55 /* NSDate+ZYCExtention.m */,
 			);
 			path = Categery;
 			sourceTree = "<group>";
@@ -1112,6 +1117,7 @@
 				1289B5691EDFCBA400571E14 /* README.md in Sources */,
 				1289B5991EDFCBB000571E14 /* AFNetworkReachabilityManager.m in Sources */,
 				1289B55C1EDFCBA400571E14 /* SDWebImageCompat.m in Sources */,
+				1209F7DC1EF5062E00657A55 /* NSDate+ZYCExtention.m in Sources */,
 				1289B59B1EDFCBB000571E14 /* AFURLConnectionOperation.m in Sources */,
 				12597FFE1EE3036700FF00D1 /* MJRefreshAutoGifFooter.m in Sources */,
 				1289B55A1EDFCBA400571E14 /* NSData+ImageContentType.m in Sources */,
