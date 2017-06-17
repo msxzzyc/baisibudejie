@@ -6,8 +6,8 @@
 //  Copyright © 2017年 wpzyc. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ZYCTopicViewController.h"
 
-@interface ZYCVoiceViewController : UITableViewController
+@interface ZYCVoiceViewController : ZYCTopicViewController
 
 @end
