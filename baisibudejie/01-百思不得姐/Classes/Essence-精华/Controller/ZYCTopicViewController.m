@@ -200,9 +200,21 @@ static NSString *const ZYCTopicCellID = @"topic";
     return cell;
 }
 #pragma mark - 代理方法
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 200;
+    //计算cell高度
+    
+    //取出模型数据
+    ZYCTopic *topic = self.topics[indexPath.row];
+    //文字的最大尺寸
+    CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width - 4*ZYCTopicCellMargin, MAXFLOAT);
+//    CGFloat textH = [topic.text sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:maxSize].height;
+    
+    CGFloat textH = [topic.text boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName :[UIFont systemFontOfSize:14]} context:nil].size.height;
+    CGFloat cellH = ZYCTopicCellTextY + textH + ZYCTopicCellBottomBarH + 3*ZYCTopicCellMargin;
+    
+    return cellH;
     
     
 }

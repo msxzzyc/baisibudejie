@@ -94,12 +94,12 @@
 }
 - (void)setFrame:(CGRect)frame
 {
-    static CGFloat margin = 10;
     
-    frame.origin.x += margin;
-    frame.size.width -= 2 *margin;
-    frame.size.height -= margin;
-    frame.origin.y += margin;
+    
+    frame.origin.x += ZYCTopicCellMargin;
+    frame.size.width -= 2 *ZYCTopicCellMargin;
+    frame.size.height -= ZYCTopicCellMargin;
+    frame.origin.y += ZYCTopicCellMargin;
     
     
     [super setFrame:frame];
