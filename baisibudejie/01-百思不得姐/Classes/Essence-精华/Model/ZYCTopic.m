@@ -9,6 +9,27 @@
 #import "ZYCTopic.h"
 
 @implementation ZYCTopic
+//加readonly使cellHeight没有set方法，再加上重写了其get方法，就不会生成cellHeight的成员变量
+{
+
+    CGFloat _cellHeight;
+
+}
+
+- (CGFloat)cellHeight
+{
+    if (!_cellHeight) {
+        ZYCLogFunc;
+        //文字的最大尺寸
+        CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width - 4*ZYCTopicCellMargin, MAXFLOAT);
+        //    CGFloat textH = [topic.text sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:maxSize].height;
+        //计算文字的高度
+        CGFloat textH = [self.text boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName :[UIFont systemFontOfSize:14]} context:nil].size.height;
+        //cell的高度
+        _cellHeight = ZYCTopicCellTextY + textH + ZYCTopicCellBottomBarH + 3*ZYCTopicCellMargin;
+    }
+    return _cellHeight;
+}
 - (NSString *)create_time
 {
     //日期格式化类

@@ -6,7 +6,7 @@
 //  Copyright © 2017年 wpzyc. All rights reserved.
 // 帖子（段子）
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>//有CGFloat类型的属性必须使用该框架
 
 @interface ZYCTopic : NSObject
 /** 用户名 */
@@ -29,5 +29,10 @@
 @property(nonatomic,copy)NSString *maxtime;
 /** 是否为新浪加v用户*/
 @property(nonatomic,assign,getter = isVip)BOOL is_vip;
+
+
+/********* 额外的辅助属性 ************/
+@property(nonatomic,assign,readonly)CGFloat cellHeight;
+
 @end
 
