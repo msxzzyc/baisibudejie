@@ -27,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;
 /** 新浪加v */
 @property (weak, nonatomic) IBOutlet UIImageView *sinaVview;
+@property (weak, nonatomic) IBOutlet UILabel *text_label;
 
 @end
 @implementation ZYCTopicCell
@@ -57,12 +58,15 @@
     //新浪加v
     self.sinaVview.hidden == !topic.isVip;
     
+    //设置帖子文字数据
+    self.text_label.text = topic.text;
     //设置按钮文字
     [self setUpButtonTitle:self.dingButton count:topic.ding placeholder:@"顶"];
     [self setUpButtonTitle:self.caiButton count:topic.cai placeholder:@"踩"];
     [self setUpButtonTitle:self.shareButton count:topic.repost placeholder:@"分享"];
     [self setUpButtonTitle:self.commentButton count:topic.comment placeholder:@"评论"];
    
+    
 }
 
 - (void)setUpButtonTitle: (UIButton *)button count:(NSInteger)count placeholder:(NSString *)placeholder
