@@ -7,6 +7,7 @@
 //
 
 #import "ZYCRecommendCategory.h"
+#import "MJExtension.h"
 
 @implementation ZYCRecommendCategory
 
@@ -17,4 +18,17 @@
     }
     return _users;
 }
+//方便统一处理属性名
++ (NSString *)replacedKeyFromPropertyName121:(NSString *)propertyName
+{
+    if ([propertyName isEqualToString:@"ID"]) {
+        return @"id";
+    }
+    
+    return propertyName;
+    
+
+
+}
+
 @end

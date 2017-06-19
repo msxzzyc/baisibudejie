@@ -29,6 +29,12 @@
 @property(nonatomic,copy)NSString *maxtime;
 /** 是否为新浪加v用户*/
 @property(nonatomic,assign,getter = isVip)BOOL is_vip;
+/** 大图的url*/
+@property(nonatomic,assign)NSString *largeImage;
+/** 中图的url*/
+@property(nonatomic,assign)NSString *middleImage;
+/** 小图的url*/
+@property(nonatomic,assign)NSString *smallImage;
 
 
 /********* 额外的辅助属性 ************/

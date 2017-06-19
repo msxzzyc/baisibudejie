@@ -122,7 +122,7 @@ static NSString *const ZYCUserId = @"user";
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"a"] = @"list";
     params[@"c"] = @"subscribe";
-    params[@"category_id"] = @(category.id);
+    params[@"category_id"] = @(category.ID);
     params[@"page"] = @(category.currentPage);
     self.params = params;
     
@@ -181,7 +181,7 @@ static NSString *const ZYCUserId = @"user";
     
     params[@"a"] = @"list";
     params[@"c"] = @"subscribe";
-    params[@"category_id"] = @([ZYCSelectedCategory id]);
+    params[@"category_id"] = @([ZYCSelectedCategory ID]);
     params[@"page"] = @(++category.currentPage);
     self.params = params;
     

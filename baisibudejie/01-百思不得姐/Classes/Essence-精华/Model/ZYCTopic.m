@@ -7,8 +7,12 @@
 //
 
 #import "ZYCTopic.h"
+#import "MJExtension.h"
 
 @implementation ZYCTopic
+
+
+
 //加readonly使cellHeight没有set方法，再加上重写了其get方法，就不会生成cellHeight的成员变量
 {
 
@@ -16,6 +20,14 @@
 
 }
 
++(NSDictionary *)replacedKeyFromPropertyName
+{
+    return @{ @"smallImage":@"image0",
+              @"largeImage":@"image1",
+              @"middleImage":@"image3"
+              };
+    
+}
 - (CGFloat)cellHeight
 {
     if (!_cellHeight) {
