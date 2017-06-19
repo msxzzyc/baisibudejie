@@ -30,15 +30,26 @@
 /** 是否为新浪加v用户*/
 @property(nonatomic,assign,getter = isVip)BOOL is_vip;
 /** 大图的url*/
-@property(nonatomic,assign)NSString *largeImage;
+@property(nonatomic,copy)NSString *largeImage;
 /** 中图的url*/
-@property(nonatomic,assign)NSString *middleImage;
+@property(nonatomic,copy)NSString *middleImage;
 /** 小图的url*/
-@property(nonatomic,assign)NSString *smallImage;
+@property(nonatomic,copy)NSString *smallImage;
 
+/** 图片的宽度 */
+@property(nonatomic,assign)CGFloat width;
+/** 图片的高度 */
+@property(nonatomic,assign)CGFloat height;
+/** 帖子的类型 */
+@property(nonatomic,assign)ZYCTopicType type;
+
+
+/** 是否gif图片 */
+@property(nonatomic,assign)BOOL is_gif;
 
 /********* 额外的辅助属性 ************/
 @property(nonatomic,assign,readonly)CGFloat cellHeight;
-
+/** 图片控件的frame */
+@property(nonatomic,assign,readonly)CGRect pictureViewFrame;
 @end
 

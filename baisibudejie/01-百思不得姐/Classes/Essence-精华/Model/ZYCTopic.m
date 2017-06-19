@@ -7,7 +7,7 @@
 //
 
 #import "ZYCTopic.h"
-#import "MJExtension.h"
+//#import "MJExtension.h"
 
 @implementation ZYCTopic
 
@@ -17,6 +17,7 @@
 {
 
     CGFloat _cellHeight;
+    CGRect _pictureViewFrame;
 
 }
 
@@ -38,10 +39,29 @@
         //计算文字的高度
         CGFloat textH = [self.text boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName :[UIFont systemFontOfSize:14]} context:nil].size.height;
         //cell的高度
-        _cellHeight = ZYCTopicCellTextY + textH + ZYCTopicCellBottomBarH + 3*ZYCTopicCellMargin;
+        //文字部分的高度
+        _cellHeight = ZYCTopicCellTextY + textH + ZYCTopicCellMargin;
+        
+        if (self.type == ZYCTopicTypePicture) {//图片帖子
+            
+            //图片显示出来的宽度
+            CGFloat pictureW = 335;
+            //图片显示出来的高度
+            CGFloat pictureH = pictureW * self.height/self.width;
+            
+            //计算图片控件的frame
+            CGFloat pictureX = ZYCTopicCellMargin;
+            CGFloat pictureY = ZYCTopicCellTextY + textH + ZYCTopicCellMargin;
+            _pictureViewFrame = CGRectMake(pictureX, pictureY, pictureW, pictureH);
+            
+            _cellHeight += pictureH + ZYCTopicCellMargin;
+        }
+        //底部工具条的高度
+        _cellHeight += ZYCTopicCellBottomBarH + ZYCTopicCellMargin;
     }
     return _cellHeight;
 }
+
 - (NSString *)create_time
 {
     //日期格式化类

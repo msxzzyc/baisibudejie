@@ -9,6 +9,7 @@
 #import "ZYCTopicCell.h"
 #import "UIImageView+WebCache.h"
 #import "ZYCTopic.h"
+#import "ZYCTopicPictureView.h"
 @interface ZYCTopicCell()
 
 /** 头像 */
@@ -27,10 +28,25 @@
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;
 /** 新浪加v */
 @property (weak, nonatomic) IBOutlet UIImageView *sinaVview;
+/** 文字信息 */
 @property (weak, nonatomic) IBOutlet UILabel *text_label;
+/** 图片帖子中间的内容 */
+@property(weak,nonatomic)ZYCTopicPictureView *pictureView;
 
 @end
 @implementation ZYCTopicCell
+
+- (ZYCTopicPictureView *)pictureView
+{
+    if (!_pictureView) {
+        
+        ZYCTopicPictureView *pictureView = [ZYCTopicPictureView pictureView];
+        //由于pictureView为弱指针，所以一创建就要添加上去
+        [self.contentView addSubview:pictureView];
+        _pictureView = pictureView;
+    }
+    return _pictureView;
+}
 
 //- (void)setTopic:(ZYCTopic *)topic
 //{
@@ -60,6 +76,16 @@
     
     //设置帖子文字数据
     self.text_label.text = topic.text;
+    
+    //根据模型类型（帖子类型）添加对应的图片内容到中间
+    if (topic.type == ZYCTopicTypePicture) {//图片帖子
+        //pictureView第一次调用get方法就创建并添加上去，所以无需再添加
+        
+        self.pictureView.topic = topic;
+        self.pictureView.frame = topic.pictureViewFrame;
+        
+        
+    }
     //设置按钮文字
     [self setUpButtonTitle:self.dingButton count:topic.ding placeholder:@"顶"];
     [self setUpButtonTitle:self.caiButton count:topic.cai placeholder:@"踩"];

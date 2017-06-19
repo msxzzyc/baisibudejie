@@ -7,7 +7,7 @@
 //
 
 #import "ZYCRecommendCategory.h"
-#import "MJExtension.h"
+//#import "MJExtension.h"
 
 @implementation ZYCRecommendCategory
 

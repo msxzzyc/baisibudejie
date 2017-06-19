@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ZYCTopicPictureView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="376"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bVG-4T-s6R">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="376"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="common-gif" translatesAutoresizingMaskIntoConstraints="NO" id="Ycb-dz-p7n" userLabel="Gif 标识">
+                    <rect key="frame" x="0.0" y="0.0" width="31" height="31"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="31" id="NB7-CR-IwI"/>
+                        <constraint firstAttribute="width" constant="31" id="RFB-e2-bKZ"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wrx-B8-Acy">
+                    <rect key="frame" x="0.0" y="333" width="375" height="43"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="43" id="fJ7-x4-jcK"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="点击查看全图" image="see-big-picture" backgroundImage="see-big-picture-background"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Wrx-B8-Acy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="A76-sg-335"/>
+                <constraint firstItem="Ycb-dz-p7n" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="CLO-qb-RZO"/>
+                <constraint firstAttribute="bottom" secondItem="bVG-4T-s6R" secondAttribute="bottom" id="EBU-OU-onF"/>
+                <constraint firstItem="bVG-4T-s6R" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ITY-cS-gNZ"/>
+                <constraint firstItem="bVG-4T-s6R" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="MCq-15-nxd"/>
+                <constraint firstAttribute="trailing" secondItem="bVG-4T-s6R" secondAttribute="trailing" id="TuV-9v-9GH"/>
+                <constraint firstItem="Ycb-dz-p7n" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="UOV-Ae-4Ki"/>
+                <constraint firstAttribute="bottom" secondItem="Wrx-B8-Acy" secondAttribute="bottom" id="qP0-Zb-ywh"/>
+                <constraint firstAttribute="trailing" secondItem="Wrx-B8-Acy" secondAttribute="trailing" id="zYN-0c-L3G"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="gitView" destination="Ycb-dz-p7n" id="4kt-Mx-WmC"/>
+                <outlet property="imageView" destination="bVG-4T-s6R" id="1J6-La-fmD"/>
+                <outlet property="seeBigBtn" destination="Wrx-B8-Acy" id="S6U-AD-55K"/>
+            </connections>
+            <point key="canvasLocation" x="34.5" y="0.0"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="common-gif" width="31" height="31"/>
+        <image name="see-big-picture" width="19" height="19"/>
+        <image name="see-big-picture-background" width="285" height="43"/>
+    </resources>
+</document>

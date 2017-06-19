@@ -30,6 +30,8 @@
 		121917921EEECE9B00016382 /* ZYCRecommendUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1219178A1EEECE9B00016382 /* ZYCRecommendUserCell.xib */; };
 		121917931EEECE9B00016382 /* ZYCTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1219178C1EEECE9B00016382 /* ZYCTextField.m */; };
 		121917961EEED67F00016382 /* ZYCTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 121917951EEED67F00016382 /* ZYCTopic.m */; };
+		1231C2171EF7E74C00082B13 /* ZYCTopicPictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1231C2161EF7E74C00082B13 /* ZYCTopicPictureView.m */; };
+		1231C2191EF7E77300082B13 /* ZYCTopicPictureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1231C2181EF7E77300082B13 /* ZYCTopicPictureView.xib */; };
 		124AFD111EDF1C4000F26593 /* ZYCRecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 124AFD0F1EDF1C4000F26593 /* ZYCRecommendViewController.m */; };
 		124AFD121EDF1C4000F26593 /* ZYCRecommendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 124AFD101EDF1C4000F26593 /* ZYCRecommendViewController.xib */; };
 		12597FF81EE3036700FF00D1 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 12597FC91EE3036700FF00D1 /* LICENSE */; };
@@ -181,6 +183,9 @@
 		1219178C1EEECE9B00016382 /* ZYCTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCTextField.m; sourceTree = "<group>"; };
 		121917941EEED67F00016382 /* ZYCTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCTopic.h; sourceTree = "<group>"; };
 		121917951EEED67F00016382 /* ZYCTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCTopic.m; sourceTree = "<group>"; };
+		1231C2151EF7E74C00082B13 /* ZYCTopicPictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCTopicPictureView.h; sourceTree = "<group>"; };
+		1231C2161EF7E74C00082B13 /* ZYCTopicPictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCTopicPictureView.m; sourceTree = "<group>"; };
+		1231C2181EF7E77300082B13 /* ZYCTopicPictureView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZYCTopicPictureView.xib; sourceTree = "<group>"; };
 		124AFD0E1EDF1C4000F26593 /* ZYCRecommendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCRecommendViewController.h; sourceTree = "<group>"; };
 		124AFD0F1EDF1C4000F26593 /* ZYCRecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCRecommendViewController.m; sourceTree = "<group>"; };
 		124AFD101EDF1C4000F26593 /* ZYCRecommendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZYCRecommendViewController.xib; sourceTree = "<group>"; };
@@ -548,6 +553,9 @@
 				12F21B251EF27430000EB24E /* ZYCTopicCell.h */,
 				12F21B261EF27430000EB24E /* ZYCTopicCell.m */,
 				12F21B271EF27430000EB24E /* ZYCTopicCell.xib */,
+				1231C2151EF7E74C00082B13 /* ZYCTopicPictureView.h */,
+				1231C2161EF7E74C00082B13 /* ZYCTopicPictureView.m */,
+				1231C2181EF7E77300082B13 /* ZYCTopicPictureView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1015,6 +1023,7 @@
 				1289B56B1EDFCBA400571E14 /* SVProgressHUD.bundle in Resources */,
 				125980071EE3036700FF00D1 /* MJRefresh.bundle in Resources */,
 				12B872C11EEAE74000684317 /* ZYCPushGuideView.xib in Resources */,
+				1231C2191EF7E77300082B13 /* ZYCTopicPictureView.xib in Resources */,
 				1289B5C61EDFD72000571E14 /* LICENSE in Resources */,
 				124AFD121EDF1C4000F26593 /* ZYCRecommendViewController.xib in Resources */,
 				12F21B291EF27430000EB24E /* ZYCTopicCell.xib in Resources */,
@@ -1078,6 +1087,7 @@
 				124AFD111EDF1C4000F26593 /* ZYCRecommendViewController.m in Sources */,
 				1289B5A41EDFCBB000571E14 /* UIButton+AFNetworking.m in Sources */,
 				1289B55B1EDFCBA400571E14 /* SDImageCache.m in Sources */,
+				1231C2171EF7E74C00082B13 /* ZYCTopicPictureView.m in Sources */,
 				12597FFD1EE3036700FF00D1 /* MJRefreshHeader.m in Sources */,
 				1289B5AA1EDFCBEF00571E14 /* Foundation+Log.m in Sources */,
 				1200CA831E7E4BEE00A96469 /* ZYCFriendTrendsViewController.m in Sources */,

@@ -1,0 +1,59 @@
+//
+//  ZYCTopicPictureView.m
+//  01-百思不得姐
+//
+//  Created by wpzyc on 2017/6/19.
+//  Copyright © 2017年 wpzyc. All rights reserved.
+//
+
+#import "ZYCTopicPictureView.h"
+#import "ZYCTopic.h"
+#import "UIImageView+WebCache.h"
+@interface ZYCTopicPictureView()
+/** 图片 */
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+/** git标识 */
+@property (weak, nonatomic) IBOutlet UIImageView *gitView;
+/** 查看大图按钮 */
+@property (weak, nonatomic) IBOutlet UIButton *seeBigBtn;
+
+
+
+@end
+@implementation ZYCTopicPictureView
+
+- (void)awakeFromNib
+{
+    //如果设置的控件尺寸变大，一般是autoresizingMask导致的问题
+    self.autoresizingMask = UIViewAutoresizingNone;
+}
+
++ (instancetype)pictureView
+{
+    
+    
+    return [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil] lastObject];
+    
+}
+
+- (void)setTopic:(ZYCTopic *)topic
+{
+    
+    _topic = topic;
+    //设置图片
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:topic.largeImage]];
+    
+    self.gitView.hidden = !topic.is_gif;
+    
+    
+}
+
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+}
+*/
+
+@end

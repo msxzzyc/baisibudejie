@@ -7,6 +7,14 @@
 //
 
 #import "UIKit/UIKit.h"
+typedef enum{
+    ZYCTopicTypeAll = 1,
+    ZYCTopicTypeVideo = 41,
+    ZYCTopicTypeVoice = 31,
+    ZYCTopicTypePicture = 10,
+    ZYCTopicTypeWord = 29
+}ZYCTopicType;
+
 /** 精华-顶部标题的Y */
 UIKIT_EXTERN CGFloat const ZYCTitlesViewY;
 /** 精华-顶部标题的高度 */
