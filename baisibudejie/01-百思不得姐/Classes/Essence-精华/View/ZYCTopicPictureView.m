@@ -9,6 +9,8 @@
 #import "ZYCTopicPictureView.h"
 #import "ZYCTopic.h"
 #import "UIImageView+WebCache.h"
+#import "DALabeledCircularProgressView.h"
+
 @interface ZYCTopicPictureView()
 /** 图片 */
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -17,6 +19,8 @@
 
 /** 查看大图按钮 */
 @property (weak, nonatomic) IBOutlet UIButton *seeBigBtn;
+/** 进度条控件 */
+@property (weak, nonatomic) IBOutlet DALabeledCircularProgressView *progressView;
 
 
 
@@ -27,6 +31,10 @@
 {
     //如果设置的控件尺寸变大，一般是autoresizingMask导致的问题
     self.autoresizingMask = UIViewAutoresizingNone;
+    //设置进度条圆角
+    self.progressView.roundedCorners = 2;
+    //设置进度条label颜色
+    self.progressView.progressLabel.textColor = [UIColor whiteColor];
 }
 
 + (instancetype)pictureView
@@ -42,7 +50,21 @@
     
     _topic = topic;
     //设置图片
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:topic.largeImage]];
+    [self.imageView sd_setImageWithPreviousCachedImageWithURL:[NSURL URLWithString:topic.largeImage] andPlaceholderImage:nil options:nil progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        //进度条
+        
+        self.progressView.hidden = NO;
+        
+        CGFloat progress =  1.0*receivedSize/expectedSize;
+        
+        progress = (progress < 0 ? 0 : progress);
+        [self.progressView setProgress:progress];//因为循环利用，不能使用动画
+        self.progressView.progressLabel.text = [NSString stringWithFormat:@"%.0f%%",progress*100];//保留0位小数的浮点数
+        
+    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        
+        self.progressView.hidden = YES;
+    }];
     //判断是否为gif
     NSString *extention = topic.largeImage.pathExtension;
     
