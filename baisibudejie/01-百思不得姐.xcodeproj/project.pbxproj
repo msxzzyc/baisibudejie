@@ -119,6 +119,9 @@
 		12CB4F2F1EF9540300637DB4 /* DALabeledCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CB4F2B1EF9540300637DB4 /* DALabeledCircularProgressView.m */; };
 		12CB4F301EF9540300637DB4 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 12CB4F2C1EF9540300637DB4 /* LICENSE.md */; };
 		12CB4F311EF9540300637DB4 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 12CB4F2D1EF9540300637DB4 /* README.md */; };
+		12CB4F351EF970D900637DB4 /* ZYCShowPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CB4F331EF970D900637DB4 /* ZYCShowPictureViewController.m */; };
+		12CB4F361EF970D900637DB4 /* ZYCShowPictureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12CB4F341EF970D900637DB4 /* ZYCShowPictureViewController.xib */; };
+		12CB4F391EF976E500637DB4 /* ZYCProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CB4F381EF976E500637DB4 /* ZYCProgressView.m */; };
 		12CDFC171E7EA7E50056401F /* ZYCNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CDFC161E7EA7E50056401F /* ZYCNavigationController.m */; };
 		12F21B241EF26886000EB24E /* ZYCConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F21B231EF26886000EB24E /* ZYCConst.m */; };
 		12F21B281EF27430000EB24E /* ZYCTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F21B261EF27430000EB24E /* ZYCTopicCell.m */; };
@@ -352,6 +355,11 @@
 		12CB4F2B1EF9540300637DB4 /* DALabeledCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DALabeledCircularProgressView.m; sourceTree = "<group>"; };
 		12CB4F2C1EF9540300637DB4 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		12CB4F2D1EF9540300637DB4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		12CB4F321EF970D900637DB4 /* ZYCShowPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCShowPictureViewController.h; sourceTree = "<group>"; };
+		12CB4F331EF970D900637DB4 /* ZYCShowPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCShowPictureViewController.m; sourceTree = "<group>"; };
+		12CB4F341EF970D900637DB4 /* ZYCShowPictureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZYCShowPictureViewController.xib; sourceTree = "<group>"; };
+		12CB4F371EF976E500637DB4 /* ZYCProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCProgressView.h; sourceTree = "<group>"; };
+		12CB4F381EF976E500637DB4 /* ZYCProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCProgressView.m; sourceTree = "<group>"; };
 		12CDFC151E7EA7E50056401F /* ZYCNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCNavigationController.h; sourceTree = "<group>"; };
 		12CDFC161E7EA7E50056401F /* ZYCNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCNavigationController.m; sourceTree = "<group>"; };
 		12F21B221EF26886000EB24E /* ZYCConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCConst.h; sourceTree = "<group>"; };
@@ -417,6 +425,9 @@
 				128091811EE5AA9A005E1F1F /* ZYCRecommendTagsViewController.m */,
 				1209F7E01EF583F800657A55 /* ZYCTopicViewController.h */,
 				1209F7E11EF583F800657A55 /* ZYCTopicViewController.m */,
+				12CB4F321EF970D900637DB4 /* ZYCShowPictureViewController.h */,
+				12CB4F331EF970D900637DB4 /* ZYCShowPictureViewController.m */,
+				12CB4F341EF970D900637DB4 /* ZYCShowPictureViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -566,6 +577,8 @@
 				1231C2151EF7E74C00082B13 /* ZYCTopicPictureView.h */,
 				1231C2161EF7E74C00082B13 /* ZYCTopicPictureView.m */,
 				1231C2181EF7E77300082B13 /* ZYCTopicPictureView.xib */,
+				12CB4F371EF976E500637DB4 /* ZYCProgressView.h */,
+				12CB4F381EF976E500637DB4 /* ZYCProgressView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1063,6 +1076,7 @@
 				1219177E1EEEC84200016382 /* ZYCRecommendTagCell.xib in Resources */,
 				12BC227B1EE8373C008C598E /* ZYCLoginRegisterViewController.xib in Resources */,
 				121917921EEECE9B00016382 /* ZYCRecommendUserCell.xib in Resources */,
+				12CB4F361EF970D900637DB4 /* ZYCShowPictureViewController.xib in Resources */,
 				1289B59F1EDFCBB000571E14 /* LICENSE in Resources */,
 				1289B5581EDFCBA400571E14 /* LICENSE in Resources */,
 				1289B5681EDFCBA400571E14 /* LICENSE.txt in Resources */,
@@ -1097,6 +1111,7 @@
 				125980001EE3036700FF00D1 /* MJRefreshAutoStateFooter.m in Sources */,
 				1289B5A61EDFCBB000571E14 /* UIProgressView+AFNetworking.m in Sources */,
 				12CB4F2F1EF9540300637DB4 /* DALabeledCircularProgressView.m in Sources */,
+				12CB4F351EF970D900637DB4 /* ZYCShowPictureViewController.m in Sources */,
 				12F21B281EF27430000EB24E /* ZYCTopicCell.m in Sources */,
 				1200CA851E7E4BEE00A96469 /* ZYCNewViewController.m in Sources */,
 				1289B5A71EDFCBB000571E14 /* UIRefreshControl+AFNetworking.m in Sources */,
@@ -1112,6 +1127,7 @@
 				1200CA881E7E4BEE00A96469 /* UIView+ZYCExtention.m in Sources */,
 				1289B5CA1EDFD72000571E14 /* MJType.m in Sources */,
 				1289B5971EDFCBB000571E14 /* AFHTTPRequestOperationManager.m in Sources */,
+				12CB4F391EF976E500637DB4 /* ZYCProgressView.m in Sources */,
 				1289B56A1EDFCBA400571E14 /* SVIndefiniteAnimatedView.m in Sources */,
 				1289B5CD1EDFD72000571E14 /* NSObject+MJProperty.m in Sources */,
 				1200CA8C1E7E4BEE00A96469 /* ZYCTabBar.m in Sources */,

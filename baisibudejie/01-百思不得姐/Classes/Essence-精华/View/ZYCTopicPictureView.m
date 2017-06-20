@@ -9,7 +9,8 @@
 #import "ZYCTopicPictureView.h"
 #import "ZYCTopic.h"
 #import "UIImageView+WebCache.h"
-#import "DALabeledCircularProgressView.h"
+#import "ZYCProgressView.h"
+#import "ZYCShowPictureViewController.h"
 
 @interface ZYCTopicPictureView()
 /** 图片 */
@@ -20,7 +21,7 @@
 /** 查看大图按钮 */
 @property (weak, nonatomic) IBOutlet UIButton *seeBigBtn;
 /** 进度条控件 */
-@property (weak, nonatomic) IBOutlet DALabeledCircularProgressView *progressView;
+@property (weak, nonatomic) IBOutlet ZYCProgressView *progressView;
 
 
 
@@ -29,14 +30,28 @@
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     //如果设置的控件尺寸变大，一般是autoresizingMask导致的问题
     self.autoresizingMask = UIViewAutoresizingNone;
-    //设置进度条圆角
-    self.progressView.roundedCorners = 2;
-    //设置进度条label颜色
-    self.progressView.progressLabel.textColor = [UIColor whiteColor];
+  
+    //给图片添加监听器
+    self.imageView.userInteractionEnabled = YES;
+    
+    [self.imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showPicture)]];
 }
 
+- (void)showPicture
+{
+    
+    ZYCLogFunc;
+    
+    ZYCShowPictureViewController *showPictureVc = [[ZYCShowPictureViewController alloc]init];
+    
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:showPictureVc animated:YES completion:nil];
+}
+     
+     
+     
 + (instancetype)pictureView
 {
     
@@ -51,15 +66,15 @@
     _topic = topic;
     //设置图片
     [self.imageView sd_setImageWithPreviousCachedImageWithURL:[NSURL URLWithString:topic.largeImage] andPlaceholderImage:nil options:nil progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-        //进度条
+        //设置进度条
         
         self.progressView.hidden = NO;
         
         CGFloat progress =  1.0*receivedSize/expectedSize;
         
         progress = (progress < 0 ? 0 : progress);
-        [self.progressView setProgress:progress];//因为循环利用，不能使用动画
-        self.progressView.progressLabel.text = [NSString stringWithFormat:@"%.0f%%",progress*100];//保留0位小数的浮点数
+        [self.progressView setProgress:progress animated:NO];//因为循环利用，不能使用动画
+       
         
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         
