@@ -20,4 +20,7 @@ CGFloat const ZYCTopicCellMargin = 10;
 CGFloat const ZYCTopicCellTextY = 55;
 /** 精华-cell-底部工具条的高度 */
 CGFloat const ZYCTopicCellBottomBarH = 44;
-
+/** 精华-cell-图片帖子的最大高度 */
+CGFloat const ZYCTopicPictureMaxH = 1000;
+/** 精华-cell-图片帖子一旦超过最大高度，就使用Break高度 */
+CGFloat const ZYCTopicPictureBreakH = 250;

@@ -84,7 +84,6 @@
         self.pictureView.topic = topic;
         self.pictureView.frame = topic.pictureViewFrame;
         
-        
     }
     //设置按钮文字
     [self setUpButtonTitle:self.dingButton count:topic.ding placeholder:@"顶"];

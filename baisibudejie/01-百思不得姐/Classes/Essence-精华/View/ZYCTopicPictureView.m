@@ -13,7 +13,8 @@
 /** 图片 */
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 /** git标识 */
-@property (weak, nonatomic) IBOutlet UIImageView *gitView;
+@property (weak, nonatomic) IBOutlet UIImageView *gifView;
+
 /** 查看大图按钮 */
 @property (weak, nonatomic) IBOutlet UIButton *seeBigBtn;
 
@@ -42,9 +43,24 @@
     _topic = topic;
     //设置图片
     [self.imageView sd_setImageWithURL:[NSURL URLWithString:topic.largeImage]];
+    //判断是否为gif
+    NSString *extention = topic.largeImage.pathExtension;
     
-    self.gitView.hidden = !topic.is_gif;
+    self.gifView.hidden = ![[extention lowercaseString] isEqualToString:@"gif"];//利用图片扩展名判断图片类型，可能不够严谨
     
+    //在不知道图片扩展名的情况下，取出图片数据的第一个字节，就可以判断图片类型（sd-webImage用此法）
+    
+//    self.gifView.hidden = !topic.is_gif;
+    
+    // 判断是否显示"点击查看全图"按钮
+    if (topic.isBigPicture) {
+        self.seeBigBtn.hidden = NO;
+        self.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    } else {
+        self.seeBigBtn.hidden = YES;
+        self.imageView.contentMode = UIViewContentModeScaleToFill;
+    }
+  
     
 }
 

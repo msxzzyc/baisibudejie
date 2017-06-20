@@ -48,6 +48,12 @@
             CGFloat pictureW = 335;
             //图片显示出来的高度
             CGFloat pictureH = pictureW * self.height/self.width;
+            //判断图片高度是否超出最大高度
+            if (pictureH >= ZYCTopicPictureMaxH) {//图片高度过长
+                
+                pictureH = ZYCTopicPictureBreakH;
+                self.isBigPicture = YES;
+            }
             
             //计算图片控件的frame
             CGFloat pictureX = ZYCTopicCellMargin;

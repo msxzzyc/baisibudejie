@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="376"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bVG-4T-s6R">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bVG-4T-s6R">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="376"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="common-gif" translatesAutoresizingMaskIntoConstraints="NO" id="Ycb-dz-p7n" userLabel="Gif 标识">
@@ -50,7 +50,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="gitView" destination="Ycb-dz-p7n" id="4kt-Mx-WmC"/>
+                <outlet property="gifView" destination="Ycb-dz-p7n" id="w1E-mf-cTa"/>
                 <outlet property="imageView" destination="bVG-4T-s6R" id="1J6-La-fmD"/>
                 <outlet property="seeBigBtn" destination="Wrx-B8-Acy" id="S6U-AD-55K"/>
             </connections>
