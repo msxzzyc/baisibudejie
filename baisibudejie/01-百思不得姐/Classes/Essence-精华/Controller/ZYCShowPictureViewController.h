@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class ZYCTopic;
 @interface ZYCShowPictureViewController : UIViewController
-
+/** 帖子模型数据 */
+@property(nonatomic,strong)ZYCTopic *topic;
 @end

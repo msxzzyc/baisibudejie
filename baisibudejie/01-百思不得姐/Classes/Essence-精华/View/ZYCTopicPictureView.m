@@ -45,8 +45,10 @@
     
     ZYCLogFunc;
     
+    
     ZYCShowPictureViewController *showPictureVc = [[ZYCShowPictureViewController alloc]init];
     
+    showPictureVc.topic = self.topic;
     [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:showPictureVc animated:YES completion:nil];
 }
      
