@@ -66,16 +66,20 @@
 {
     
     _topic = topic;
+    
+    //马上显示最新的进度值（防止因网速慢，显示的是其他图片的下载进度）
+    [self.progressView setProgress:topic.pictureProgress];
+     
     //设置图片
     [self.imageView sd_setImageWithPreviousCachedImageWithURL:[NSURL URLWithString:topic.largeImage] andPlaceholderImage:nil options:nil progress:^(NSInteger receivedSize, NSInteger expectedSize) {
         //设置进度条
-        
+        //计算进度值
         self.progressView.hidden = NO;
         
-        CGFloat progress =  1.0*receivedSize/expectedSize;
+        topic.pictureProgress =  1.0*receivedSize/expectedSize;
         
-        progress = (progress < 0 ? 0 : progress);
-        [self.progressView setProgress:progress animated:NO];//因为循环利用，不能使用动画
+//        progress = (progress < 0 ? 0 : progress);
+        [self.progressView setProgress:topic.pictureProgress animated:NO];//因为循环利用，不能使用动画
        
         
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {

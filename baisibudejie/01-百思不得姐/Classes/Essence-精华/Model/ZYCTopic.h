@@ -53,5 +53,7 @@
 @property(nonatomic,assign,readonly)CGRect pictureViewFrame;
 /** 图片是否太大 */
 @property(nonatomic,assign,getter=isBigPicture)BOOL isBigPicture;
+/** 图片下载进度 */
+@property(nonatomic,assign)CGFloat pictureProgress;
 @end
 

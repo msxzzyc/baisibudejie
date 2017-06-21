@@ -10,9 +10,13 @@
 #import "ZYCTopic.h"
 #import "UIImageView+WebCache.h"
 #import "SVProgressHUD.h"
+#import "ZYCProgressView.h"
+
 @interface ZYCShowPictureViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) UIImageView *imageView;
+/** 进度条 */
+@property (weak, nonatomic) IBOutlet ZYCProgressView *progressView;
 
 @end
 
@@ -50,7 +54,21 @@
         imageView.centerY = screenH *0.5;
     }
 
-    [imageView sd_setImageWithURL:[NSURL URLWithString:self.topic.largeImage] placeholderImage:nil];
+    //进度条
+    //马上显示当前图片的下载进度
+    [self.progressView setProgress:self.topic.pictureProgress animated:NO];
+    
+    //sd_setImage不会重复下载
+    [imageView sd_setImageWithURL:[NSURL URLWithString:self.topic.largeImage] placeholderImage:nil options:nil progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        
+        self.topic.pictureProgress = 1.0 *receivedSize/expectedSize;
+        [self.progressView setProgress:self.topic.pictureProgress animated:NO];
+        
+    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        
+        self.progressView.hidden = YES;
+        
+    }];
     
     
     
@@ -61,6 +79,11 @@
     
 }
 - (IBAction)save:(id)sender {
+    if (self.imageView.image == nil) {//图片未下载完毕点了保存按钮
+        [SVProgressHUD showErrorWithStatus:@"图片还没下载完毕！"];
+        return;
+    }
+    
     //将图片写入相册
     UIImageWriteToSavedPhotosAlbum(self.imageView.image, self, @selector(image: didFinishSavingWithError: contextInfo:), nil);
     
