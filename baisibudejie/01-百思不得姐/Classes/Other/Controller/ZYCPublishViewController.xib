@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZYCPublishViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="362" height="514"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shareBottomBackground" translatesAutoresizingMaskIntoConstraints="NO" id="czW-u9-gTl">
+                    <rect key="frame" x="0.0" y="0.0" width="362" height="514"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K3I-Xm-37V">
+                    <rect key="frame" x="31" y="444" width="299" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="fRs-KC-vU2"/>
+                        <constraint firstAttribute="width" constant="299" id="hPT-Gj-WJF"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="shareButtonCancel"/>
+                    <state key="highlighted" backgroundImage="shareButtonCancelClick"/>
+                    <connections>
+                        <action selector="cancelBtn" destination="-1" eventType="touchUpInside" id="063-mX-qn9"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="czW-u9-gTl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="DoW-6E-Zud"/>
+                <constraint firstItem="K3I-Xm-37V" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="DrF-2c-h7X"/>
+                <constraint firstAttribute="bottom" secondItem="czW-u9-gTl" secondAttribute="bottom" id="Feg-WE-8Ac"/>
+                <constraint firstAttribute="trailing" secondItem="czW-u9-gTl" secondAttribute="trailing" id="RjC-Yf-zPz"/>
+                <constraint firstAttribute="bottom" secondItem="K3I-Xm-37V" secondAttribute="bottom" constant="30" id="gp3-ff-dCE"/>
+                <constraint firstItem="czW-u9-gTl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="oRT-5b-Y68"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="18" y="128"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="shareBottomBackground" width="320" height="343"/>
+        <image name="shareButtonCancel" width="289" height="40"/>
+        <image name="shareButtonCancelClick" width="289" height="40"/>
+    </resources>
+</document>

@@ -7,6 +7,7 @@
 //
 
 #import "ZYCTabBar.h"
+#import "ZYCPublishViewController.h"
 
 @interface ZYCTabBar()
 
@@ -28,6 +29,8 @@
         [publishButton setBackgroundImage:[UIImage imageNamed:@"tabBar_publish_icon"] forState:UIControlStateNormal];
         [publishButton setBackgroundImage:[UIImage imageNamed:@"tabBar_publish_click_icon"] forState:UIControlStateHighlighted];
         publishButton.size = publishButton.currentBackgroundImage.size;
+        [publishButton addTarget:self action:@selector(publishClick) forControlEvents:UIControlEventTouchUpInside];
+        
         self.publishButton = publishButton;
         [self addSubview:publishButton];
     }
@@ -35,6 +38,13 @@
     
 }
 
+- (void)publishClick
+{
+    ZYCPublishViewController *publishVc = [[ZYCPublishViewController alloc]init];
+    
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:publishVc animated:NO completion:nil];
+    
+}
 - (void)layoutSubviews
 {
     [super layoutSubviews];
