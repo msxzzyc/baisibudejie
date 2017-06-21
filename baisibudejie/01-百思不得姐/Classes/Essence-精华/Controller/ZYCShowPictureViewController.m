@@ -48,7 +48,7 @@
     if (pictureH > screenH) {//图片高度超过一个屏幕,需要滚动查看
         imageView.frame = CGRectMake(0, 0, pictureW, pictureH);
         self.scrollView.contentSize = CGSizeMake(0, pictureH);
-    }else{
+    }else{//图片高度没有超过一个屏幕,居中显示
         
         imageView.size = CGSizeMake(pictureW, pictureH);
         imageView.centerY = screenH *0.5;
@@ -69,9 +69,7 @@
         self.progressView.hidden = YES;
         
     }];
-    
-    
-    
+ 
 }
 - (IBAction)back
 {
