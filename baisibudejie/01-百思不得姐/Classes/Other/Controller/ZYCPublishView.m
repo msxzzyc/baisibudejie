@@ -22,11 +22,29 @@ static CGFloat const ZYCSpringFactor = 6;
 {
     return [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil] lastObject];
 }
+
+//设窗口为全局变量
+static UIWindow *window_;
++ (void)show
+{
+    //窗口的级别  UIWindowLevelNormal < UIWindowLevelStatusBar < UIWindowLevelAlert
+    window_ = [[UIWindow alloc]init];
+//    window_.windowLevel = UIWindowLevelStatusBar;
+    window_.frame = [UIScreen mainScreen].bounds;
+    window_.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.8];
+    window_.hidden = NO;
+     ZYCPublishView *publish = [self pulishview];
+    publish.frame = window_.bounds;
+    
+    [window_ addSubview:publish];
+    
+    
+}
 - (void)awakeFromNib {
     [super awakeFromNib];
     
     //不能被点击
-    ZYCRootView.userInteractionEnabled = NO;
+//    ZYCRootView.userInteractionEnabled = NO;
     self.userInteractionEnabled = NO;
     //数据
     NSArray *images = @[@"publish-video", @"publish-picture", @"publish-text",@"publish-audio", @"publish-review", @"publish-offline"];
@@ -90,7 +108,7 @@ static CGFloat const ZYCSpringFactor = 6;
     [sloganAnim setCompletionBlock:^(POPAnimation *anim, BOOL finished){
         //标语动画执行完毕，恢复点击事件
        
-        ZYCRootView.userInteractionEnabled = YES;
+//        ZYCRootView.userInteractionEnabled = YES;
         self.userInteractionEnabled = YES;
     }];
     [slogan pop_addAnimation:sloganAnim forKey:nil];
@@ -116,7 +134,7 @@ static CGFloat const ZYCSpringFactor = 6;
     //    ZYCLog(@"%@",self.view.subviews);
     
     //不能被点击
-    ZYCRootView.userInteractionEnabled = NO;
+//    ZYCRootView.userInteractionEnabled = NO;
     self.userInteractionEnabled = NO;
     int beginIndex = 1;
     //添加动画
@@ -136,9 +154,11 @@ static CGFloat const ZYCSpringFactor = 6;
             [anim setCompletionBlock:^(POPAnimation *anim, BOOL finished){
                 //动画执行完毕，恢复点击事件
                 
-                ZYCRootView.userInteractionEnabled = YES;
+//                ZYCRootView.userInteractionEnabled = YES;
                 
-                [self removeFromSuperview];
+//                [self removeFromSuperview];
+                //销毁窗口
+                window_ = nil;
                 //执行传进来的completionBlock参数
 //                if (completionBlock) {
 //                    completionBlock();

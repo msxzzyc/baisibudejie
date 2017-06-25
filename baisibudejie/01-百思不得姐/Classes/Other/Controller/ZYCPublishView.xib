@@ -28,7 +28,7 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="0.80425941780821919" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="K3I-Xm-37V" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="DrF-2c-h7X"/>
                 <constraint firstAttribute="bottom" secondItem="K3I-Xm-37V" secondAttribute="bottom" constant="30" id="gp3-ff-dCE"/>

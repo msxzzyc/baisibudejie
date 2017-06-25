@@ -40,15 +40,16 @@
 
 - (void)publishClick
 {
-    ZYCPublishView *publishV = [ZYCPublishView pulishview];
+//    ZYCPublishView *publishV = [ZYCPublishView pulishview];
+//    
+//    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+//    
+//    publishV.frame = window.bounds;
+//    
+//    [window addSubview:publishV];
     
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
     
-    publishV.frame = window.bounds;
-    
-    [window addSubview:publishV];
-    
-                        
+    [ZYCPublishView show];
     
 }
 - (void)layoutSubviews

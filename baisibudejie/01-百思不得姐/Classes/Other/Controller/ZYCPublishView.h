@@ -10,4 +10,5 @@
 
 @interface ZYCPublishView : UIView
 + (instancetype)pulishview;
++ (void)show;
 @end
