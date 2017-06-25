@@ -8,6 +8,7 @@
 
 #import "ZYCPublishViewController.h"
 #import "ZYCVerticalButton.h"
+#import <POP.h>
 @interface ZYCPublishViewController ()
 
 @end
@@ -38,26 +39,30 @@
         
         ZYCVerticalButton *button = [[ZYCVerticalButton alloc]init];
         
+        [self.view addSubview:button];
         //设置内容
         button.titleLabel.font = [UIFont systemFontOfSize:14];
         [button setImage:[UIImage imageNamed:images[i]] forState:UIControlStateNormal];
         [button setTitle:titles[i] forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         
-        //设置frame
+        //计算x/y
+        
         CGFloat row = i / 3;
         CGFloat col = i % 3;
         
         CGFloat xMargin = (ZYCScreenW - 2*startX - maxCols*buttonW)/(maxCols -1);
-        button.x = startX + col*(buttonW + xMargin);
-        button.y = (ZYCScreenH - 2*buttonH)/2 + row *buttonH;
-        button.width = buttonW;
-        button.height = buttonH;
+        CGFloat buttonX = startX + col*(buttonW + xMargin);
+        CGFloat buttonEndY = (ZYCScreenH - 2*buttonH)/2 + row *buttonH;
+        CGFloat buttonStartY = buttonEndY - ZYCScreenH;
 //        button.frame = CGRectMake(buttonX, buttonY, buttonW, buttonH);
         
+        //添加动画
+        POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPViewFrame];
         
-        [self.view addSubview:button];
-        
+        anim.fromValue = [NSValue valueWithCGRect:CGRectMake(buttonX, buttonStartY, buttonW, buttonH)];
+        anim.toValue = [NSValue valueWithCGRect:CGRectMake(buttonX, buttonEndY, buttonW, buttonH)];
+        [button pop_addAnimation:anim forKey:nil];
         
     }
     
