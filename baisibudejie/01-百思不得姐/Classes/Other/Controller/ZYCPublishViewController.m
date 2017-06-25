@@ -19,10 +19,6 @@ static CGFloat const ZYCSpringFactor = 6;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
-    
-    
-    
     //数据
     NSArray *images = @[@"publish-video", @"publish-picture", @"publish-text",@"publish-audio", @"publish-review", @"publish-offline"];
     NSArray *titles = @[@"发视频", @"发图片", @"发段子", @"发声音", @"审帖", @"离线下载"];
@@ -37,6 +33,8 @@ static CGFloat const ZYCSpringFactor = 6;
         
         ZYCVerticalButton *button = [[ZYCVerticalButton alloc]init];
         
+        button.tag = i;
+        [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:button];
         //设置内容
         button.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -64,30 +62,81 @@ static CGFloat const ZYCSpringFactor = 6;
         anim.springSpeed = ZYCSpringFactor;
         anim.beginTime = CACurrentMediaTime() + ZYCAnimationDelay*i;
         [button pop_addAnimation:anim forKey:nil];
-        
-        //添加slogan(标语)
-        UIImageView *slogan = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"app_slogan"]];
-        CGFloat sloganCenterX = ZYCScreenW *0.5;
-        
-        CGFloat sloganCenterEndY = ZYCScreenH *0.2;
-        CGFloat sloganCenterStartY = sloganCenterEndY - ZYCScreenH;
-        [self.view addSubview:slogan];
-        
-        //为slogan添加动画
-        POPSpringAnimation *sloganAnim = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
-        sloganAnim.fromValue = [NSValue valueWithCGPoint:CGPointMake(sloganCenterX, sloganCenterStartY)];
-        sloganAnim.toValue = [NSValue valueWithCGPoint:CGPointMake(sloganCenterX, sloganCenterEndY)];
-        anim.springBounciness = ZYCSpringFactor;
-        anim.springSpeed = ZYCSpringFactor;
-        sloganAnim.beginTime = CACurrentMediaTime() + ZYCAnimationDelay*images.count;
-        [slogan pop_addAnimation:sloganAnim forKey:nil];
-        
     }
+    //添加slogan(标语)
+    UIImageView *slogan = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"app_slogan"]];
+    CGFloat sloganCenterX = ZYCScreenW *0.5;
+    
+    CGFloat sloganCenterEndY = ZYCScreenH *0.2;
+    CGFloat sloganCenterStartY = sloganCenterEndY - ZYCScreenH;
+    [self.view addSubview:slogan];
+    
+    //为slogan添加动画
+    POPSpringAnimation *sloganAnim = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
+    sloganAnim.fromValue = [NSValue valueWithCGPoint:CGPointMake(sloganCenterX, sloganCenterStartY)];
+    sloganAnim.toValue = [NSValue valueWithCGPoint:CGPointMake(sloganCenterX, sloganCenterEndY)];
+    sloganAnim.springBounciness = ZYCSpringFactor;
+    sloganAnim.springSpeed = ZYCSpringFactor;
+    sloganAnim.beginTime = CACurrentMediaTime() + ZYCAnimationDelay*images.count;
+    [slogan pop_addAnimation:sloganAnim forKey:nil];
     
 }
-- (IBAction)cancelBtn {
+
+- (void)buttonClick:(UIButton *)button
+{
     
-    [self dismissViewControllerAnimated:NO completion:nil];
+        [self cancelWithCompletionBlock:^{
+            if (button.tag == 0) {
+            ZYCLog(@"发视频");
+            }
+        }];
+    
+    
+}
+/**
+ 先执行退出动画，动画完毕后执行completionBlock
+ */
+- (void)cancelWithCompletionBlock:(void(^)())completionBlock
+{
+    //    ZYCLog(@"%@",self.view.subviews);
+    
+    //让控制器的view不能被点击
+    self.view.userInteractionEnabled = NO;
+    
+    int beginIndex = 2;
+    //添加动画
+    //利用for循环self.view子控件拿到按钮和标语
+    for (int i = beginIndex; i < self.view.subviews.count; i++) {
+        UIView *subview = self.view.subviews[i];
+        //基本动画
+        POPBasicAnimation *anim = [POPBasicAnimation animationWithPropertyNamed:kPOPViewCenter];
+        CGFloat centerX = subview.centerX;
+        CGFloat centerY = subview.centerY + ZYCScreenH;
+        anim.toValue = [NSValue valueWithCGPoint:CGPointMake(centerX, centerY)];
+        anim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+        anim.beginTime = CACurrentMediaTime() + ZYCAnimationDelay*(i - beginIndex);
+        [subview pop_addAnimation:anim forKey:nil];
+        //监听最后一个动画
+        if (i == self.view.subviews.count - 1) {
+            [anim setCompletionBlock:^(POPAnimation *anim, BOOL finished){
+                [self dismissViewControllerAnimated:NO completion:nil];
+                //执行传进来的completionBlock参数
+//                if (completionBlock) {
+//                    completionBlock();
+//                }
+                !completionBlock ? :completionBlock();
+            }];
+        }
+    }
+}
+
+- (IBAction)cancelBtn {
+    [self cancelWithCompletionBlock:nil];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self cancelWithCompletionBlock:nil];
 }
 /**
  pop和Core Animation的区别
@@ -107,5 +156,6 @@ static CGFloat const ZYCSpringFactor = 6;
     // Pass the selected object to the new view controller.
 }
 */
+    
 
 @end
