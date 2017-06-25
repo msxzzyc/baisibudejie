@@ -7,7 +7,7 @@
 //
 
 #import "ZYCTabBar.h"
-#import "ZYCPublishViewController.h"
+#import "ZYCPublishView.h"
 
 @interface ZYCTabBar()
 
@@ -40,9 +40,15 @@
 
 - (void)publishClick
 {
-    ZYCPublishViewController *publishVc = [[ZYCPublishViewController alloc]init];
+    ZYCPublishView *publishV = [ZYCPublishView pulishview];
     
-    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:publishVc animated:NO completion:nil];
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    
+    publishV.frame = window.bounds;
+    
+    [window addSubview:publishV];
+    
+                        
     
 }
 - (void)layoutSubviews

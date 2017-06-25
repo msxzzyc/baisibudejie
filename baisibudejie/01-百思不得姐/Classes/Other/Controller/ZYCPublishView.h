@@ -1,5 +1,5 @@
 //
-//  ZYCPublishViewController.h
+//  ZYCPublishView.h
 //  01-百思不得姐
 //
 //  Created by wpzyc on 2017/6/21.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ZYCPublishViewController : UIViewController
-
+@interface ZYCPublishView : UIView
++ (instancetype)pulishview;
 @end

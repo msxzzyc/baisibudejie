@@ -1,24 +1,33 @@
 //
-//  ZYCPublishViewController.m
+//  ZYCPublishView.m
 //  01-百思不得姐
 //
 //  Created by wpzyc on 2017/6/21.
 //  Copyright © 2017年 wpzyc. All rights reserved.
 //
 
-#import "ZYCPublishViewController.h"
+#import "ZYCPublishView.h"
 #import "ZYCVerticalButton.h"
 #import <POP.h>
+
+#define ZYCRootView [UIApplication sharedApplication].keyWindow.rootViewController.view
 static CGFloat const ZYCAnimationDelay = 0.1;
 static CGFloat const ZYCSpringFactor = 6;
-@interface ZYCPublishViewController ()
+@interface ZYCPublishView ()
 
 @end
 
-@implementation ZYCPublishViewController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
+@implementation ZYCPublishView
++ (instancetype)pulishview
+{
+    return [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil] lastObject];
+}
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    //不能被点击
+    ZYCRootView.userInteractionEnabled = NO;
+    self.userInteractionEnabled = NO;
     //数据
     NSArray *images = @[@"publish-video", @"publish-picture", @"publish-text",@"publish-audio", @"publish-review", @"publish-offline"];
     NSArray *titles = @[@"发视频", @"发图片", @"发段子", @"发声音", @"审帖", @"离线下载"];
@@ -35,7 +44,7 @@ static CGFloat const ZYCSpringFactor = 6;
         
         button.tag = i;
         [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:button];
+        [self addSubview:button];
         //设置内容
         button.titleLabel.font = [UIFont systemFontOfSize:14];
         [button setImage:[UIImage imageNamed:images[i]] forState:UIControlStateNormal];
@@ -69,7 +78,7 @@ static CGFloat const ZYCSpringFactor = 6;
     
     CGFloat sloganCenterEndY = ZYCScreenH *0.2;
     CGFloat sloganCenterStartY = sloganCenterEndY - ZYCScreenH;
-    [self.view addSubview:slogan];
+    [self addSubview:slogan];
     
     //为slogan添加动画
     POPSpringAnimation *sloganAnim = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
@@ -78,6 +87,12 @@ static CGFloat const ZYCSpringFactor = 6;
     sloganAnim.springBounciness = ZYCSpringFactor;
     sloganAnim.springSpeed = ZYCSpringFactor;
     sloganAnim.beginTime = CACurrentMediaTime() + ZYCAnimationDelay*images.count;
+    [sloganAnim setCompletionBlock:^(POPAnimation *anim, BOOL finished){
+        //标语动画执行完毕，恢复点击事件
+       
+        ZYCRootView.userInteractionEnabled = YES;
+        self.userInteractionEnabled = YES;
+    }];
     [slogan pop_addAnimation:sloganAnim forKey:nil];
     
 }
@@ -100,14 +115,14 @@ static CGFloat const ZYCSpringFactor = 6;
 {
     //    ZYCLog(@"%@",self.view.subviews);
     
-    //让控制器的view不能被点击
-    self.view.userInteractionEnabled = NO;
-    
-    int beginIndex = 2;
+    //不能被点击
+    ZYCRootView.userInteractionEnabled = NO;
+    self.userInteractionEnabled = NO;
+    int beginIndex = 1;
     //添加动画
     //利用for循环self.view子控件拿到按钮和标语
-    for (int i = beginIndex; i < self.view.subviews.count; i++) {
-        UIView *subview = self.view.subviews[i];
+    for (int i = beginIndex; i < self.subviews.count; i++) {
+        UIView *subview = self.subviews[i];
         //基本动画
         POPBasicAnimation *anim = [POPBasicAnimation animationWithPropertyNamed:kPOPViewCenter];
         CGFloat centerX = subview.centerX;
@@ -117,9 +132,13 @@ static CGFloat const ZYCSpringFactor = 6;
         anim.beginTime = CACurrentMediaTime() + ZYCAnimationDelay*(i - beginIndex);
         [subview pop_addAnimation:anim forKey:nil];
         //监听最后一个动画
-        if (i == self.view.subviews.count - 1) {
+        if (i == self.subviews.count - 1) {
             [anim setCompletionBlock:^(POPAnimation *anim, BOOL finished){
-                [self dismissViewControllerAnimated:NO completion:nil];
+                //动画执行完毕，恢复点击事件
+                
+                ZYCRootView.userInteractionEnabled = YES;
+                
+                [self removeFromSuperview];
                 //执行传进来的completionBlock参数
 //                if (completionBlock) {
 //                    completionBlock();
