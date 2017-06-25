@@ -59,7 +59,7 @@
     [self.progressView setProgress:self.topic.pictureProgress animated:NO];
     
     //sd_setImage不会重复下载
-    [imageView sd_setImageWithURL:[NSURL URLWithString:self.topic.largeImage] placeholderImage:nil options:nil progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+    [imageView sd_setImageWithURL:[NSURL URLWithString:self.topic.largeImage] placeholderImage:nil options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
         
         self.topic.pictureProgress = 1.0 *receivedSize/expectedSize;
         [self.progressView setProgress:self.topic.pictureProgress animated:NO];

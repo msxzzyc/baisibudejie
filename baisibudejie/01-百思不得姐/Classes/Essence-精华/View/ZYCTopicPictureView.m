@@ -71,17 +71,16 @@
     [self.progressView setProgress:topic.pictureProgress];
      
     //设置图片
-    [self.imageView sd_setImageWithPreviousCachedImageWithURL:[NSURL URLWithString:topic.largeImage] andPlaceholderImage:nil options:nil progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+    
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:topic.largeImage] placeholderImage:nil options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
         //设置进度条
         //计算进度值
         self.progressView.hidden = NO;
         
         topic.pictureProgress =  1.0*receivedSize/expectedSize;
         
-//        progress = (progress < 0 ? 0 : progress);
+        //        progress = (progress < 0 ? 0 : progress);
         [self.progressView setProgress:topic.pictureProgress animated:NO];//因为循环利用，不能使用动画
-       
-        
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         
         self.progressView.hidden = YES;
