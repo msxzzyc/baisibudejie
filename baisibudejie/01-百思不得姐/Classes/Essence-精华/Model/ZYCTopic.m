@@ -17,7 +17,7 @@
 {
 
     CGFloat _cellHeight;
-    CGRect _pictureViewFrame;
+   
 
 }
 
@@ -42,10 +42,11 @@
         //文字部分的高度
         _cellHeight = ZYCTopicCellTextY + textH + ZYCTopicCellMargin;
         
-        if (self.type == ZYCTopicTypePicture) {//图片帖子
+        if (self.type == ZYCTopicTypePicture)
+        {//图片帖子
             
             //图片显示出来的宽度
-            CGFloat pictureW = 335;
+            CGFloat pictureW = maxSize.width;
             //图片显示出来的高度
             CGFloat pictureH = pictureW * self.height/self.width;
             //判断图片高度是否超出最大高度
@@ -61,8 +62,24 @@
             _pictureViewFrame = CGRectMake(pictureX, pictureY, pictureW, pictureH);
             
             _cellHeight += pictureH + ZYCTopicCellMargin;
+            
+        }else if (self.type == ZYCTopicTypeVoice)//声音帖子
+        {
+            CGFloat voiceX = ZYCTopicCellMargin;
+            CGFloat voiceY = ZYCTopicCellTextY + textH + ZYCTopicCellMargin;
+            CGFloat voiceW = maxSize.width;
+            CGFloat voiceH = voiceW *self.height/self.width;
+            
+            _voiceViewFrame = CGRectMake(voiceX, voiceY, voiceW, voiceH);
+            
+            _cellHeight += voiceH + ZYCTopicCellMargin;
+        
+            
         }
-        //底部工具条的高度
+        
+        
+        
+        //加上底部工具条及间隙的高度
         _cellHeight += ZYCTopicCellBottomBarH + ZYCTopicCellMargin;
     }
     return _cellHeight;

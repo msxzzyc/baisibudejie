@@ -42,6 +42,10 @@
 @property(nonatomic,assign)CGFloat height;
 /** 帖子的类型 */
 @property(nonatomic,assign)ZYCTopicType type;
+/** 音频时长 */
+@property(nonatomic,assign)NSInteger voicetime;
+/** 音频播放次数 */
+@property(nonatomic,assign)int playcount;
 
 
 /** 是否gif图片 */
@@ -55,5 +59,8 @@
 @property(nonatomic,assign,getter=isBigPicture)BOOL isBigPicture;
 /** 图片下载进度 */
 @property(nonatomic,assign)CGFloat pictureProgress;
+
+/** 声音控件的frame */
+@property(nonatomic,assign,readonly)CGRect voiceViewFrame;
 @end
 

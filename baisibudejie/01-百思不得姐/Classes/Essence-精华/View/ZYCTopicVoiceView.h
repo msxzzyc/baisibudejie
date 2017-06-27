@@ -1,16 +1,15 @@
 //
-//  ZYCTopicPictureView.h
+//  ZYCTopicVoiceView.h
 //  01-百思不得姐
 //
-//  Created by wpzyc on 2017/6/19.
+//  Created by wpzyc on 2017/6/27.
 //  Copyright © 2017年 wpzyc. All rights reserved.
-// 图片帖子中间的内容
+// 声音帖子中间的内容
 
 #import <UIKit/UIKit.h>
 @class ZYCTopic;
-@interface ZYCTopicPictureView : UIView
+@interface ZYCTopicVoiceView : UIView
 /** 帖子模型数据 */
 @property(nonatomic,strong)ZYCTopic *topic;
-+ (instancetype)pictureView;
-
++ (instancetype)voiceView;
 @end

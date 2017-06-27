@@ -10,6 +10,7 @@
 #import "UIImageView+WebCache.h"
 #import "ZYCTopic.h"
 #import "ZYCTopicPictureView.h"
+#import "ZYCTopicVoiceView.h"
 @interface ZYCTopicCell()
 
 /** 头像 */
@@ -32,9 +33,20 @@
 @property (weak, nonatomic) IBOutlet UILabel *text_label;
 /** 图片帖子中间的内容 */
 @property(weak,nonatomic)ZYCTopicPictureView *pictureView;
+/** 声音帖子中间的内容 */
+@property(weak,nonatomic)ZYCTopicVoiceView *voiceView;
 
 @end
 @implementation ZYCTopicCell
+- (ZYCTopicVoiceView *)voiceView
+{
+    if (!_voiceView) {
+        ZYCTopicVoiceView *voiceView = [ZYCTopicVoiceView voiceView];
+        [self.contentView addSubview:voiceView];
+        _voiceView = voiceView;
+    }
+    return _voiceView;
+}
 
 - (ZYCTopicPictureView *)pictureView
 {
@@ -72,7 +84,7 @@
 
 //    topic.is_vip = arc4random_uniform(100) % 2;
     //新浪加v
-    self.sinaVview.hidden == !topic.isVip;
+//    self.sinaVview.hidden == !topic.isVip;
     
     //设置帖子文字数据
     self.text_label.text = topic.text;
@@ -83,6 +95,10 @@
         
         self.pictureView.topic = topic;
         self.pictureView.frame = topic.pictureViewFrame;
+        
+    } else if (topic.type == ZYCTopicTypeVoice){//声音帖子
+        self.voiceView.topic = topic;
+        self.voiceView.frame = topic.voiceViewFrame;
         
     }
     //设置按钮文字
