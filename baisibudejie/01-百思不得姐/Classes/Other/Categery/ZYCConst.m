@@ -30,3 +30,6 @@ CGFloat const ZYCTopicPictureBreakH = 250;
 NSString * const ZYCUserSexMale = @"m";
 /** ZYCUser模型-性别属性值 */
 NSString * const ZYCUserSexFemale = @"f";
+
+/** 精华-cell-最热评论标题的最大高度 */
+CGFloat const ZYCTopicCellTopCmtTitleH = 20;

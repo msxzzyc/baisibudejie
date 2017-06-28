@@ -36,3 +36,6 @@ UIKIT_EXTERN CGFloat const ZYCTopicPictureBreakH;
 UIKIT_EXTERN NSString * const ZYCUserSexMale;
 /** ZYCUser模型-性别属性值 */
 UIKIT_EXTERN NSString * const ZYCUserSexFemale;
+
+/** 精华-cell-最热评论标题的最大高度 */
+UIKIT_EXTERN CGFloat const ZYCTopicCellTopCmtTitleH;

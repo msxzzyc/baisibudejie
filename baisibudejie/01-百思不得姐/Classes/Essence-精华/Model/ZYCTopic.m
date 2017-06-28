@@ -7,8 +7,9 @@
 //
 
 #import "ZYCTopic.h"
-#import "MJExtension.h"
-//#import "ZYCComment.h"
+
+#import "ZYCComment.h"
+#import "ZYCUser.h"
 #import "MJExtension.h"
 
 @implementation ZYCTopic
@@ -100,6 +101,14 @@
             
         }
         
+        //如果有最热评论，计算最热评论view高度
+        ZYCComment *cmt = [self.top_cmt firstObject];
+        if (cmt) {
+           
+            NSString *content = [NSString stringWithFormat:@"%@ : %@",cmt.user.username,cmt.content];
+            CGFloat contentH = [content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
+            _cellHeight += ZYCTopicCellTopCmtTitleH + contentH + ZYCTopicCellMargin;
+        }
         
         
         //加上底部工具条及间隙的高度

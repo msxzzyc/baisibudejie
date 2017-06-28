@@ -7,7 +7,7 @@
 //
 
 #import "ZYCComment.h"
-
+#import "ZYCUser.h"
 @implementation ZYCComment
 
 @end

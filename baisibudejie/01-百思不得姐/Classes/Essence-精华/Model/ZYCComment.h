@@ -16,6 +16,6 @@
 /** 评论被赞数 */
 @property(nonatomic,assign)NSInteger like_count;
 /** 用户 */
-@property(nonatomic,assign)ZYCUser *user;
+@property(nonatomic,strong)ZYCUser *user;
 
 @end

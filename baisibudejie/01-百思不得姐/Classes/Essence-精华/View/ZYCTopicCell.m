@@ -11,6 +11,8 @@
 
 #import "ZYCTopic.h"
 #import "ZYCComment.h"
+#import "ZYCUser.h"
+
 #import "ZYCTopicPictureView.h"
 #import "ZYCTopicVoiceView.h"
 #import "ZYCTopicVideoView.h"
@@ -41,8 +43,10 @@
 /** 视频帖子中间的内容 */
 @property(weak,nonatomic)ZYCTopicVideoView *videoView;
 
-
-
+/** 最热评论父控件*/
+@property (weak, nonatomic) IBOutlet UIView *topCmtView;
+/** 最热评论内容*/
+@property (weak, nonatomic) IBOutlet UILabel *topCmtContentLabel;
 @end
 @implementation ZYCTopicCell
 
@@ -147,6 +151,15 @@
     [self setUpButtonTitle:self.shareButton count:topic.repost placeholder:@"分享"];
     [self setUpButtonTitle:self.commentButton count:topic.comment placeholder:@"评论"];
    
+    //设置最热评论
+    
+    ZYCComment *cmt = [topic.top_cmt firstObject];
+    if (cmt) {
+        self.topCmtView.hidden = NO;
+        self.topCmtContentLabel.text = [NSString stringWithFormat:@"%@ : %@",cmt.user.username,cmt.content];
+    }else{
+        self.topCmtView.hidden = YES;
+    }
     
     
     
