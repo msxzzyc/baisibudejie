@@ -1,31 +1,28 @@
 //
-//  ZYCTopicVoiceView.m
+//  ZYCTopicVideoView.m
 //  01-百思不得姐
 //
-//  Created by wpzyc on 2017/6/27.
+//  Created by wpzyc on 2017/6/28.
 //  Copyright © 2017年 wpzyc. All rights reserved.
 //
 
-#import "ZYCTopicVoiceView.h"
+#import "ZYCTopicVideoView.h"
 #import "ZYCTopic.h"
 #import "UIImageView+WebCache.h"
 #import "ZYCShowPictureViewController.h"
-@interface ZYCTopicVoiceView()
-@property (weak, nonatomic) IBOutlet UILabel *playcountLabel;
-@property (weak, nonatomic) IBOutlet UILabel *voicetimeLabel;
+@interface ZYCTopicVideoView()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-
-
-
+@property (weak, nonatomic) IBOutlet UILabel *playcountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *videotimeLabel;
 
 @end
-@implementation ZYCTopicVoiceView
-+ (instancetype)voiceView
-{
-    return [[[NSBundle mainBundle]loadNibNamed:NSStringFromClass(self) owner:nil options:nil]lastObject];
-    
-}
+@implementation ZYCTopicVideoView
 
++ (instancetype)videoView
+{
+    
+    return [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil] lastObject];
+}
 - (void)awakeFromNib
 {
     [super awakeFromNib];
@@ -56,15 +53,12 @@
     
     //图片
     [self.imageView sd_setImageWithURL:[NSURL URLWithString:topic.largeImage] placeholderImage:nil options:0];
+    //时长
+    NSInteger minute = topic.videotime/60;
+    NSInteger second = topic.videotime % 60;
+    self.videotimeLabel.text = [NSString stringWithFormat:@"%02zd : %02zd",minute,second];
     //播放次数
-    self.playcountLabel.text =[NSString stringWithFormat:@"%zd播放",topic.playcount];
-    //音频时长
-    
-    NSInteger minute = topic.voicetime/60;
-    NSInteger second = topic.voicetime % 60;
-    self.voicetimeLabel.text = [NSString stringWithFormat:@"%02zd : %02zd",minute,second];
-    
-    
+    self.playcountLabel.text = [NSString stringWithFormat:@"%zd播放",topic.playcount];
     
 }
 @end

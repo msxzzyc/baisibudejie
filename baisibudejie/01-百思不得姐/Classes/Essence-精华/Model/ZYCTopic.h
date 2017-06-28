@@ -47,6 +47,9 @@
 /** 音频播放次数 */
 @property(nonatomic,assign)int playcount;
 
+/** 视频时长 */
+@property(nonatomic,assign)NSInteger videotime;
+
 
 /** 是否gif图片 */
 @property(nonatomic,assign)BOOL is_gif;
@@ -62,5 +65,8 @@
 
 /** 声音控件的frame */
 @property(nonatomic,assign,readonly)CGRect voiceViewFrame;
+
+/** 视频控件的frame */
+@property(nonatomic,assign,readonly)CGRect videoViewFrame;
 @end
 

@@ -11,6 +11,7 @@
 #import "ZYCTopic.h"
 #import "ZYCTopicPictureView.h"
 #import "ZYCTopicVoiceView.h"
+#import "ZYCTopicVideoView.h"
 @interface ZYCTopicCell()
 
 /** 头像 */
@@ -35,9 +36,20 @@
 @property(weak,nonatomic)ZYCTopicPictureView *pictureView;
 /** 声音帖子中间的内容 */
 @property(weak,nonatomic)ZYCTopicVoiceView *voiceView;
+/** 视频帖子中间的内容 */
+@property(weak,nonatomic)ZYCTopicVideoView *videoView;
 
 @end
 @implementation ZYCTopicCell
+- (ZYCTopicVoiceView *)videoView
+{
+    if (!_videoView) {
+        ZYCTopicVideoView *videoView = [ZYCTopicVideoView videoView];
+        [self.contentView addSubview:videoView];
+        _videoView = videoView;
+    }
+    return _videoView;
+}
 - (ZYCTopicVoiceView *)voiceView
 {
     if (!_voiceView) {
@@ -92,15 +104,37 @@
     //根据模型类型（帖子类型）添加对应的图片内容到中间
     if (topic.type == ZYCTopicTypePicture) {//图片帖子
         //pictureView第一次调用get方法就创建并添加上去，所以无需再添加
-        
+        self.pictureView.hidden = NO;
         self.pictureView.topic = topic;
         self.pictureView.frame = topic.pictureViewFrame;
         
+        self.voiceView.hidden = YES;
+        self.videoView.hidden = YES;
+        
     } else if (topic.type == ZYCTopicTypeVoice){//声音帖子
+        self.voiceView.hidden = NO;
         self.voiceView.topic = topic;
         self.voiceView.frame = topic.voiceViewFrame;
         
+        self.pictureView.hidden = YES;
+        self.videoView.hidden = YES;
+        
+    }else if (topic.type == ZYCTopicTypeVideo){//视频帖子
+        self.videoView.hidden = NO;
+        self.videoView.topic = topic;
+        self.videoView.frame = topic.videoViewFrame;
+        
+        self.voiceView.hidden = YES;
+        self.pictureView.hidden = YES;
+  
+    }else {//段子帖子
+        //防止循环引用带来问题
+        
+        self.voiceView.hidden = YES;
+        self.videoView.hidden = YES;
+        self.pictureView.hidden = YES;
     }
+        
     //设置按钮文字
     [self setUpButtonTitle:self.dingButton count:topic.ding placeholder:@"顶"];
     [self setUpButtonTitle:self.caiButton count:topic.cai placeholder:@"踩"];

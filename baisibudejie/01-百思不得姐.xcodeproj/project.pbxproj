@@ -128,6 +128,8 @@
 		12D471B81EFACC0D0031B084 /* ZYCPublishView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D471B61EFACC0D0031B084 /* ZYCPublishView.m */; };
 		12D471B91EFACC0D0031B084 /* ZYCPublishView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12D471B71EFACC0D0031B084 /* ZYCPublishView.xib */; };
 		12D471BC1EFADFD20031B084 /* ZYCVerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D471BB1EFADFD20031B084 /* ZYCVerticalButton.m */; };
+		12DA59AF1F03A7DF00AA5E4C /* ZYCTopicVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12DA59AE1F03A7DF00AA5E4C /* ZYCTopicVideoView.m */; };
+		12DA59B11F03A7FE00AA5E4C /* ZYCTopicVideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12DA59B01F03A7FE00AA5E4C /* ZYCTopicVideoView.xib */; };
 		12F21B241EF26886000EB24E /* ZYCConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F21B231EF26886000EB24E /* ZYCConst.m */; };
 		12F21B281EF27430000EB24E /* ZYCTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F21B261EF27430000EB24E /* ZYCTopicCell.m */; };
 		12F21B291EF27430000EB24E /* ZYCTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12F21B271EF27430000EB24E /* ZYCTopicCell.xib */; };
@@ -379,6 +381,9 @@
 		12D471B71EFACC0D0031B084 /* ZYCPublishView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZYCPublishView.xib; sourceTree = "<group>"; };
 		12D471BA1EFADFD20031B084 /* ZYCVerticalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCVerticalButton.h; sourceTree = "<group>"; };
 		12D471BB1EFADFD20031B084 /* ZYCVerticalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCVerticalButton.m; sourceTree = "<group>"; };
+		12DA59AD1F03A7DE00AA5E4C /* ZYCTopicVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCTopicVideoView.h; sourceTree = "<group>"; };
+		12DA59AE1F03A7DF00AA5E4C /* ZYCTopicVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCTopicVideoView.m; sourceTree = "<group>"; };
+		12DA59B01F03A7FE00AA5E4C /* ZYCTopicVideoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZYCTopicVideoView.xib; sourceTree = "<group>"; };
 		12F21B221EF26886000EB24E /* ZYCConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCConst.h; sourceTree = "<group>"; };
 		12F21B231EF26886000EB24E /* ZYCConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCConst.m; sourceTree = "<group>"; };
 		12F21B251EF27430000EB24E /* ZYCTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCTopicCell.h; sourceTree = "<group>"; };
@@ -613,6 +618,9 @@
 				121071D31F0294D8001E73DB /* ZYCTopicVoiceView.h */,
 				121071D41F0294D8001E73DB /* ZYCTopicVoiceView.m */,
 				121071D61F02951A001E73DB /* ZYCTopicVoiceView.xib */,
+				12DA59AD1F03A7DE00AA5E4C /* ZYCTopicVideoView.h */,
+				12DA59AE1F03A7DF00AA5E4C /* ZYCTopicVideoView.m */,
+				12DA59B01F03A7FE00AA5E4C /* ZYCTopicVideoView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1146,6 +1154,7 @@
 				1219177E1EEEC84200016382 /* ZYCRecommendTagCell.xib in Resources */,
 				12BC227B1EE8373C008C598E /* ZYCLoginRegisterViewController.xib in Resources */,
 				121917921EEECE9B00016382 /* ZYCRecommendUserCell.xib in Resources */,
+				12DA59B11F03A7FE00AA5E4C /* ZYCTopicVideoView.xib in Resources */,
 				121071D71F02951A001E73DB /* ZYCTopicVoiceView.xib in Resources */,
 				12CB4F361EF970D900637DB4 /* ZYCShowPictureViewController.xib in Resources */,
 				1289B59F1EDFCBB000571E14 /* LICENSE in Resources */,
@@ -1356,6 +1365,7 @@
 				12CB4F2E1EF9540300637DB4 /* DACircularProgressView.m in Sources */,
 				1219178D1EEECE9B00016382 /* ZYCRecommendCategory.m in Sources */,
 				1200CA841E7E4BEE00A96469 /* ZYCMeViewController.m in Sources */,
+				12DA59AF1F03A7DF00AA5E4C /* ZYCTopicVideoView.m in Sources */,
 				1200CA891E7E4BEE00A96469 /* ZYCTabBarController.m in Sources */,
 				1289B5CF1EDFD72000571E14 /* README.md in Sources */,
 				125980011EE3036700FF00D1 /* MJRefreshBackGifFooter.m in Sources */,

@@ -75,6 +75,18 @@
             _cellHeight += voiceH + ZYCTopicCellMargin;
         
             
+        }else if (self.type == ZYCTopicTypeVideo)//视频帖子
+        {
+            CGFloat videoX = ZYCTopicCellMargin;
+            CGFloat videoY = ZYCTopicCellTextY + textH + ZYCTopicCellMargin;
+            CGFloat videoW = maxSize.width;
+            CGFloat videoH = videoW *self.height/self.width;
+            
+            _videoViewFrame = CGRectMake(videoX, videoY, videoW, videoH);
+            
+            _cellHeight += videoH + ZYCTopicCellMargin;
+            
+            
         }
         
         

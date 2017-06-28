@@ -68,7 +68,7 @@
             <connections>
                 <outlet property="imageView" destination="2xU-of-LXK" id="a5z-O6-hZM"/>
                 <outlet property="playcountLabel" destination="QSr-bc-9vq" id="dSq-c5-M3q"/>
-                <outlet property="voicelengthLabel" destination="YMA-ug-FDt" id="Oyw-lu-PXc"/>
+                <outlet property="voicetimeLabel" destination="YMA-ug-FDt" id="Q3B-VG-mvV"/>
             </connections>
             <point key="canvasLocation" x="5.5" y="12.5"/>
         </view>
