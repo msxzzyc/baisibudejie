@@ -54,6 +54,10 @@
 /** 是否gif图片 */
 @property(nonatomic,assign)BOOL is_gif;
 
+/** 最热评论 */
+@property(nonatomic,strong)NSArray *top_cmt;
+
+
 /********* 额外的辅助属性 ************/
 @property(nonatomic,assign,readonly)CGFloat cellHeight;
 /** 图片控件的frame */
@@ -68,5 +72,6 @@
 
 /** 视频控件的frame */
 @property(nonatomic,assign,readonly)CGRect videoViewFrame;
+
 @end
 

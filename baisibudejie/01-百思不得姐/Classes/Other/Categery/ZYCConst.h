@@ -30,3 +30,9 @@ UIKIT_EXTERN CGFloat const ZYCTopicCellBottomBarH;
 UIKIT_EXTERN CGFloat const ZYCTopicPictureMaxH;
 /** 精华-cell-图片帖子一旦超过最大高度，就使用Break高度 */
 UIKIT_EXTERN CGFloat const ZYCTopicPictureBreakH;
+
+
+/** ZYCUser模型-性别属性值 */
+UIKIT_EXTERN NSString * const ZYCUserSexMale;
+/** ZYCUser模型-性别属性值 */
+UIKIT_EXTERN NSString * const ZYCUserSexFemale;

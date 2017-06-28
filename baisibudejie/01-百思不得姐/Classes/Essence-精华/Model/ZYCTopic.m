@@ -7,7 +7,9 @@
 //
 
 #import "ZYCTopic.h"
-//#import "MJExtension.h"
+#import "MJExtension.h"
+//#import "ZYCComment.h"
+#import "MJExtension.h"
 
 @implementation ZYCTopic
 
@@ -27,6 +29,15 @@
               @"largeImage":@"image1",
               @"middleImage":@"image3"
               };
+    
+}
+
+//数组中字典转模型类
++ (NSDictionary *)objectClassInArray
+{
+//    return @{@"top_cmt":[ZYCComment class]};
+    return @{@"top_cmt":@"ZYCComment"};
+    
     
 }
 - (CGFloat)cellHeight

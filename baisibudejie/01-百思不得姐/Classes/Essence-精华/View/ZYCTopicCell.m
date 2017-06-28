@@ -8,7 +8,9 @@
 
 #import "ZYCTopicCell.h"
 #import "UIImageView+WebCache.h"
+
 #import "ZYCTopic.h"
+#import "ZYCComment.h"
 #import "ZYCTopicPictureView.h"
 #import "ZYCTopicVoiceView.h"
 #import "ZYCTopicVideoView.h"
@@ -39,9 +41,13 @@
 /** 视频帖子中间的内容 */
 @property(weak,nonatomic)ZYCTopicVideoView *videoView;
 
+
+
 @end
 @implementation ZYCTopicCell
-- (ZYCTopicVoiceView *)videoView
+
+
+- (ZYCTopicVideoView *)videoView
 {
     if (!_videoView) {
         ZYCTopicVideoView *videoView = [ZYCTopicVideoView videoView];
@@ -141,6 +147,10 @@
     [self setUpButtonTitle:self.shareButton count:topic.repost placeholder:@"分享"];
     [self setUpButtonTitle:self.commentButton count:topic.comment placeholder:@"评论"];
    
+    
+    
+    
+    
     
 }
 

@@ -14,20 +14,23 @@
 #import "MJRefresh.h"
 
 #import "ZYCTopic.h"
+#import "ZYCComment.h"
 #import "ZYCTopicCell.h"
 @interface ZYCTopicViewController ()
 /** 帖子模型数组 */
 @property(nonatomic,strong)NSMutableArray *topics;
+
 /** 当前页码 */
 @property(nonatomic,assign)NSInteger page;
 /** 加载下一页时会传该参数 */
 @property(nonatomic,copy)NSString *maxtime;
 /** 上一次的请求参数 */
 @property(nonatomic,strong)NSDictionary *params;
+
+
 @end
 
 @implementation ZYCTopicViewController
-
 
 
 - (NSMutableArray *)topics
@@ -115,6 +118,9 @@ static NSString *const ZYCTopicCellID = @"topic";
         //字典转模型
         NSArray *newTopics = [ZYCTopic objectArrayWithKeyValuesArray:responseObject[@"list"]];
         [self.topics addObjectsFromArray:newTopics];
+        
+
+        
         //刷新表格
         [self.tableView reloadData];
         //结束刷新
@@ -192,6 +198,7 @@ static NSString *const ZYCTopicCellID = @"topic";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ZYCTopicCell *cell = [tableView dequeueReusableCellWithIdentifier:ZYCTopicCellID];
     cell.topic = self.topics[indexPath.row];
+
     return cell;
 }
 #pragma mark - 代理方法

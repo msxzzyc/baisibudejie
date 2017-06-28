@@ -19,8 +19,14 @@ CGFloat const ZYCTopicCellMargin = 10;
 /** 精华-cell-文字内容的Y */
 CGFloat const ZYCTopicCellTextY = 55;
 /** 精华-cell-底部工具条的高度 */
-CGFloat const ZYCTopicCellBottomBarH = 44;
+CGFloat const ZYCTopicCellBottomBarH = 35;
 /** 精华-cell-图片帖子的最大高度 */
 CGFloat const ZYCTopicPictureMaxH = 1000;
 /** 精华-cell-图片帖子一旦超过最大高度，就使用Break高度 */
 CGFloat const ZYCTopicPictureBreakH = 250;
+
+
+/** ZYCUser模型-性别属性值 */
+NSString * const ZYCUserSexMale = @"m";
+/** ZYCUser模型-性别属性值 */
+NSString * const ZYCUserSexFemale = @"f";

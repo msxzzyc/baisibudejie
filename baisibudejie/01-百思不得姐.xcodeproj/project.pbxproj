@@ -130,6 +130,8 @@
 		12D471BC1EFADFD20031B084 /* ZYCVerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D471BB1EFADFD20031B084 /* ZYCVerticalButton.m */; };
 		12DA59AF1F03A7DF00AA5E4C /* ZYCTopicVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12DA59AE1F03A7DF00AA5E4C /* ZYCTopicVideoView.m */; };
 		12DA59B11F03A7FE00AA5E4C /* ZYCTopicVideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12DA59B01F03A7FE00AA5E4C /* ZYCTopicVideoView.xib */; };
+		12DA59B41F03DF1B00AA5E4C /* ZYCUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 12DA59B31F03DF1B00AA5E4C /* ZYCUser.m */; };
+		12DA59B71F03E2D500AA5E4C /* ZYCComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 12DA59B61F03E2D500AA5E4C /* ZYCComment.m */; };
 		12F21B241EF26886000EB24E /* ZYCConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F21B231EF26886000EB24E /* ZYCConst.m */; };
 		12F21B281EF27430000EB24E /* ZYCTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F21B261EF27430000EB24E /* ZYCTopicCell.m */; };
 		12F21B291EF27430000EB24E /* ZYCTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12F21B271EF27430000EB24E /* ZYCTopicCell.xib */; };
@@ -384,6 +386,10 @@
 		12DA59AD1F03A7DE00AA5E4C /* ZYCTopicVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCTopicVideoView.h; sourceTree = "<group>"; };
 		12DA59AE1F03A7DF00AA5E4C /* ZYCTopicVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCTopicVideoView.m; sourceTree = "<group>"; };
 		12DA59B01F03A7FE00AA5E4C /* ZYCTopicVideoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZYCTopicVideoView.xib; sourceTree = "<group>"; };
+		12DA59B21F03DF1B00AA5E4C /* ZYCUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCUser.h; sourceTree = "<group>"; };
+		12DA59B31F03DF1B00AA5E4C /* ZYCUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCUser.m; sourceTree = "<group>"; };
+		12DA59B51F03E2D500AA5E4C /* ZYCComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCComment.h; sourceTree = "<group>"; };
+		12DA59B61F03E2D500AA5E4C /* ZYCComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCComment.m; sourceTree = "<group>"; };
 		12F21B221EF26886000EB24E /* ZYCConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCConst.h; sourceTree = "<group>"; };
 		12F21B231EF26886000EB24E /* ZYCConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCConst.m; sourceTree = "<group>"; };
 		12F21B251EF27430000EB24E /* ZYCTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCTopicCell.h; sourceTree = "<group>"; };
@@ -597,6 +603,10 @@
 				121917771EEEC84200016382 /* ZYCRecommendTag.m */,
 				121917941EEED67F00016382 /* ZYCTopic.h */,
 				121917951EEED67F00016382 /* ZYCTopic.m */,
+				12DA59B21F03DF1B00AA5E4C /* ZYCUser.h */,
+				12DA59B31F03DF1B00AA5E4C /* ZYCUser.m */,
+				12DA59B51F03E2D500AA5E4C /* ZYCComment.h */,
+				12DA59B61F03E2D500AA5E4C /* ZYCComment.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1326,6 +1336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				125980061EE3036700FF00D1 /* MJRefreshStateHeader.m in Sources */,
+				12DA59B41F03DF1B00AA5E4C /* ZYCUser.m in Sources */,
 				1289B5C91EDFD72000571E14 /* MJProperty.m in Sources */,
 				125980001EE3036700FF00D1 /* MJRefreshAutoStateFooter.m in Sources */,
 				1289B5A61EDFCBB000571E14 /* UIProgressView+AFNetworking.m in Sources */,
@@ -1393,6 +1404,7 @@
 				1289B5A11EDFCBB000571E14 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				1200CA8B1E7E4BEE00A96469 /* main.m in Sources */,
 				12597FF91EE3036700FF00D1 /* MJRefreshAutoFooter.m in Sources */,
+				12DA59B71F03E2D500AA5E4C /* ZYCComment.m in Sources */,
 				125980081EE3036700FF00D1 /* MJRefreshConst.m in Sources */,
 				1289B5631EDFCBA400571E14 /* UIImage+GIF.m in Sources */,
 				1200CA861E7E4BEE00A96469 /* AppDelegate.m in Sources */,
