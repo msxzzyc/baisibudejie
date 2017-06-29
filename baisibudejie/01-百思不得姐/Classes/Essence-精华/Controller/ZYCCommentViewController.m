@@ -10,7 +10,7 @@
 #import "ZYCTopicCell.h"
 #import "ZYCTopic.h"
 
-@interface ZYCCommentViewController ()<UITableViewDelegate>
+@interface ZYCCommentViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSpace;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -29,17 +29,24 @@
     [self setUpHeader];
     
 }
-
+//用view包装header，防止直接设置cell宽高带来setframe连锁变化
 - (void)setUpHeader
 {
+    // 创建header
+    UIView *header = [[UIView alloc]init];
+   //添加cell
     ZYCTopicCell *cell = [ZYCTopicCell cell];
     
     cell.topic = self.topic;
+    //从xib中加载的cell必须重新设置宽高
+    cell.size = CGSizeMake(ZYCScreenW,self.topic.cellHeight);
     
-    cell.height = self.topic.cellHeight;
-    self.tableView.tableHeaderView = cell;
+    [header addSubview:cell];
     
-    
+    //header的高度
+    header.height = self.topic.cellHeight + ZYCTopicCellMargin;
+    //设置header
+    self.tableView.tableHeaderView = header;
     
 }
 - (void)setUpBasic
@@ -84,6 +91,35 @@
    
     //退出键盘
     [self.view endEditing:YES];
+}
+
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 10;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"comment"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"comment"];
+    }
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"%zd - %zd",indexPath.section,indexPath.row];
+    
+    return cell;
+}
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return @"评论";
+    
 }
 /*
 #pragma mark - Navigation

@@ -99,6 +99,8 @@
             _cellHeight += videoH + ZYCTopicCellMargin;
             
             
+        }else{
+            _cellHeight += ZYCTopicCellMargin;
         }
         
         //如果有最热评论，计算最热评论view高度
@@ -111,7 +113,7 @@
         }
         
         
-        //加上底部工具条及间隙的高度
+        //加上底部工具条的高度
         _cellHeight += ZYCTopicCellBottomBarH + ZYCTopicCellMargin;
     }
     return _cellHeight;
