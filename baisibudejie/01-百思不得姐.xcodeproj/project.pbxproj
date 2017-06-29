@@ -110,6 +110,8 @@
 		1289B5CE1EDFD72000571E14 /* NSString+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1289B5C41EDFD72000571E14 /* NSString+MJExtension.m */; };
 		1289B5CF1EDFD72000571E14 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 1289B5C51EDFD72000571E14 /* README.md */; };
 		12A2FDC61E8147F8007BF7FE /* ZYCFriendTrendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12A2FDC51E8147F8007BF7FE /* ZYCFriendTrendsViewController.xib */; };
+		12B03D451F04A887002339B8 /* ZYCCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B03D431F04A887002339B8 /* ZYCCommentViewController.m */; };
+		12B03D461F04A887002339B8 /* ZYCCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12B03D441F04A887002339B8 /* ZYCCommentViewController.xib */; };
 		12B24F941E77FFF4006CBFF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12B24F931E77FFF4006CBFF5 /* Assets.xcassets */; };
 		12B24FA21E77FFF4006CBFF5 /* _1______Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B24FA11E77FFF4006CBFF5 /* _1______Tests.m */; };
 		12B24FAD1E77FFF4006CBFF5 /* _1______UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B24FAC1E77FFF4006CBFF5 /* _1______UITests.m */; };
@@ -351,6 +353,9 @@
 		1289B5C41EDFD72000571E14 /* NSString+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MJExtension.m"; sourceTree = "<group>"; };
 		1289B5C51EDFD72000571E14 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		12A2FDC51E8147F8007BF7FE /* ZYCFriendTrendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZYCFriendTrendsViewController.xib; sourceTree = "<group>"; };
+		12B03D421F04A887002339B8 /* ZYCCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCCommentViewController.h; sourceTree = "<group>"; };
+		12B03D431F04A887002339B8 /* ZYCCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCCommentViewController.m; sourceTree = "<group>"; };
+		12B03D441F04A887002339B8 /* ZYCCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZYCCommentViewController.xib; sourceTree = "<group>"; };
 		12B24F841E77FFF4006CBFF5 /* 01-百思不得姐.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "01-百思不得姐.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B24F931E77FFF4006CBFF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		12B24F9D1E77FFF4006CBFF5 /* 01-百思不得姐Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "01-百思不得姐Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -467,6 +472,9 @@
 				12CB4F321EF970D900637DB4 /* ZYCShowPictureViewController.h */,
 				12CB4F331EF970D900637DB4 /* ZYCShowPictureViewController.m */,
 				12CB4F341EF970D900637DB4 /* ZYCShowPictureViewController.xib */,
+				12B03D421F04A887002339B8 /* ZYCCommentViewController.h */,
+				12B03D431F04A887002339B8 /* ZYCCommentViewController.m */,
+				12B03D441F04A887002339B8 /* ZYCCommentViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1171,6 +1179,7 @@
 				12D471B91EFACC0D0031B084 /* ZYCPublishView.xib in Resources */,
 				1289B5581EDFCBA400571E14 /* LICENSE in Resources */,
 				1289B5681EDFCBA400571E14 /* LICENSE.txt in Resources */,
+				12B03D461F04A887002339B8 /* ZYCCommentViewController.xib in Resources */,
 				12B24F941E77FFF4006CBFF5 /* Assets.xcassets in Resources */,
 				121917901EEECE9B00016382 /* ZYCRecommendCategoryCell.xib in Resources */,
 			);
@@ -1416,6 +1425,7 @@
 				1289B5611EDFCBA400571E14 /* SDWebImagePrefetcher.m in Sources */,
 				128091821EE5AA9A005E1F1F /* ZYCRecommendTagsViewController.m in Sources */,
 				1289B59A1EDFCBB000571E14 /* AFSecurityPolicy.m in Sources */,
+				12B03D451F04A887002339B8 /* ZYCCommentViewController.m in Sources */,
 				1289B5621EDFCBA400571E14 /* UIButton+WebCache.m in Sources */,
 				1289B5A81EDFCBB000571E14 /* UIWebView+AFNetworking.m in Sources */,
 				1289B5A21EDFCBB000571E14 /* UIActivityIndicatorView+AFNetworking.m in Sources */,

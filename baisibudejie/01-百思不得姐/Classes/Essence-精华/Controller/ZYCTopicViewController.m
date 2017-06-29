@@ -16,6 +16,7 @@
 #import "ZYCTopic.h"
 #import "ZYCComment.h"
 #import "ZYCTopicCell.h"
+#import "ZYCCommentViewController.h"
 @interface ZYCTopicViewController ()
 /** 帖子模型数组 */
 @property(nonatomic,strong)NSMutableArray *topics;
@@ -212,6 +213,13 @@ static NSString *const ZYCTopicCellID = @"topic";
     return topic.cellHeight;
     
     
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ZYCCommentViewController *cmtVc = [[ZYCCommentViewController alloc]init];
+    
+    [self.navigationController pushViewController:cmtVc animated:YES];
 }
 /*
  // Override to support conditional editing of the table view.
