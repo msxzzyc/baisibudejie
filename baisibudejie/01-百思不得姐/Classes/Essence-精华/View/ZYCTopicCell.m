@@ -50,6 +50,10 @@
 @end
 @implementation ZYCTopicCell
 
++ (instancetype)cell
+{
+    return [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil] firstObject];
+}
 
 - (ZYCTopicVideoView *)videoView
 {
@@ -196,7 +200,8 @@
     
     frame.origin.x += ZYCTopicCellMargin;
     frame.size.width -= 2 *ZYCTopicCellMargin;
-    frame.size.height -= ZYCTopicCellMargin;
+//    frame.size.height -= ZYCTopicCellMargin;
+    frame.size.height = self.topic.cellHeight - ZYCTopicCellMargin;
     frame.origin.y += ZYCTopicCellMargin;
     
     

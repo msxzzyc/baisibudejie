@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZYCCommentViewController">
             <connections>
                 <outlet property="bottomSpace" destination="s0F-Ca-zhh" id="a7B-3g-FFn"/>
+                <outlet property="tableView" destination="Vw9-zH-WU5" id="5WN-Po-woN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

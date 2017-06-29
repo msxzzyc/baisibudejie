@@ -11,4 +11,6 @@
 @interface ZYCTopicCell : UITableViewCell
 /** 帖子模型数据 */
 @property(nonatomic,strong)ZYCTopic *topic;
+
++ (instancetype)cell;
 @end

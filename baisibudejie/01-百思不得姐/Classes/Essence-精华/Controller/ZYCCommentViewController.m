@@ -7,10 +7,15 @@
 //
 
 #import "ZYCCommentViewController.h"
+#import "ZYCTopicCell.h"
+#import "ZYCTopic.h"
 
 @interface ZYCCommentViewController ()<UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSpace;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+
 
 @end
 
@@ -18,12 +23,34 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self setUpBasic];
+    
+    [self setUpHeader];
+    
+}
+
+- (void)setUpHeader
+{
+    ZYCTopicCell *cell = [ZYCTopicCell cell];
+    
+    cell.topic = self.topic;
+    
+    cell.height = self.topic.cellHeight;
+    self.tableView.tableHeaderView = cell;
+    
+    
+    
+}
+- (void)setUpBasic
+{
     self.title = @"评论";
     
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImage:@"comment_nav_item_share_icon" highImage:@"comment_nav_item_share_icon_click" target:self action:nil];
     
     //添加通知中心监听键盘frame变化
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(KeyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    
 }
 
 - (void)KeyboardWillChangeFrame:(NSNotification *)note
@@ -54,6 +81,7 @@
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
+   
     //退出键盘
     [self.view endEditing:YES];
 }

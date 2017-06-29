@@ -218,7 +218,7 @@ static NSString *const ZYCTopicCellID = @"topic";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ZYCCommentViewController *cmtVc = [[ZYCCommentViewController alloc]init];
-    
+    cmtVc.topic = self.topics[indexPath.row];
     [self.navigationController pushViewController:cmtVc animated:YES];
 }
 /*
