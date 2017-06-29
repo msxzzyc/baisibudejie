@@ -28,7 +28,8 @@
 {
     return @{ @"smallImage":@"image0",
               @"largeImage":@"image1",
-              @"middleImage":@"image3"
+              @"middleImage":@"image3",
+              @"ID":@"id"
               };
     
 }

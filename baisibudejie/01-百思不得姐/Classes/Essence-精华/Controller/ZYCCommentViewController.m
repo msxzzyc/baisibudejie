@@ -9,17 +9,27 @@
 #import "ZYCCommentViewController.h"
 #import "ZYCTopicCell.h"
 #import "ZYCTopic.h"
+#import "ZYCComment.h"
+
+#import "MJRefresh.h"
+#import "AFNetworking.h"
+#import "MJExtension.h"
 
 @interface ZYCCommentViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSpace;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+/** 最热评论*/
+@property(nonatomic,strong)NSArray *hotComments;
 
+/** 最新评论*/
+@property(nonatomic,strong)NSMutableArray *latestComments;
 
 @end
 
 @implementation ZYCCommentViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,7 +38,46 @@
     
     [self setUpHeader];
     
+    [self setRefresh];
+    
 }
+
+- (void)setRefresh
+{
+    self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewComments)];
+    
+    [self.tableView.header beginRefreshing];
+    
+}
+
+- (void)loadNewComments
+{
+    //参数
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"a"] = @"dataList";
+    params[@"c"] = @"comment";
+    params[@"data_id"] = self.topic.ID;
+    params[@"hot"] = @"1";
+    
+    [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        //字典转模型
+        //最热评论
+        self.hotComments = [ZYCComment objectArrayWithKeyValuesArray:responseObject[@"hot"]];
+        //最新评论
+        self.latestComments = [ZYCComment objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        
+        [self.tableView reloadData];
+        
+        [self.tableView.header endRefreshing];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        
+        [self.tableView.header endRefreshing];
+    }];
+    
+}
+
 //用view包装header，防止直接设置cell宽高带来setframe连锁变化
 - (void)setUpHeader
 {
@@ -43,7 +92,7 @@
     
     [header addSubview:cell];
     
-    //header的高度
+    //header的高度（加的是顶部间隙高度）
     header.height = self.topic.cellHeight + ZYCTopicCellMargin;
     //设置header
     self.tableView.tableHeaderView = header;
@@ -98,13 +147,48 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    NSInteger hotCount = self.hotComments.count;
+    NSInteger latestCount = self.latestComments.count;
+    
+    if (hotCount) return 2; //有 最热评论 + 最新评论 2组
+    if (latestCount) return 1;//有 最新评论 1组
+    return 0;
+    
+    
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    NSInteger hotCount = self.hotComments.count;
+    NSInteger latestCount = self.latestComments.count;
+    
+    if (section == 0) {
+//        if (hotCount) return hotCount;
+//        if (latestCount) return latestCount;
+        
+        return  hotCount ? hotCount : latestCount;
+}
+    //非第0组
+    return latestCount;
+    
+    
 }
 
+- (ZYCComment *)commentsInIndexPath:(NSIndexPath *)indexPath
+{
+    
+    return [self commentsInSection:indexPath.section] [indexPath.row];
+}
+
+- (NSArray *)commentsInSection:(NSInteger)section
+{
+    NSInteger hotCount = self.hotComments.count;
+    
+    if (section == 0) {
+        return hotCount ? self.hotComments : self.latestComments;
+    }
+    return self.latestComments;
+    
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"comment"];
@@ -112,14 +196,19 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"comment"];
     }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%zd - %zd",indexPath.section,indexPath.row];
     
+    ZYCComment *comment = [self commentsInIndexPath:indexPath];
+    cell.textLabel.text = comment.content;
     return cell;
 }
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return @"评论";
-    
+    NSInteger hotCount = self.hotComments.count;
+
+    if (section == 0) {
+        return hotCount ? @"最热评论" : @"最新评论";
+    }
+    return @"最新评论";
 }
 /*
 #pragma mark - Navigation

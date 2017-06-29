@@ -49,6 +49,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *topCmtContentLabel;
 @end
 @implementation ZYCTopicCell
+- (IBAction)more:(id)sender {
+    
+    UIActionSheet *sheet = [[UIActionSheet alloc]initWithTitle:nil delegate:nil cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"收藏",@"举报",nil];
+    
+    [sheet showInView:self.window];
+}
 
 + (instancetype)cell
 {
