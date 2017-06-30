@@ -27,6 +27,9 @@
 /** 最新评论*/
 @property(nonatomic,strong)NSMutableArray *latestComments;
 
+/** 保存帖子的top_cmt*/
+@property(nonatomic,strong)NSArray *save_top_cmt;
+
 @end
 
 @implementation ZYCCommentViewController
@@ -84,6 +87,15 @@
 {
     // 创建header
     UIView *header = [[UIView alloc]init];
+    //清空top_cmt
+    if (self.topic.top_cmt.count) {
+        self.save_top_cmt = self.topic.top_cmt;
+        
+        self.topic.top_cmt = nil;
+        
+        [self.topic setValue:@0 forKey:@"cellHeight"];
+    }
+    
    //添加cell
     ZYCTopicCell *cell = [ZYCTopicCell cell];
     
@@ -129,6 +141,18 @@
 {
     //清除观察者
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    //恢复帖子的top_cmt
+    if (self.topic.top_cmt.count) {
+        
+        
+        self.topic.top_cmt = self.save_top_cmt;
+        
+        //通过清零重算恢复的模型中的cellHeight
+        [self.topic setValue:@0 forKey:@"cellHeight"];
+    }
+    
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -191,15 +215,15 @@
     return self.latestComments;
     
 }
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-//{
-//    NSInteger hotCount = self.hotComments.count;
-//
-//    if (section == 0) {
-//        return hotCount ? @"最热评论" : @"最新评论";
-//    }
-//    return @"最新评论";
-//}
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSInteger hotCount = self.hotComments.count;
+
+    if (section == 0) {
+        return hotCount ? @"最热评论" : @"最新评论";
+    }
+    return @"最新评论";
+}
 
 //- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 //{
@@ -274,13 +298,13 @@
 {
      ZYCCommentHeaderView *header = [ZYCCommentHeaderView headerViewWithTableView:tableView];
     
-    //设置文字
-    NSInteger hotCount = self.hotComments.count;
-    if (section == 0) {
-       header.title = hotCount ? @"最热评论" : @"最新评论";
-    }else{
-       header.title = @"最新评论";
-    }
+//    //设置文字
+//    NSInteger hotCount = self.hotComments.count;
+//    if (section == 0) {
+//       header.title = hotCount ? @"最热评论" : @"最新评论";
+//    }else{
+//       header.title = @"最新评论";
+//    }
     
     
     return header;
