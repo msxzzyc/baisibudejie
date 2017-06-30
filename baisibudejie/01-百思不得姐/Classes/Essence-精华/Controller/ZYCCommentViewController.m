@@ -10,11 +10,12 @@
 #import "ZYCTopicCell.h"
 #import "ZYCTopic.h"
 #import "ZYCComment.h"
+#import "ZYCCommentHeaderView.h"
 
 #import "MJRefresh.h"
 #import "AFNetworking.h"
 #import "MJExtension.h"
-
+//static NSInteger const ZYCHeaderLabelTag  = 99;
 @interface ZYCCommentViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSpace;
@@ -78,7 +79,7 @@
     
 }
 
-//用view包装header，防止直接设置cell宽高带来setframe连锁变化
+//用view包装header，因为header尺寸很难直接设置，也为防止直接设置cell宽高带来setframe连锁变化
 - (void)setUpHeader
 {
     // 创建header
@@ -104,6 +105,7 @@
     
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImage:@"comment_nav_item_share_icon" highImage:@"comment_nav_item_share_icon_click" target:self action:nil];
     
+    self.tableView.backgroundColor = ZYCGlobalBG;
     //添加通知中心监听键盘frame变化
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(KeyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
     
@@ -189,6 +191,101 @@
     return self.latestComments;
     
 }
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//{
+//    NSInteger hotCount = self.hotComments.count;
+//
+//    if (section == 0) {
+//        return hotCount ? @"最热评论" : @"最新评论";
+//    }
+//    return @"最新评论";
+//}
+
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    //创建头部
+//    UIView *header = [[UIView alloc]init];
+//    header.backgroundColor = ZYCGlobalBG;
+//
+//    //创建label
+//    UILabel *label = [[UILabel alloc]init];
+//    label.textColor = ZYCRGBColor(67, 67, 67);
+//    //label背景色默认为clearcolor，所以此时显示全局背景色
+//    label.width = 200;
+//    label.x = ZYCTopicCellMargin;
+////    label.y = 0;
+//    //随父控件自动调整高度
+//    label.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+//
+//    [header addSubview:label];
+//    //设置文字
+//    NSInteger hotCount = self.hotComments.count;
+//    if (section == 0) {
+//        label.text = hotCount ? @"最热评论" : @"最新评论";
+//    }else{
+//        label.text = @"最新评论";
+//    }
+//
+//    
+//    return header;
+//}
+
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    static NSString *ID = @"header";
+// //先从缓冲池中找header
+//    UIView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:ID];
+//    UILabel *label = nil;
+//    
+//    if (header == nil) {//缓冲池中没有，自己创建
+//        header = [[UITableViewHeaderFooterView alloc]initWithReuseIdentifier:ID];
+//        header.backgroundColor = ZYCGlobalBG;
+//        //创建label
+//        label = [[UILabel alloc]init];
+//        label.textColor = ZYCRGBColor(67, 67, 67);
+//        //label背景色默认为clearcolor，所以此时显示全局背景色
+//        label.width = 200;
+//        label.x = ZYCTopicCellMargin;
+//        //    label.y = 0;
+//        //随父控件自动调整高度
+//        label.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+//
+//        label.tag = ZYCHeaderLabelTag;
+//
+//        [header addSubview:label];
+//      
+//    } else {//从缓冲池中取出来
+//        label = [header viewWithTag:ZYCHeaderLabelTag];
+//    }
+//    
+//    //设置文字
+//    NSInteger hotCount = self.hotComments.count;
+//    if (section == 0) {
+//        label.text = hotCount ? @"最热评论" : @"最新评论";
+//    }else{
+//        label.text = @"最新评论";
+//    }
+//
+//    
+//    return header;
+//}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+     ZYCCommentHeaderView *header = [ZYCCommentHeaderView headerViewWithTableView:tableView];
+    
+    //设置文字
+    NSInteger hotCount = self.hotComments.count;
+    if (section == 0) {
+       header.title = hotCount ? @"最热评论" : @"最新评论";
+    }else{
+       header.title = @"最新评论";
+    }
+    
+    
+    return header;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"comment"];
@@ -201,15 +298,11 @@
     cell.textLabel.text = comment.content;
     return cell;
 }
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    NSInteger hotCount = self.hotComments.count;
 
-    if (section == 0) {
-        return hotCount ? @"最热评论" : @"最新评论";
-    }
-    return @"最新评论";
-}
+
+
+
+
 /*
 #pragma mark - Navigation
 

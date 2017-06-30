@@ -119,6 +119,7 @@
 		12B872C11EEAE74000684317 /* ZYCPushGuideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12B872C01EEAE74000684317 /* ZYCPushGuideView.xib */; };
 		12BC227A1EE8373C008C598E /* ZYCLoginRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12BC22781EE8373C008C598E /* ZYCLoginRegisterViewController.m */; };
 		12BC227B1EE8373C008C598E /* ZYCLoginRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12BC22791EE8373C008C598E /* ZYCLoginRegisterViewController.xib */; };
+		12C5FDD61F061D130042F266 /* ZYCCommentHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C5FDD51F061D130042F266 /* ZYCCommentHeaderView.m */; };
 		12CB4F2E1EF9540300637DB4 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CB4F291EF9540300637DB4 /* DACircularProgressView.m */; };
 		12CB4F2F1EF9540300637DB4 /* DALabeledCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CB4F2B1EF9540300637DB4 /* DALabeledCircularProgressView.m */; };
 		12CB4F301EF9540300637DB4 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 12CB4F2C1EF9540300637DB4 /* LICENSE.md */; };
@@ -370,6 +371,8 @@
 		12BC22771EE8373C008C598E /* ZYCLoginRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCLoginRegisterViewController.h; sourceTree = "<group>"; };
 		12BC22781EE8373C008C598E /* ZYCLoginRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCLoginRegisterViewController.m; sourceTree = "<group>"; };
 		12BC22791EE8373C008C598E /* ZYCLoginRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZYCLoginRegisterViewController.xib; sourceTree = "<group>"; };
+		12C5FDD41F061D130042F266 /* ZYCCommentHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCCommentHeaderView.h; sourceTree = "<group>"; };
+		12C5FDD51F061D130042F266 /* ZYCCommentHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCCommentHeaderView.m; sourceTree = "<group>"; };
 		12CB4F281EF9540300637DB4 /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
 		12CB4F291EF9540300637DB4 /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
 		12CB4F2A1EF9540300637DB4 /* DALabeledCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DALabeledCircularProgressView.h; sourceTree = "<group>"; };
@@ -639,6 +642,8 @@
 				12DA59AD1F03A7DE00AA5E4C /* ZYCTopicVideoView.h */,
 				12DA59AE1F03A7DF00AA5E4C /* ZYCTopicVideoView.m */,
 				12DA59B01F03A7FE00AA5E4C /* ZYCTopicVideoView.xib */,
+				12C5FDD41F061D130042F266 /* ZYCCommentHeaderView.h */,
+				12C5FDD51F061D130042F266 /* ZYCCommentHeaderView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1441,6 +1446,7 @@
 				12597FFF1EE3036700FF00D1 /* MJRefreshAutoNormalFooter.m in Sources */,
 				1259800C1EE3036700FF00D1 /* README.md in Sources */,
 				1289B59C1EDFCBB000571E14 /* AFURLRequestSerialization.m in Sources */,
+				12C5FDD61F061D130042F266 /* ZYCCommentHeaderView.m in Sources */,
 				1289B5661EDFCBA400571E14 /* UIImageView+WebCache.m in Sources */,
 				1259800B1EE3036700FF00D1 /* UIView+MJExtension.m in Sources */,
 				1289B5671EDFCBA400571E14 /* UIView+WebCacheOperation.m in Sources */,
