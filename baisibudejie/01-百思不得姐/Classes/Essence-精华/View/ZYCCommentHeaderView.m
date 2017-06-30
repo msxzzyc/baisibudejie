@@ -29,8 +29,8 @@
 - (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithReuseIdentifier:reuseIdentifier]) {
-        UIView *header = [[UITableViewHeaderFooterView alloc]init];
-        self.backgroundColor = ZYCGlobalBG;
+        
+        self.contentView.backgroundColor = ZYCGlobalBG;
         //创建label
          UILabel *label = [[UILabel alloc]init];
         
@@ -38,13 +38,11 @@
         //label背景色默认为clearcolor，所以此时显示全局背景色
         label.width = 200;
         label.x = ZYCTopicCellMargin;
-        //    label.y = 0;
         //随父控件自动调整高度
         label.autoresizingMask = UIViewAutoresizingFlexibleHeight;
         
+        [self.contentView addSubview:label];
         self.label = label;
-        
-        [self addSubview:label];
     }
     return self;
 }

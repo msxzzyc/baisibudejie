@@ -11,6 +11,7 @@
 @interface ZYCCommentHeaderView : UITableViewHeaderFooterView
 /** 文字数据 */
 @property(nonatomic,copy)NSString *title;
+
 + (instancetype)headerViewWithTableView:(UITableView *)tableView;
 
 @end

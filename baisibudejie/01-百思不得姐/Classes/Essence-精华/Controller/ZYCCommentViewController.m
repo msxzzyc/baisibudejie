@@ -101,12 +101,13 @@
     
     cell.topic = self.topic;
     //从xib中加载的cell必须重新设置宽高
-    cell.size = CGSizeMake(ZYCScreenW,self.topic.cellHeight);
-    
+//    cell.size = CGSizeMake(ZYCScreenW,self.topic.cellHeight);
+    cell.frame = CGRectMake(0, 0, ZYCScreenW, self.topic.cellHeight);
     [header addSubview:cell];
     
     //header的高度（加的是顶部间隙高度）
     header.height = self.topic.cellHeight + ZYCTopicCellMargin;
+//    header.backgroundColor = [UIColor redColor];
     //设置header
     self.tableView.tableHeaderView = header;
     
@@ -159,6 +160,25 @@
     // Dispose of any resources that can be recreated.
 }
 
+/**
+ * 返回第section组的所有评论数组
+ */
+- (NSArray *)commentsInSection:(NSInteger)section
+{
+    
+    
+    if (section == 0) {
+        return self.hotComments.count ? self.hotComments : self.latestComments;
+    }
+    return self.latestComments;
+    
+}
+- (ZYCComment *)commentsInIndexPath:(NSIndexPath *)indexPath
+{
+    
+    return [self commentsInSection:indexPath.section] [indexPath.row];
+}
+
 #pragma mark - UITableViewDelegate
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
@@ -199,31 +219,15 @@
     
 }
 
-- (ZYCComment *)commentsInIndexPath:(NSIndexPath *)indexPath
-{
-    
-    return [self commentsInSection:indexPath.section] [indexPath.row];
-}
-
-- (NSArray *)commentsInSection:(NSInteger)section
-{
-    NSInteger hotCount = self.hotComments.count;
-    
-    if (section == 0) {
-        return hotCount ? self.hotComments : self.latestComments;
-    }
-    return self.latestComments;
-    
-}
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    NSInteger hotCount = self.hotComments.count;
-
-    if (section == 0) {
-        return hotCount ? @"最热评论" : @"最新评论";
-    }
-    return @"最新评论";
-}
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//{
+//    NSInteger hotCount = self.hotComments.count;
+//
+//    if (section == 0) {
+//        return hotCount ? @"最热评论" : @"最新评论";
+//    }
+//    return @"最新评论";
+//}
 
 //- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 //{
@@ -237,7 +241,6 @@
 //    //label背景色默认为clearcolor，所以此时显示全局背景色
 //    label.width = 200;
 //    label.x = ZYCTopicCellMargin;
-////    label.y = 0;
 //    //随父控件自动调整高度
 //    label.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 //
@@ -254,16 +257,25 @@
 //    return header;
 //}
 
+//自定义viewForHeaderInSection,必须重写heightForHeaderInSection方法，否则方法不会调用
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 30;
+    
+}
+
+
+
 //- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 //{
 //    static NSString *ID = @"header";
 // //先从缓冲池中找header
-//    UIView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:ID];
+//    UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:ID];
 //    UILabel *label = nil;
 //    
 //    if (header == nil) {//缓冲池中没有，自己创建
 //        header = [[UITableViewHeaderFooterView alloc]initWithReuseIdentifier:ID];
-//        header.backgroundColor = ZYCGlobalBG;
+//        header.contentView.backgroundColor = ZYCGlobalBG;
 //        //创建label
 //        label = [[UILabel alloc]init];
 //        label.textColor = ZYCRGBColor(67, 67, 67);
@@ -276,7 +288,7 @@
 //
 //        label.tag = ZYCHeaderLabelTag;
 //
-//        [header addSubview:label];
+//        [header.contentView addSubview:label];
 //      
 //    } else {//从缓冲池中取出来
 //        label = [header viewWithTag:ZYCHeaderLabelTag];
@@ -298,13 +310,13 @@
 {
      ZYCCommentHeaderView *header = [ZYCCommentHeaderView headerViewWithTableView:tableView];
     
-//    //设置文字
-//    NSInteger hotCount = self.hotComments.count;
-//    if (section == 0) {
-//       header.title = hotCount ? @"最热评论" : @"最新评论";
-//    }else{
-//       header.title = @"最新评论";
-//    }
+    //设置文字
+    NSInteger hotCount = self.hotComments.count;
+    if (section == 0) {
+       header.title = hotCount ? @"最热评论" : @"最新评论";
+    }else{
+       header.title = @"最新评论";
+    }
     
     
     return header;
