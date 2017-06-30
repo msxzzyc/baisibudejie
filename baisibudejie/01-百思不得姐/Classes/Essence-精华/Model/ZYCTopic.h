@@ -7,7 +7,7 @@
 // 帖子（段子）
 
 #import <UIKit/UIKit.h>//有CGFloat类型的属性必须使用该框架
-
+@class ZYCComment;
 @interface ZYCTopic : NSObject
 /** 用户id */
 @property(nonatomic,copy)NSString *ID;
@@ -57,7 +57,7 @@
 @property(nonatomic,assign)BOOL is_gif;
 
 /** 最热评论 */
-@property(nonatomic,strong)NSArray *top_cmt;
+@property(nonatomic,strong)ZYCComment *top_cmt;
 
 
 /********* 额外的辅助属性 ************/

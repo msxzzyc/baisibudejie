@@ -28,7 +28,7 @@
 @property(nonatomic,strong)NSMutableArray *latestComments;
 
 /** 保存帖子的top_cmt*/
-@property(nonatomic,strong)NSArray *save_top_cmt;
+@property(nonatomic,strong)ZYCComment *save_top_cmt;
 
 @end
 
@@ -88,7 +88,7 @@
     // 创建header
     UIView *header = [[UIView alloc]init];
     //清空top_cmt
-    if (self.topic.top_cmt.count) {
+    if (self.topic.top_cmt) {
         self.save_top_cmt = self.topic.top_cmt;
         
         self.topic.top_cmt = nil;
@@ -144,7 +144,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     //恢复帖子的top_cmt
-    if (self.topic.top_cmt.count) {
+    if (self.topic.top_cmt) {
         
         
         self.topic.top_cmt = self.save_top_cmt;
