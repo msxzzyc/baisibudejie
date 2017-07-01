@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet UILabel *like_countLabel;
+@property (weak, nonatomic) IBOutlet UIButton *voiceBtn;
 
 @end
 
@@ -44,6 +45,15 @@
     self.contentLabel.text = comment.content;
     
     self.like_countLabel.text =  [NSString stringWithFormat:@"%zd",comment.like_count];
+    
+    
+    if (comment.voiceuri.length) {//没有音频时voiceuri传来的是空字符串@"",所以要用字符串长度来判断
+        self.voiceBtn.hidden = NO;
+        self.voiceBtn.titleLabel.text = [NSString stringWithFormat:@"%zd''",comment.voicetime];
+        
+    }else self.voiceBtn.hidden = YES;
+    
+    
     
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

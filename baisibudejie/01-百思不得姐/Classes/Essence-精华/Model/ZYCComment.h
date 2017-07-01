@@ -11,6 +11,8 @@
 @interface ZYCComment : NSObject
 /** 评论的音频时长 */
 @property(nonatomic,assign)NSInteger voicetime;
+/** 评论的音频路径 */
+@property(nonatomic,copy)NSString *voiceuri;
 /** 评论的文字内容 */
 @property(nonatomic,copy)NSString *content;
 /** 评论被赞数 */
