@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface ZYCUser : NSObject
+
 /** 用户名 */
 @property(nonatomic,copy)NSString *username;
 /** 头像 */

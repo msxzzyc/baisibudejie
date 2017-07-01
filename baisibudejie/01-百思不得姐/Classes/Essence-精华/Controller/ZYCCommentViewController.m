@@ -10,6 +10,8 @@
 #import "ZYCTopicCell.h"
 #import "ZYCTopic.h"
 #import "ZYCComment.h"
+#import "ZYCUser.h"
+
 #import "ZYCCommentHeaderView.h"
 #import "ZYCCommentCell.h"
 
@@ -33,10 +35,24 @@ static NSString *const ZYCCommentCellID = @"comment";
 /** 保存帖子的top_cmt*/
 @property(nonatomic,strong)ZYCComment *save_top_cmt;
 
+/** 保存当前页码 */
+@property(nonatomic,assign)NSInteger page;
+
+/** manager*/
+@property(nonatomic,strong)AFHTTPSessionManager *manager;
+
+
+
 @end
 
 @implementation ZYCCommentViewController
-
+- (AFHTTPSessionManager *)manager
+{
+    if (!_manager) {
+        _manager = [AFHTTPSessionManager manager];
+    }
+    return _manager;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -55,10 +71,69 @@ static NSString *const ZYCCommentCellID = @"comment";
     
     [self.tableView.header beginRefreshing];
     
+    self.tableView.footer =[MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreComments)];
+    self.tableView.footer.hidden = YES;
+    
+    
 }
+
+- (void)loadMoreComments
+{
+    //结束之前所有的请求 (会调用被取消请求的failure block)
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    
+    //页数
+    NSInteger page = self.page+1;
+    
+    //参数
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"a"] = @"dataList";
+    params[@"c"] = @"comment";
+    params[@"data_id"] = self.topic.ID;
+    
+    params[@"page"] = @(page);
+    ZYCComment *cmt = [self.latestComments lastObject];
+    params[@"lastcid"] = cmt.ID;
+    
+    [self.manager GET:@"http://api.budejie.com/api/api_open.php" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        //字典转模型
+        
+        //最新评论
+        NSArray *newComments = [ZYCComment objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        
+        [self.latestComments addObjectsFromArray:newComments];
+        
+        //页码
+        self.page = page;
+        //刷新数据
+        [self.tableView reloadData];
+       
+//        ZYCLog(@"%@",responseObject[@"total"]);
+        //控制footer的状态
+        NSInteger total = [responseObject[@"total"] integerValue];
+        if (self.latestComments.count >= total) {//评论通过下拉刷新已全部加载完毕
+            //            [self.tableView.footer noticeNoMoreData];
+            self.tableView.footer.hidden = YES;
+        }else {//结束刷新状态
+            [self.tableView.footer endRefreshing];
+        }
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        
+        [self.tableView.footer endRefreshing];
+    }];
+    
+   
+}
+
 
 - (void)loadNewComments
 {
+    //结束之前所有的请求 (会调用被取消请求的failure block)
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    
     //参数
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"a"] = @"dataList";
@@ -66,7 +141,8 @@ static NSString *const ZYCCommentCellID = @"comment";
     params[@"data_id"] = self.topic.ID;
     params[@"hot"] = @"1";
     
-    [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+    
+    [self.manager GET:@"http://api.budejie.com/api/api_open.php" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
         
         //字典转模型
         //最热评论
@@ -74,9 +150,21 @@ static NSString *const ZYCCommentCellID = @"comment";
         //最新评论
         self.latestComments = [ZYCComment objectArrayWithKeyValuesArray:responseObject[@"data"]];
         
+        //页码
+        self.page = 1;
+        //刷新数据
         [self.tableView reloadData];
-        
+        //结束刷新状态
         [self.tableView.header endRefreshing];
+        
+//        ZYCLog(@"%@",responseObject[@"total"]);
+        //控制footer的状态
+        NSInteger total = [responseObject[@"total"] integerValue];
+        if (self.latestComments.count >= total) {//评论通过下拉刷新已全部加载完毕
+//            [self.tableView.footer noticeNoMoreData];
+            self.tableView.footer.hidden = YES;
+        }
+        
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
         
@@ -131,6 +219,13 @@ static NSString *const ZYCCommentCellID = @"comment";
     self.tableView.estimatedRowHeight = 44;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
+    //去掉分割线
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    //内边距
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, ZYCTopicCellMargin, 0);
+
+
 }
 
 - (void)KeyboardWillChangeFrame:(NSNotification *)note
@@ -162,7 +257,9 @@ static NSString *const ZYCCommentCellID = @"comment";
         [self.topic setValue:@0 forKey:@"cellHeight"];
     }
     
-    
+    //控制器销毁的同时，结束之前所有任务
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+//    [self.manager invalidateSessionCancelingTasks:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -213,8 +310,12 @@ static NSString *const ZYCCommentCellID = @"comment";
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+   
+    
     NSInteger hotCount = self.hotComments.count;
     NSInteger latestCount = self.latestComments.count;
+    //刷新数据时适时隐藏尾部控件
+    tableView.footer.hidden = (latestCount == 0);
     
     if (section == 0) {
 //        if (hotCount) return hotCount;

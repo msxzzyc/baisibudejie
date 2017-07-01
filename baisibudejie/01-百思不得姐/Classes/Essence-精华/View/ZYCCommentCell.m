@@ -29,7 +29,11 @@
 }
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    
+    //添加背景图片设置分割线
+    UIImageView *bgView = [[UIImageView alloc]init];
+    bgView.image = [UIImage imageNamed:@"mainCellBackground"];
+    self.backgroundView = bgView;
 }
 
 - (void)setComment:(ZYCComment *)comment
@@ -55,6 +59,16 @@
     
     
     
+}
+
+- (void)setFrame:(CGRect)frame
+{
+    frame.origin.x = ZYCTopicCellMargin;
+    frame.size.width -= 2*ZYCTopicCellMargin;
+    
+//    frame.size.height -= 1;
+    
+    [super setFrame:frame];
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

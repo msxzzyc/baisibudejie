@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 @class ZYCTopic;
+@class ZYCComment;
+@class ZYCUser;
 @interface ZYCCommentViewController : UIViewController
 /** 帖子模型数据 */
 @property(nonatomic,strong)ZYCTopic *topic;

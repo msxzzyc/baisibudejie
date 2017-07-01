@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class ZYCComment;
+@class ZYCUser;
 @interface ZYCCommentCell : UITableViewCell
 /** 帖子模型数据 */
 @property(nonatomic,strong)ZYCComment *comment;

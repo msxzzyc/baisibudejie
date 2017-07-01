@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>//有CGFloat类型的属性必须使用该框架
 @class ZYCComment;
+@class ZYCUser;
 @interface ZYCTopic : NSObject
 /** 用户id */
 @property(nonatomic,copy)NSString *ID;

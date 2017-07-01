@@ -8,6 +8,10 @@
 
 #import "ZYCComment.h"
 #import "ZYCUser.h"
+#import "MJExtension.h"
 @implementation ZYCComment
-
++ (NSDictionary *)replacedKeyFromPropertyName
+{
+    return @{@"ID":@"id"};
+}
 @end
