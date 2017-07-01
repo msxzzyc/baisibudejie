@@ -59,6 +59,9 @@
 /** 最热评论 */
 @property(nonatomic,strong)ZYCComment *top_cmt;
 
+/** qzone_uid */
+//@property(nonatomic,copy)NSString *qzone_uid;
+
 
 /********* 额外的辅助属性 ************/
 @property(nonatomic,assign,readonly)CGFloat cellHeight;

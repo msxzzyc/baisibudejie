@@ -11,11 +11,14 @@
 #import "ZYCTopic.h"
 #import "ZYCComment.h"
 #import "ZYCCommentHeaderView.h"
+#import "ZYCCommentCell.h"
 
 #import "MJRefresh.h"
 #import "AFNetworking.h"
 #import "MJExtension.h"
 //static NSInteger const ZYCHeaderLabelTag  = 99;
+
+static NSString *const ZYCCommentCellID = @"comment";
 @interface ZYCCommentViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSpace;
@@ -118,9 +121,15 @@
     
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImage:@"comment_nav_item_share_icon" highImage:@"comment_nav_item_share_icon_click" target:self action:nil];
     
+    //背景色
     self.tableView.backgroundColor = ZYCGlobalBG;
     //添加通知中心监听键盘frame变化
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(KeyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    //注册cell
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ZYCCommentCell class]) bundle:nil] forCellReuseIdentifier:ZYCCommentCellID];
+    //设置cell行高
+    self.tableView.estimatedRowHeight = 44;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
     
 }
 
@@ -324,14 +333,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"comment"];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"comment"];
-    }
+    ZYCCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:ZYCCommentCellID];
+
+    cell.comment = [self commentsInIndexPath:indexPath];
     
     
-    ZYCComment *comment = [self commentsInIndexPath:indexPath];
-    cell.textLabel.text = comment.content;
     return cell;
 }
 

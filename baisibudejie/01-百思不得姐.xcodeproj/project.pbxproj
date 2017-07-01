@@ -120,6 +120,8 @@
 		12BC227A1EE8373C008C598E /* ZYCLoginRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12BC22781EE8373C008C598E /* ZYCLoginRegisterViewController.m */; };
 		12BC227B1EE8373C008C598E /* ZYCLoginRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12BC22791EE8373C008C598E /* ZYCLoginRegisterViewController.xib */; };
 		12C5FDD61F061D130042F266 /* ZYCCommentHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C5FDD51F061D130042F266 /* ZYCCommentHeaderView.m */; };
+		12C5FDDA1F0694C20042F266 /* ZYCCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C5FDD81F0694C20042F266 /* ZYCCommentCell.m */; };
+		12C5FDDB1F0694C20042F266 /* ZYCCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12C5FDD91F0694C20042F266 /* ZYCCommentCell.xib */; };
 		12CB4F2E1EF9540300637DB4 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CB4F291EF9540300637DB4 /* DACircularProgressView.m */; };
 		12CB4F2F1EF9540300637DB4 /* DALabeledCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CB4F2B1EF9540300637DB4 /* DALabeledCircularProgressView.m */; };
 		12CB4F301EF9540300637DB4 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 12CB4F2C1EF9540300637DB4 /* LICENSE.md */; };
@@ -373,6 +375,9 @@
 		12BC22791EE8373C008C598E /* ZYCLoginRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZYCLoginRegisterViewController.xib; sourceTree = "<group>"; };
 		12C5FDD41F061D130042F266 /* ZYCCommentHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCCommentHeaderView.h; sourceTree = "<group>"; };
 		12C5FDD51F061D130042F266 /* ZYCCommentHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCCommentHeaderView.m; sourceTree = "<group>"; };
+		12C5FDD71F0694C20042F266 /* ZYCCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCCommentCell.h; sourceTree = "<group>"; };
+		12C5FDD81F0694C20042F266 /* ZYCCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCCommentCell.m; sourceTree = "<group>"; };
+		12C5FDD91F0694C20042F266 /* ZYCCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZYCCommentCell.xib; sourceTree = "<group>"; };
 		12CB4F281EF9540300637DB4 /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
 		12CB4F291EF9540300637DB4 /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
 		12CB4F2A1EF9540300637DB4 /* DALabeledCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DALabeledCircularProgressView.h; sourceTree = "<group>"; };
@@ -644,6 +649,9 @@
 				12DA59B01F03A7FE00AA5E4C /* ZYCTopicVideoView.xib */,
 				12C5FDD41F061D130042F266 /* ZYCCommentHeaderView.h */,
 				12C5FDD51F061D130042F266 /* ZYCCommentHeaderView.m */,
+				12C5FDD71F0694C20042F266 /* ZYCCommentCell.h */,
+				12C5FDD81F0694C20042F266 /* ZYCCommentCell.m */,
+				12C5FDD91F0694C20042F266 /* ZYCCommentCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1166,6 +1174,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				12A2FDC61E8147F8007BF7FE /* ZYCFriendTrendsViewController.xib in Resources */,
+				12C5FDDB1F0694C20042F266 /* ZYCCommentCell.xib in Resources */,
 				1289B56B1EDFCBA400571E14 /* SVProgressHUD.bundle in Resources */,
 				125980071EE3036700FF00D1 /* MJRefresh.bundle in Resources */,
 				12B872C11EEAE74000684317 /* ZYCPushGuideView.xib in Resources */,
@@ -1421,6 +1430,7 @@
 				12DA59B71F03E2D500AA5E4C /* ZYCComment.m in Sources */,
 				125980081EE3036700FF00D1 /* MJRefreshConst.m in Sources */,
 				1289B5631EDFCBA400571E14 /* UIImage+GIF.m in Sources */,
+				12C5FDDA1F0694C20042F266 /* ZYCCommentCell.m in Sources */,
 				1200CA861E7E4BEE00A96469 /* AppDelegate.m in Sources */,
 				1219177C1EEEC84200016382 /* ZYCRecommendTag.m in Sources */,
 				1289B5CB1EDFD72000571E14 /* NSObject+MJCoding.m in Sources */,

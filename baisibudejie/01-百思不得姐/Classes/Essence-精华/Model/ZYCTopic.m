@@ -32,6 +32,7 @@
               @"middleImage":@"image3",
               @"ID":@"id",
               @"top_cmt":@"top_cmt[0]"//直接将top_cmt数组中的第0个字典转成模型属性
+//              @"qzone_uid":@"top_cmt[0].user.qzone_uid"
               };
     
 }
@@ -118,6 +119,8 @@
         
         //加上底部工具条的高度
         _cellHeight += ZYCTopicCellBottomBarH + ZYCTopicCellMargin;
+        
+//        ZYCLog(@"%@",self.qzone_uid);
     }
     return _cellHeight;
 }
