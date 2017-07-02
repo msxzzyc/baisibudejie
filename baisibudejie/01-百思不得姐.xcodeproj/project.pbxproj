@@ -137,6 +137,7 @@
 		12DA59B11F03A7FE00AA5E4C /* ZYCTopicVideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12DA59B01F03A7FE00AA5E4C /* ZYCTopicVideoView.xib */; };
 		12DA59B41F03DF1B00AA5E4C /* ZYCUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 12DA59B31F03DF1B00AA5E4C /* ZYCUser.m */; };
 		12DA59B71F03E2D500AA5E4C /* ZYCComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 12DA59B61F03E2D500AA5E4C /* ZYCComment.m */; };
+		12EAA4311F089DDC00C2CF3D /* ZYCTopWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 12EAA4301F089DDC00C2CF3D /* ZYCTopWindow.m */; };
 		12F21B241EF26886000EB24E /* ZYCConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F21B231EF26886000EB24E /* ZYCConst.m */; };
 		12F21B281EF27430000EB24E /* ZYCTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F21B261EF27430000EB24E /* ZYCTopicCell.m */; };
 		12F21B291EF27430000EB24E /* ZYCTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12F21B271EF27430000EB24E /* ZYCTopicCell.xib */; };
@@ -403,6 +404,8 @@
 		12DA59B31F03DF1B00AA5E4C /* ZYCUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCUser.m; sourceTree = "<group>"; };
 		12DA59B51F03E2D500AA5E4C /* ZYCComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCComment.h; sourceTree = "<group>"; };
 		12DA59B61F03E2D500AA5E4C /* ZYCComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCComment.m; sourceTree = "<group>"; };
+		12EAA42F1F089DDC00C2CF3D /* ZYCTopWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCTopWindow.h; sourceTree = "<group>"; };
+		12EAA4301F089DDC00C2CF3D /* ZYCTopWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCTopWindow.m; sourceTree = "<group>"; };
 		12F21B221EF26886000EB24E /* ZYCConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCConst.h; sourceTree = "<group>"; };
 		12F21B231EF26886000EB24E /* ZYCConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCConst.m; sourceTree = "<group>"; };
 		12F21B251EF27430000EB24E /* ZYCTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCTopicCell.h; sourceTree = "<group>"; };
@@ -608,6 +611,8 @@
 				12B872BD1EEAE73400684317 /* ZYCPushGuideView.h */,
 				12B872BE1EEAE73400684317 /* ZYCPushGuideView.m */,
 				12B872C01EEAE74000684317 /* ZYCPushGuideView.xib */,
+				12EAA42F1F089DDC00C2CF3D /* ZYCTopWindow.h */,
+				12EAA4301F089DDC00C2CF3D /* ZYCTopWindow.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1358,6 +1363,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12EAA4311F089DDC00C2CF3D /* ZYCTopWindow.m in Sources */,
 				125980061EE3036700FF00D1 /* MJRefreshStateHeader.m in Sources */,
 				12DA59B41F03DF1B00AA5E4C /* ZYCUser.m in Sources */,
 				1289B5C91EDFD72000571E14 /* MJProperty.m in Sources */,

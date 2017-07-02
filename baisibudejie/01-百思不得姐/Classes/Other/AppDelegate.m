@@ -10,6 +10,7 @@
 
 #import "ZYCTabBarController.h"
 #import "ZYCPushGuideView.h"
+#import "ZYCTopWindow.h"
 @interface AppDelegate ()
 
 @end
@@ -34,7 +35,18 @@
     //显示推送引导
     [ZYCPushGuideView show];
     
+    //添加一个window，点击这个window可以让屏幕上的scrollview滚到最顶部
+    [ZYCTopWindow show];
     
+    NSArray *windows = [UIApplication sharedApplication].windows;
+    
+    for (UIWindow *window in windows) {
+        
+        if (window.rootViewController == nil) {
+            UIViewController *vc = [[UIViewController alloc]initWithNibName:nil bundle:nil];
+            window.rootViewController = vc;
+        }
+    }
     
     return YES;
 }
@@ -58,7 +70,8 @@
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    
 }
 
 
