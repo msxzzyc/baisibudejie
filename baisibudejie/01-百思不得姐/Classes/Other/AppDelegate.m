@@ -38,16 +38,15 @@
     //添加一个window，点击这个window可以让屏幕上的scrollview滚到最顶部
     [ZYCTopWindow show];
     
-    NSArray *windows = [UIApplication sharedApplication].windows;
     
+    //处理window没有根控制器的报错
+    NSArray *windows = [UIApplication sharedApplication].windows;
     for (UIWindow *window in windows) {
-        
         if (window.rootViewController == nil) {
             UIViewController *vc = [[UIViewController alloc]initWithNibName:nil bundle:nil];
             window.rootViewController = vc;
         }
     }
-    
     return YES;
 }
 
