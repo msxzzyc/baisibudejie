@@ -10,4 +10,5 @@
 
 @interface ZYCTopWindow : NSObject
 + (void)show;
++ (void)hide;
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "ZYCLoginRegisterViewController.h"
-
+#import "ZYCTopWindow.h"
 @interface ZYCLoginRegisterViewController ()
 //@property (weak, nonatomic) IBOutlet UITextField *phoneField;
 /** 登录框距离控制器view左边框的间距*/
@@ -40,8 +40,17 @@
     
 }
 - (IBAction)back:(id)sender {
-    
+    //恢复状态栏
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+//    [ZYCTopWindow show];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    //设置状态栏颜色
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+//    [ZYCTopWindow hide];
 }
 
 - (void)viewDidLoad {
@@ -72,10 +81,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-//设置状态栏颜色
-- (UIStatusBarStyle)preferredStatusBarStyle
-{
-    
-    return UIStatusBarStyleLightContent;
-}
+////设置状态栏颜色
+//- (UIStatusBarStyle)preferredStatusBarStyle
+//{
+//    
+//    return UIStatusBarStyleLightContent;
+//}
 @end
