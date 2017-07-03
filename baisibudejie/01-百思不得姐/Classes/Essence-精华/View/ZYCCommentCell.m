@@ -70,6 +70,23 @@
     
     [super setFrame:frame];
 }
+//使cell有资格成为第一响应者
+- (BOOL)canBecomeFirstResponder
+{
+    
+    return YES;
+    
+}
+/**
+ *cell能执行哪些操作 return yes支持这些操作
+ 
+ */
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender
+{
+    //    if (action == @selector(cut:)||action == @selector(copy:)||action == @selector(paste:)) return YES;
+    return NO;
+    
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

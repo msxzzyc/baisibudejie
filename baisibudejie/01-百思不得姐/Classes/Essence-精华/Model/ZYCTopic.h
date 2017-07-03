@@ -57,8 +57,7 @@
 /** 是否gif图片 */
 @property(nonatomic,assign)BOOL is_gif;
 
-/** 最热评论 */
-@property(nonatomic,strong)ZYCComment *top_cmt;
+
 
 /** qzone_uid */
 //@property(nonatomic,copy)NSString *qzone_uid;
@@ -78,6 +77,9 @@
 
 /** 视频控件的frame */
 @property(nonatomic,assign,readonly)CGRect videoViewFrame;
+
+/** 最热评论 */
+@property(nonatomic,strong)ZYCComment *top_cmt;
 
 @end
 

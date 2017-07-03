@@ -301,9 +301,61 @@ static NSString *const ZYCCommentCellID = @"comment";
    
     //退出键盘
     [self.view endEditing:YES];
+    
+    [[UIMenuController sharedMenuController] setMenuVisible:NO animated:YES];
+}
+#pragma mark - UIMenuController处理
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIMenuController * menu = [UIMenuController sharedMenuController];
+    if (menu.isMenuVisible) {
+        [menu setMenuVisible:NO animated:YES];
+    }else{
+        
+        //被点击的cell
+        ZYCCommentCell *cell = (ZYCCommentCell *)[tableView cellForRowAtIndexPath:indexPath];
+        //1.cell要成为第一响应者(告诉menuController支持哪些操作，这些操作如何处理)
+        [cell becomeFirstResponder];
+        //2.显示menuController
+        
+        //targetRect:menuController需要指向的矩形框
+        //tagetView:targetRect会以tagetView的左上角为坐标原点
+        //    [menu setTargetRect:self.frame inView:self.superview];
+        
+        //添加menuItem（点击item默认会调用控制器的方法）
+        UIMenuItem *ding = [[UIMenuItem alloc]initWithTitle:@"顶" action:@selector(ding:)];
+        UIMenuItem *reply = [[UIMenuItem alloc]initWithTitle:@"回复" action:@selector(reply:)];
+        UIMenuItem *report = [[UIMenuItem alloc]initWithTitle:@"举报" action:@selector(report:)];
+        menu.menuItems = @[ding,reply,report];
+        CGRect rect = CGRectMake(0, cell.height*0.5, cell.width, cell.height*0.5);
+        [menu setTargetRect:rect inView:cell];
+        [menu setMenuVisible:YES animated:YES];
+    }
+    
+    
+ 
 }
 
 
+- (void)ding:(UIMenuController *)menu
+{
+    //拿到被顶的评论
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    NSLog(@"%s %@",__func__,[self commentsInIndexPath:indexPath].content);
+    
+}
+- (void)reply:(UIMenuController *)menu
+{
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    NSLog(@"%s %@",__func__,[self commentsInIndexPath:indexPath].content);
+}
+- (void)report:(UIMenuController *)menu
+{
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    NSLog(@"%s %@",__func__,[self commentsInIndexPath:indexPath].content);
+}
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -382,8 +434,6 @@ static NSString *const ZYCCommentCellID = @"comment";
     return 30;
     
 }
-
-
 
 //- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 //{
