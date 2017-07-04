@@ -56,6 +56,9 @@
 {
     [super layoutSubviews];
 
+    //标记按钮是否已经添加过监听器
+    static BOOL added = NO;
+    
     CGFloat width = self.width;
     CGFloat height = self.height;
     
@@ -70,7 +73,7 @@
     CGFloat buttonW = width/5;
     CGFloat buttonH = height;
     NSInteger index = 0;
-    for (UIView *button in self.subviews) {
+    for (UIControl *button in self.subviews) {
 //        if (![button isKindOfClass:NSClassFromString(@"UITabBarButton")]) continue;
         if (![button isKindOfClass:[UIControl class]] || button == self.publishButton ) continue;
         
@@ -81,9 +84,22 @@
        
         //增加索引
         index++;
+        
+        //监听按钮点击
+        if (added == NO) {
+            [button addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
+        }
+        
     }
     
+    added = YES;
    
 }
 
+- (void)buttonClick
+{
+    //发通知
+    [ZYCNoteCenter postNotificationName:ZYCDidSelectNotification object:nil];
+    
+}
 @end

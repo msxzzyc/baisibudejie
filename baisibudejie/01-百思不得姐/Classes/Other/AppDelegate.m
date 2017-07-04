@@ -11,7 +11,7 @@
 #import "ZYCTabBarController.h"
 #import "ZYCPushGuideView.h"
 #import "ZYCTopWindow.h"
-@interface AppDelegate ()
+@interface AppDelegate ()<UITabBarControllerDelegate>
 
 @end
 
@@ -25,8 +25,10 @@
     self.window.frame = [UIScreen mainScreen].bounds;
     
     //设置窗口的根控制器
-    
+//    ZYCTabBarController *tabBarController = [[ZYCTabBarController alloc]init];
+//    tabBarController.delegate = self;
     self.window.rootViewController = [[ZYCTabBarController alloc]init];
+    
     
     //显示窗口
     [self.window makeKeyAndVisible];
@@ -49,6 +51,15 @@
     }
     return YES;
 }
+
+#pragma mark - <UITabBarControllerDelegate>
+//- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+//{
+//    
+//    //发出一个通知
+//    [ZYCNoteCenter postNotificationName:ZYCDidSelectNotification object:nil userInfo:nil];
+//    
+//}
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {

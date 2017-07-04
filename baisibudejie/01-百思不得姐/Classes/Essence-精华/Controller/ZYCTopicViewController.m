@@ -28,7 +28,8 @@
 /** 上一次的请求参数 */
 @property(nonatomic,strong)NSDictionary *params;
 
-
+/** 被点击控制器的index */
+@property(nonatomic,assign)NSInteger lastSelectedIndex;
 @end
 
 @implementation ZYCTopicViewController
@@ -51,6 +52,7 @@
     //添加刷新控件
     [self setUpRefresh];
     
+    
 }
 //初始化表格
 static NSString *const ZYCTopicCellID = @"topic";
@@ -72,8 +74,22 @@ static NSString *const ZYCTopicCellID = @"topic";
     //注册cell
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ZYCTopicCell class]) bundle:nil] forCellReuseIdentifier:ZYCTopicCellID];
     
-    
+    //监听tabBar点击的通知
+    [ZYCNoteCenter addObserver:self selector:@selector(tabBarSelect) name:ZYCDidSelectNotification object:nil];
 }
+
+- (void)tabBarSelect
+{
+    //如果是连续点击两次精华，直接刷新
+    if (self.lastSelectedIndex == self.tabBarController.selectedIndex &&
+//        self.tabBarController.selectedViewController == self.navigationController &&
+        self.view.isShowingOnKeyWindow) {
+        [self.tableView.header beginRefreshing];
+    }
+    //记录这一次选中的索引
+    self.lastSelectedIndex = self.tabBarController.selectedIndex;
+}
+
 - (void)setUpRefresh
 {
     

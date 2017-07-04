@@ -33,3 +33,10 @@ NSString * const ZYCUserSexFemale = @"f";
 
 /** 精华-cell-最热评论标题的最大高度 */
 CGFloat const ZYCTopicCellTopCmtTitleH = 20;
+
+/** tabBar被选中的通知名字 */
+NSString * const ZYCDidSelectNotification = @"ZYCDidSelectNotification";
+/** tabBar被选中的通知 - 被选中的控制器的 index key */
+NSString * const ZYCSelectedControllerIndexKey = @"ZYCSelectedControllerIndexKey";
+/** tabBar被选中的通知 - 被选中的控制器  key */
+NSString * const ZYCSelectedControllerKey = @"ZYCSelectedControllerKey";
