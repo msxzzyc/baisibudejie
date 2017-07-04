@@ -107,7 +107,8 @@
     _topic = topic;
     
     //设置其他控件
-    [self.profileImageView sd_setImageWithURL:[NSURL URLWithString:topic.profile_image] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];
+    //头像显示圆形
+    [self.profileImageView setHeader:topic.profile_image];
     self.nameLabel.text = topic.name;
     //发帖时间
     self.creatTimeLabel.text = topic.create_time;
@@ -204,8 +205,9 @@
 {
     
     
-    frame.origin.x += ZYCTopicCellMargin;
-    frame.size.width -= 2 *ZYCTopicCellMargin;
+//    frame.origin.x += ZYCTopicCellMargin;//改为两边不留间隙
+//    frame.size.width -= 2 *ZYCTopicCellMargin;
+    
 //    frame.size.height -= ZYCTopicCellMargin;
     frame.size.height = self.topic.cellHeight - ZYCTopicCellMargin;
     frame.origin.y += ZYCTopicCellMargin;
@@ -219,6 +221,9 @@
     bgview.image = [UIImage imageNamed:@"mainCellBackground"];
     self.backgroundView = bgview;
     
+//    //头像变圆
+//    self.profileImageView.layer.cornerRadius = self.profileImageView.width * 0.5;
+//    self.profileImageView.layer.masksToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

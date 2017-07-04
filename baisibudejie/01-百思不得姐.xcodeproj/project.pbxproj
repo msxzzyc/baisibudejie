@@ -129,6 +129,8 @@
 		12CB4F351EF970D900637DB4 /* ZYCShowPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CB4F331EF970D900637DB4 /* ZYCShowPictureViewController.m */; };
 		12CB4F361EF970D900637DB4 /* ZYCShowPictureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12CB4F341EF970D900637DB4 /* ZYCShowPictureViewController.xib */; };
 		12CB4F391EF976E500637DB4 /* ZYCProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CB4F381EF976E500637DB4 /* ZYCProgressView.m */; };
+		12CC35401F0BA20A006CF4F4 /* UIImage+ZYCExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CC353F1F0BA20A006CF4F4 /* UIImage+ZYCExtention.m */; };
+		12CC35431F0BF414006CF4F4 /* UIImageView+ZYCExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CC35421F0BF414006CF4F4 /* UIImageView+ZYCExtention.m */; };
 		12CDFC171E7EA7E50056401F /* ZYCNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CDFC161E7EA7E50056401F /* ZYCNavigationController.m */; };
 		12D471B81EFACC0D0031B084 /* ZYCPublishView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D471B61EFACC0D0031B084 /* ZYCPublishView.m */; };
 		12D471B91EFACC0D0031B084 /* ZYCPublishView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12D471B71EFACC0D0031B084 /* ZYCPublishView.xib */; };
@@ -390,6 +392,10 @@
 		12CB4F341EF970D900637DB4 /* ZYCShowPictureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZYCShowPictureViewController.xib; sourceTree = "<group>"; };
 		12CB4F371EF976E500637DB4 /* ZYCProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCProgressView.h; sourceTree = "<group>"; };
 		12CB4F381EF976E500637DB4 /* ZYCProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCProgressView.m; sourceTree = "<group>"; };
+		12CC353E1F0BA20A006CF4F4 /* UIImage+ZYCExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ZYCExtention.h"; sourceTree = "<group>"; };
+		12CC353F1F0BA20A006CF4F4 /* UIImage+ZYCExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ZYCExtention.m"; sourceTree = "<group>"; };
+		12CC35411F0BF414006CF4F4 /* UIImageView+ZYCExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ZYCExtention.h"; sourceTree = "<group>"; };
+		12CC35421F0BF414006CF4F4 /* UIImageView+ZYCExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ZYCExtention.m"; sourceTree = "<group>"; };
 		12CDFC151E7EA7E50056401F /* ZYCNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCNavigationController.h; sourceTree = "<group>"; };
 		12CDFC161E7EA7E50056401F /* ZYCNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCNavigationController.m; sourceTree = "<group>"; };
 		12D471B51EFACC0D0031B084 /* ZYCPublishView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCPublishView.h; sourceTree = "<group>"; };
@@ -578,6 +584,10 @@
 				12F21B231EF26886000EB24E /* ZYCConst.m */,
 				1209F7DA1EF5062E00657A55 /* NSDate+ZYCExtention.h */,
 				1209F7DB1EF5062E00657A55 /* NSDate+ZYCExtention.m */,
+				12CC353E1F0BA20A006CF4F4 /* UIImage+ZYCExtention.h */,
+				12CC353F1F0BA20A006CF4F4 /* UIImage+ZYCExtention.m */,
+				12CC35411F0BF414006CF4F4 /* UIImageView+ZYCExtention.h */,
+				12CC35421F0BF414006CF4F4 /* UIImageView+ZYCExtention.m */,
 			);
 			path = Categery;
 			sourceTree = "<group>";
@@ -1375,6 +1385,7 @@
 				1200CA851E7E4BEE00A96469 /* ZYCNewViewController.m in Sources */,
 				1289B5A71EDFCBB000571E14 /* UIRefreshControl+AFNetworking.m in Sources */,
 				125980051EE3036700FF00D1 /* MJRefreshNormalHeader.m in Sources */,
+				12CC35431F0BF414006CF4F4 /* UIImageView+ZYCExtention.m in Sources */,
 				121917931EEECE9B00016382 /* ZYCTextField.m in Sources */,
 				1200CA821E7E4BEE00A96469 /* ZYCEssenceViewController.m in Sources */,
 				1200CA871E7E4BEE00A96469 /* UIBarButtonItem+ZYCExtention.m in Sources */,
@@ -1422,6 +1433,7 @@
 				12597FFE1EE3036700FF00D1 /* MJRefreshAutoGifFooter.m in Sources */,
 				1289B55A1EDFCBA400571E14 /* NSData+ImageContentType.m in Sources */,
 				1289B5591EDFCBA400571E14 /* README.md in Sources */,
+				12CC35401F0BA20A006CF4F4 /* UIImage+ZYCExtention.m in Sources */,
 				1219178F1EEECE9B00016382 /* ZYCRecommendCategoryCell.m in Sources */,
 				1289B5601EDFCBA400571E14 /* SDWebImageManager.m in Sources */,
 				1289B55E1EDFCBA400571E14 /* SDWebImageDownloader.m in Sources */,

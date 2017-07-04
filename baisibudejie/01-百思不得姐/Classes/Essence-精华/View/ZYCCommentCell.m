@@ -34,14 +34,22 @@
     UIImageView *bgView = [[UIImageView alloc]init];
     bgView.image = [UIImage imageNamed:@"mainCellBackground"];
     self.backgroundView = bgView;
+    
+//    //头像变圆
+//    self.profile_imageView.layer.cornerRadius = self.profile_imageView.width * 0.5;
+//    self.profile_imageView.layer.masksToBounds = YES;
 }
 
 - (void)setComment:(ZYCComment *)comment
 {
     _comment = comment;
-    
-    
-    [self.profile_imageView sd_setImageWithURL:[NSURL URLWithString:comment.user.profile_image] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];
+    //头像变圆
+//    UIImage *placeholderImage = [[UIImage imageNamed:@"defaultUserIcon"] circleImage];
+//    [self.profile_imageView sd_setImageWithURL:[NSURL URLWithString:comment.user.profile_image] placeholderImage:[[UIImage imageNamed:@"defaultUserIcon"] circleImage] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//        self.profile_imageView.image = image ? [image circleImage] : placeholderImage;
+//        
+//     }];
+    [self.profile_imageView setHeader:comment.user.profile_image];
     
     self.sexImageView.image =  [comment.user.sex isEqualToString:ZYCUserSexMale] ? [UIImage imageNamed:@"Profile_manIcon"] : [UIImage imageNamed:@"Profile_womanIcon"];
     self.usernameLabel.text = comment.user.username;
@@ -63,8 +71,8 @@
 
 - (void)setFrame:(CGRect)frame
 {
-    frame.origin.x = ZYCTopicCellMargin;
-    frame.size.width -= 2*ZYCTopicCellMargin;
+//    frame.origin.x = ZYCTopicCellMargin;
+//    frame.size.width -= 2*ZYCTopicCellMargin;
     
 //    frame.size.height -= 1;
     

@@ -37,7 +37,7 @@
         label.textColor = ZYCRGBColor(67, 67, 67);
         //label背景色默认为clearcolor，所以此时显示全局背景色
         label.width = 200;
-        label.x = ZYCTopicCellMargin;
+//        label.x = ZYCTopicCellMargin;
         //随父控件自动调整高度
         label.autoresizingMask = UIViewAutoresizingFlexibleHeight;
         

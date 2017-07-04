@@ -38,7 +38,7 @@ static NSString *const ZYCCommentCellID = @"comment";
 /** 保存当前页码 */
 @property(nonatomic,assign)NSInteger page;
 
-/** manager*/
+///** manager*/
 @property(nonatomic,strong)AFHTTPSessionManager *manager;
 
 /** 请求参数 */
@@ -65,6 +65,8 @@ static NSString *const ZYCCommentCellID = @"comment";
     [self setUpHeader];
     
     [self setRefresh];
+    
+    
     
 }
 

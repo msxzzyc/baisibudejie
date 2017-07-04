@@ -17,6 +17,10 @@
 
 #import "NSDate+ZYCExtention.h"
 
+#import "UIImage+ZYCExtention.h"
+
+#import "UIImageView+ZYCExtention.h"
+
 #ifdef DEBUG
 #define ZYCLog(...) NSLog(__VA_ARGS__)
 #else

@@ -28,7 +28,8 @@
     _recommendTag = recommendTag;
     
     
-    [self.imageListImageView sd_setImageWithURL:[NSURL URLWithString:recommendTag.image_list]];
+//    [self.imageListImageView sd_setImageWithURL:[NSURL URLWithString:recommendTag.image_list]];
+    [self.imageListImageView setHeader:recommendTag.image_list];
     
     self.themeNameLabel.text = recommendTag.theme_name;
     
@@ -45,8 +46,8 @@
 {
     
     
-    frame.origin.x = 10;
-    frame.size.width -= 2 *self.frame.origin.x;
+//    frame.origin.x = 5;
+//    frame.size.width -= 2 *self.frame.origin.x;
     frame.size.height -= 1;
     
     //交给父类
