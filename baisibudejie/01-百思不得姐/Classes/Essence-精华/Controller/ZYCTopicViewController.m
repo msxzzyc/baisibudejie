@@ -17,6 +17,7 @@
 #import "ZYCComment.h"
 #import "ZYCTopicCell.h"
 #import "ZYCCommentViewController.h"
+#import "ZYCNewViewController.h"
 @interface ZYCTopicViewController ()
 /** 帖子模型数组 */
 @property(nonatomic,strong)NSMutableArray *topics;
@@ -101,6 +102,13 @@ static NSString *const ZYCTopicCellID = @"topic";
     self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreTopics)];
     
 }
+#pragma mark - a参数
+- (NSString *)a
+{
+    
+    return [self.parentViewController isKindOfClass:[ZYCNewViewController class]] ? @"newlist" : @"list";
+}
+
 #pragma mark - 数据处理
 /**
  *加载更多的帖子数据 上拉刷新
@@ -113,7 +121,7 @@ static NSString *const ZYCTopicCellID = @"topic";
     //    self.page++;
     //参数
     NSMutableDictionary *parames = [NSMutableDictionary dictionary];
-    parames[@"a"] = @"list";
+    parames[@"a"] = [self a];
     parames[@"c"] = @"data";
     parames[@"type"] = @(self.type);
     //    parames[@"page"] = @(self.page);
@@ -124,6 +132,7 @@ static NSString *const ZYCTopicCellID = @"topic";
     self.params = parames;
     //发送请求
     [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:parames success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
+        
         
         if (self.params != parames) return ;
         
@@ -170,7 +179,7 @@ static NSString *const ZYCTopicCellID = @"topic";
     
     //参数
     NSMutableDictionary *parames = [NSMutableDictionary dictionary];
-    parames[@"a"] = @"list";
+    parames[@"a"] = [self a];
     parames[@"c"] = @"data";
     parames[@"type"] = @(self.type);
     
@@ -178,9 +187,11 @@ static NSString *const ZYCTopicCellID = @"topic";
     //发送请求
     [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:parames success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
         
+        
+        
         if (self.params != parames) return ;
         
-        ZYCLog(@"%@",responseObject);
+//        ZYCLog(@"%@",responseObject);
         
         //        [responseObject writeToFile:@"/Users/zyc/Desktop/未命名文件夹/duanzi.plist" atomically:YES];
         

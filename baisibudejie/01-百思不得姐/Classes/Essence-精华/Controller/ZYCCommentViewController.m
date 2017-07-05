@@ -103,6 +103,13 @@ static NSString *const ZYCCommentCellID = @"comment";
     
     [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
         
+//        ZYCLog(@"%@ %@",responseObject,[responseObject class]);
+        if (![responseObject isKindOfClass:[NSDictionary class]]) {//没有评论数据的情况(返回一个空数组)
+            
+            self.tableView.footer.hidden =YES;
+            return ;
+        }
+        
         //不是最后一次请求
         if (self.params != params) return ;
         //字典转模型
@@ -152,6 +159,11 @@ static NSString *const ZYCCommentCellID = @"comment";
     self.params = params;
     
     [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+        if (![responseObject isKindOfClass:[NSDictionary class]]) {//没有评论数据的情况(返回一个空数组)
+            
+            [self.tableView.header endRefreshing];
+            return ;
+        }
         //不是最后一次请求
         if (self.params != params) return ;
         //字典转模型
