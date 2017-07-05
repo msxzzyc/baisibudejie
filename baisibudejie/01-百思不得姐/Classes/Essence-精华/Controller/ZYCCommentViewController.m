@@ -41,8 +41,7 @@ static NSString *const ZYCCommentCellID = @"comment";
 ///** manager*/
 @property(nonatomic,strong)AFHTTPSessionManager *manager;
 
-/** 请求参数 */
-@property(nonatomic,strong)NSMutableDictionary *params;
+
 
 
 
@@ -84,8 +83,8 @@ static NSString *const ZYCCommentCellID = @"comment";
 
 - (void)loadMoreComments
 {
-//    //结束之前所有的请求 (会调用被取消请求的failure block)
-//    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    //结束之前所有的请求 (会调用被取消请求的failure block)
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
     
     //页数
     NSInteger page = self.page+1;
@@ -99,9 +98,9 @@ static NSString *const ZYCCommentCellID = @"comment";
     params[@"page"] = @(page);
     ZYCComment *cmt = [self.latestComments lastObject];
     params[@"lastcid"] = cmt.ID;
-    self.params = params;
     
-    [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+    
+    [self.manager GET:@"http://api.budejie.com/api/api_open.php" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
         
 //        ZYCLog(@"%@ %@",responseObject,[responseObject class]);
         if (![responseObject isKindOfClass:[NSDictionary class]]) {//没有评论数据的情况(返回一个空数组)
@@ -110,8 +109,6 @@ static NSString *const ZYCCommentCellID = @"comment";
             return ;
         }
         
-        //不是最后一次请求
-        if (self.params != params) return ;
         //字典转模型
         
         //最新评论
@@ -119,8 +116,7 @@ static NSString *const ZYCCommentCellID = @"comment";
         
         [self.latestComments addObjectsFromArray:newComments];
         
-        //页码
-        self.page = page;
+        
         //刷新数据
         [self.tableView reloadData];
        
@@ -135,8 +131,6 @@ static NSString *const ZYCCommentCellID = @"comment";
         }
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        //不是最后一次请求
-        if (self.params != params) return ;
         
         [self.tableView.footer endRefreshing];
     }];
@@ -147,8 +141,8 @@ static NSString *const ZYCCommentCellID = @"comment";
 
 - (void)loadNewComments
 {
-    //结束之前所有的请求 (会调用被取消请求的failure block)
-//    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+//    结束之前所有的请求 (会调用被取消请求的failure block)
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
     
     //参数
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -156,7 +150,7 @@ static NSString *const ZYCCommentCellID = @"comment";
     params[@"c"] = @"comment";
     params[@"data_id"] = self.topic.ID;
     params[@"hot"] = @"1";
-    self.params = params;
+   
     
     [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
         if (![responseObject isKindOfClass:[NSDictionary class]]) {//没有评论数据的情况(返回一个空数组)
@@ -164,8 +158,7 @@ static NSString *const ZYCCommentCellID = @"comment";
             [self.tableView.header endRefreshing];
             return ;
         }
-        //不是最后一次请求
-        if (self.params != params) return ;
+        
         //字典转模型
         //最热评论
         self.hotComments = [ZYCComment objectArrayWithKeyValuesArray:responseObject[@"hot"]];
@@ -188,9 +181,7 @@ static NSString *const ZYCCommentCellID = @"comment";
         }
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        //不是最后一次请求
-        if (self.params != params) return ;
-        
+       
         [self.tableView.header endRefreshing];
     }];
     

@@ -1,13 +1,13 @@
 //
-//  ZYCMeViewController.h
+//  ZYCSquareButton.h
 //  01-百思不得姐
 //
-//  Created by wpzyc on 2017/3/17.
+//  Created by wpzyc on 2017/7/5.
 //  Copyright © 2017年 wpzyc. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface ZYCMeViewController : UITableViewController
+@interface ZYCSquareButton : UIButton
 
 @end
