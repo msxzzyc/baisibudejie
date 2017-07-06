@@ -11,4 +11,6 @@
 @interface ZYCWebViewController : UIViewController
 /** 链接 */
 @property(nonatomic,copy)NSString *url;
+
+
 @end

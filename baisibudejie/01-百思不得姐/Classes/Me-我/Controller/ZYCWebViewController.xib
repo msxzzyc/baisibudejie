@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="backItem" destination="yMe-Jb-0Tk" id="l3w-6R-yLj"/>
                 <outlet property="forwardItem" destination="O7t-NL-QjL" id="FWo-K3-QxB"/>
+                <outlet property="progressView" destination="Fqm-wK-qg7" id="elP-J6-9F6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="webView" destination="TnM-Tq-V0T" id="Iqn-Bx-2K2"/>
             </connections>
@@ -50,13 +51,22 @@
                         </barButtonItem>
                     </items>
                 </toolbar>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Fqm-wK-qg7">
+                    <rect key="frame" x="0.0" y="64" width="375" height="2"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="2" id="WwI-Rs-HX7"/>
+                    </constraints>
+                </progressView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="edo-Xj-DAw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="HZH-2p-Y8u"/>
                 <constraint firstItem="TnM-Tq-V0T" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="LtQ-no-Nsi"/>
+                <constraint firstItem="Fqm-wK-qg7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OTe-i4-bBI"/>
+                <constraint firstItem="Fqm-wK-qg7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="RbP-wc-izV"/>
                 <constraint firstItem="edo-Xj-DAw" firstAttribute="top" secondItem="TnM-Tq-V0T" secondAttribute="bottom" id="dVK-DX-N02"/>
                 <constraint firstItem="TnM-Tq-V0T" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="nfe-6O-tkr"/>
+                <constraint firstAttribute="trailing" secondItem="Fqm-wK-qg7" secondAttribute="trailing" id="qiz-VP-tNq"/>
                 <constraint firstAttribute="trailing" secondItem="edo-Xj-DAw" secondAttribute="trailing" id="r3k-Jy-Gds"/>
                 <constraint firstAttribute="bottom" secondItem="edo-Xj-DAw" secondAttribute="bottom" id="uYK-Zf-ks7"/>
                 <constraint firstAttribute="trailing" secondItem="TnM-Tq-V0T" secondAttribute="trailing" id="ym7-5o-LHO"/>

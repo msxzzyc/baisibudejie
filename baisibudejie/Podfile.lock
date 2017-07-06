@@ -1,12 +1,19 @@
 PODS:
+  - NJKWebViewProgress (0.2.3):
+    - NJKWebViewProgress/Core (= 0.2.3)
+    - NJKWebViewProgress/ProgressView (= 0.2.3)
+  - NJKWebViewProgress/Core (0.2.3)
+  - NJKWebViewProgress/ProgressView (0.2.3)
   - pop (1.0.10)
 
 DEPENDENCIES:
+  - NJKWebViewProgress
   - pop
 
 SPEC CHECKSUMS:
+  NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
 
-PODFILE CHECKSUM: 6a307e13e55a90f8059a8b85764a7864fd409a93
+PODFILE CHECKSUM: 42dc47e7ba1c703898febb7d70a988059c967017
 
 COCOAPODS: 1.2.1

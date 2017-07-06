@@ -6,12 +6,14 @@ target '01-百思不得姐' do
   # use_frameworks!
 
 pod “pop”
+pod “NJKWebViewProgress”
   # Pods for 01-百思不得姐
 
   target '01-百思不得姐Tests' do
     inherit! :search_paths
 
 pod “pop”
+pod “NJKWebViewProgress”
     # Pods for testing
   end
 
@@ -20,6 +22,7 @@ pod “pop”
     # Pods for testing
 
 pod “pop”
+pod “NJKWebViewProgress”
   end
 
 end
