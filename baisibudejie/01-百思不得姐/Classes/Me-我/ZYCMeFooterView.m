@@ -10,14 +10,15 @@
 #import "AFNetworking.h"
 #import "ZYCSquare.h"
 #import "MJExtension.h"
-#import "UIButton+WebCache.h"
 
+#import "ZYCWebViewController.h"
 #import "ZYCSquareButton.h"
 @implementation ZYCMeFooterView
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self == [super initWithFrame:frame]) {
         
+        self.backgroundColor = [UIColor clearColor];
         //参数
         NSMutableDictionary *params = [NSMutableDictionary dictionary];
         params[@"a"] = @"square";
@@ -49,14 +50,16 @@
     
     
     for (int i = 0; i < squares.count; i++) {
+        //创建按钮
         ZYCSquareButton *button = [ZYCSquareButton buttonWithType:UIButtonTypeCustom];
-        
-        ZYCSquare *square = squares[i];
-        [button setTitle:square.name forState:UIControlStateNormal];
-        //用sdImage给按钮设置image
-        [button sd_setImageWithURL:[NSURL URLWithString:square.icon] forState:UIControlStateNormal];
+        //传递模型
+        button.square = squares[i];
+       
+        //监听点击
+        [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:button];
         
+        //计算frame
         int col = i%maxCols;
         int row = i/maxCols;
         button.width = buttonW;
@@ -83,10 +86,23 @@
     [self setNeedsDisplay];
     
 }
+- (void)buttonClick:(ZYCSquareButton *)button
+{
+    if (![button.square.url hasPrefix:@"http"]) return;
+    
+    //拿到导航控制器
+    UITabBarController *tabBarVc = (UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    UINavigationController *nav = (UINavigationController *)tabBarVc.selectedViewController;
+    
+    ZYCWebViewController *web = [[ZYCWebViewController alloc]init];
+    web.title = button.square.name;
+    web.url = button.square.url;
+    [nav pushViewController:web animated:YES];
+}
 
 - (void)drawRect:(CGRect)rect
 {
-    [[UIImage imageNamed:@"mainCellBackground"]drawInRect:rect];
+//    [[UIImage imageNamed:@"mainCellBackground"]drawInRect:rect];
     
 }
 
