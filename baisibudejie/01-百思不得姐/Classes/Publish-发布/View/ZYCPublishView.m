@@ -9,7 +9,8 @@
 #import "ZYCPublishView.h"
 #import "ZYCVerticalButton.h"
 #import <POP.h>
-
+#import "ZYCPostWordViewController.h"
+#import "ZYCNavigationController.h"
 #define ZYCRootView [UIApplication sharedApplication].keyWindow.rootViewController.view
 static CGFloat const ZYCAnimationDelay = 0.1;
 static CGFloat const ZYCSpringFactor = 6;
@@ -119,8 +120,15 @@ static UIWindow *window_;
 {
     
         [self cancelWithCompletionBlock:^{
-            if (button.tag == 0) {
-            ZYCLog(@"发视频");
+            if (button.tag == 2) {
+//            ZYCLog(@"发视频");
+             
+                ZYCPostWordViewController *post = [[ZYCPostWordViewController alloc]init];
+                ZYCNavigationController *nav = [[ZYCNavigationController alloc]initWithRootViewController:post];
+                //这里不能用self来弹出其他控制器，因为self执行了dismiss操作
+                UIViewController *root = [UIApplication sharedApplication].keyWindow.rootViewController;
+                [root presentViewController:nav animated:YES completion:nil];
+                
             }
         }];
     
@@ -163,6 +171,7 @@ static UIWindow *window_;
 //                if (completionBlock) {
 //                    completionBlock();
 //                }
+            
                 !completionBlock ? :completionBlock();
             }];
         }
