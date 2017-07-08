@@ -21,11 +21,10 @@
 
         placeholderLabel.x = 3;
         placeholderLabel.y = 7;
-        
 
-        _placeholderLabel = placeholderLabel;
+        
         [self addSubview:placeholderLabel];
-       
+       _placeholderLabel = placeholderLabel;
     }
     return _placeholderLabel;
 }
@@ -40,29 +39,27 @@
         self.placeholderColor = [UIColor grayColor];
         //监听文字改变
         [ZYCNoteCenter addObserver:self selector:@selector(textDidChange) name:UITextViewTextDidChangeNotification object:nil];
-        
-        
-        self.placeholderLabel.text = self.placeholder;
-        self.placeholderLabel.textColor = self.placeholderColor;
-        self.placeholderLabel.font = self.font;
-        
-        
+      
     }
     return self;
+}
+- (void)dealloc
+{
+    [ZYCNoteCenter removeObserver:self];
 }
 /**
  *更新占位文字的尺寸
  */
 - (void)updatePlaceholderLabelFrame
 {
-    CGSize maxSize = CGSizeMake(ZYCScreenW - 2*self.placeholderLabel.x, MAXFLOAT);
-    
-    self.placeholderLabel.size = [self.placeholder boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:self.font} context:nil].size;
-    
+//    CGSize maxSize = CGSizeMake(ZYCScreenW - 2*self.placeholderLabel.x, MAXFLOAT);
+//    self.placeholderLabel.size = [self.placeholder boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:self.font} context:nil].size;
 }
-- (void)dealloc
+- (void)layoutSubviews
 {
-    [ZYCNoteCenter removeObserver:self];
+    self.placeholderLabel.width = self.width - 2*self.placeholderLabel.x;
+    [self.placeholderLabel sizeToFit];
+    
 }
 /**
  *监听文字改变
@@ -114,7 +111,8 @@
 //    [self setNeedsDisplay];
     self.placeholderLabel.text = self.placeholder;
     
-    [self updatePlaceholderLabelFrame];
+//    [self updatePlaceholderLabelFrame];
+    [self setNeedsLayout];
 }
 
 - (void)setFont:(UIFont *)font
@@ -123,7 +121,8 @@
     
 //    [self setNeedsDisplay];
     self.placeholderLabel.font = font;
-    [self updatePlaceholderLabelFrame];
+//    [self updatePlaceholderLabelFrame];
+    [self setNeedsLayout];
 }
 - (void)setText:(NSString *)text
 {

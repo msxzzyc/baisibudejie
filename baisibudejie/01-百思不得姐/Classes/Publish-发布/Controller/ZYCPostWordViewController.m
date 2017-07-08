@@ -29,8 +29,11 @@
    
     ZYCPlaceholderTextView *textView = [[ZYCPlaceholderTextView alloc]init];
     textView.frame = self.view.bounds;
+    
     textView.placeholder = @"发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子";
+//    textView.width = 230;
     [self.view addSubview:textView];
+    
     
     self.textView = textView;
 }
@@ -54,13 +57,13 @@
 - (void)cancel
 {
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self dismissViewControllerAnimated:YES completion:nil];
 //    self.textView.placeholderColor = [UIColor blueColor];
 //    self.textView.placeholder = @"hehhehehhehhehhehehhe";
-//    self.textView.font = [UIFont systemFontOfSize:30];
+    self.textView.font = [UIFont systemFontOfSize:30];
     
     //注意以下方法修改文字不会被监听到，所以必须重写setter方法
-//    self.textView.text = @"hhhhhhhhhhhhhhhhhh";
+    self.textView.text = @"hhhhhhhhhhhhhhhhhh";
     
     
 }
@@ -78,5 +81,21 @@
     // Pass the selected object to the new view controller.
 }
 */
-
+/*
+ UITextField *textField默认的情况
+ 1.只能显示一行文字
+ 2.有占位文字
+ 
+ UITextView *textView默认的情况
+ 2.能显示任意行文字
+ 2.没有占位文字
+ 
+ 文本输入控件,最终希望拥有的功能
+ 1.能显示任意行文字
+ 2.有占位文字
+ 
+ 最终的方案:
+ 1.继承自UITextView
+ 2.在UITextView能显示任意行文字的基础上,增加"有占位文字"的功能
+ */
 @end
