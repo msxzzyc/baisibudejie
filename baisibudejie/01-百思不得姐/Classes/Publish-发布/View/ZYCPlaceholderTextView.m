@@ -13,8 +13,10 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self == [super initWithFrame:frame]) {
+        //默认字体
         self.font = [UIFont systemFontOfSize:15];
-        
+        //默认占位文字颜色
+        self.placeholderColor = [UIColor grayColor];
         //监听文字改变
         [ZYCNoteCenter addObserver:self selector:@selector(textDidChange) name:UITextViewTextDidChangeNotification object:nil];
         
@@ -50,10 +52,40 @@
     //文字属性
     NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
     attrs[NSFontAttributeName] = self.font;
-    attrs[NSForegroundColorAttributeName] = [UIColor grayColor];
+    attrs[NSForegroundColorAttributeName] = self.placeholderColor;
     
     [self.placeholder drawInRect:rect withAttributes:attrs];
 }
+#pragma mark - 重写setter方法
 
+- (void)setPlaceholderColor:(UIColor *)placeholderColor
+{
+    _placeholderColor = placeholderColor;
+    [self setNeedsDisplay];
+    
+}
 
+- (void)setPlaceholder:(NSString *)placeholder
+{
+    
+    _placeholder = [placeholder copy];
+    [self setNeedsDisplay];
+}
+
+- (void)setFont:(UIFont *)font
+{
+    [super setFont:font ];
+    
+    [self setNeedsDisplay];
+}
+- (void)setText:(NSString *)text
+{
+    [super setText:text];
+    [self setNeedsDisplay];
+}
+- (void)setAttributedText:(NSAttributedString *)attributedText
+{
+    [super setAttributedText:attributedText];
+    [self setNeedsDisplay];
+}
 @end

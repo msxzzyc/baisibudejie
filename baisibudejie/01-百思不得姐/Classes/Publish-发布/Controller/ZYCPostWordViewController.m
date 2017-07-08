@@ -9,7 +9,8 @@
 #import "ZYCPostWordViewController.h"
 #import "ZYCPlaceholderTextView.h"
 @interface ZYCPostWordViewController ()
-
+/** 文本输入控件 */
+@property(nonatomic,strong)ZYCPlaceholderTextView *textView;
 @end
 
 @implementation ZYCPostWordViewController
@@ -29,9 +30,10 @@
     ZYCPlaceholderTextView *textView = [[ZYCPlaceholderTextView alloc]init];
     textView.frame = self.view.bounds;
     textView.placeholder = @"发好玩儿的段子";
-    
+    textView.placeholderColor = [UIColor redColor];
     [self.view addSubview:textView];
     
+    self.textView = textView;
 }
 
 - (void)setUpNav
@@ -54,6 +56,14 @@
 {
     
     [self dismissViewControllerAnimated:YES completion:nil];
+//    self.textView.placeholderColor = [UIColor blueColor];
+//    self.textView.placeholder = @"hehhehehhehhehhehehhe";
+//    self.textView.font = [UIFont systemFontOfSize:30];
+    
+    //注意以下方法修改文字不会被监听到，所以必须重写setter方法
+//    self.textView.text = @"hhhhhhhhhhhhhhhhhh";
+    
+    
 }
 
 - (void)post
