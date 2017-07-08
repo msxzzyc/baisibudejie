@@ -7,7 +7,7 @@
 //
 
 #import "ZYCPostWordViewController.h"
-
+#import "ZYCPlaceholderTextView.h"
 @interface ZYCPostWordViewController ()
 
 @end
@@ -16,18 +16,38 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor redColor];
+    
+    [self setUpNav];
+    
+    [self setUpTextView];
+    
+}
+
+- (void)setUpTextView
+{
+   
+    ZYCPlaceholderTextView *textView = [[ZYCPlaceholderTextView alloc]init];
+    textView.frame = self.view.bounds;
+    textView.placeholder = @"发好玩儿的段子";
+    
+    [self.view addSubview:textView];
+    
+}
+
+- (void)setUpNav
+{
+    
     self.title = @"发表文字";
-//    self.navigationItem.titleView = 
+    //    self.navigationItem.titleView =
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"取消" style:UIBarButtonItemStyleDone target:self action:@selector(cancel)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"发表" style:UIBarButtonItemStyleDone target:self action:@selector(post)];
-//    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:20]}];
+    //    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:20]}];
     
-//    [self.navigationItem.leftBarButtonItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]} forState:UIControlStateNormal];
-
+    //    [self.navigationItem.leftBarButtonItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]} forState:UIControlStateNormal];
+    
     self.navigationItem.rightBarButtonItem.enabled = NO;//默认不能点击
     //强制刷新
-//    [self.navigationController.navigationBar layoutIfNeeded];
+    //    [self.navigationController.navigationBar layoutIfNeeded];
 }
 
 - (void)cancel
