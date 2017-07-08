@@ -29,8 +29,7 @@
    
     ZYCPlaceholderTextView *textView = [[ZYCPlaceholderTextView alloc]init];
     textView.frame = self.view.bounds;
-    textView.placeholder = @"发好玩儿的段子";
-    textView.placeholderColor = [UIColor redColor];
+    textView.placeholder = @"发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子";
     [self.view addSubview:textView];
     
     self.textView = textView;

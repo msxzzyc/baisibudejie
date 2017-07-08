@@ -7,12 +7,33 @@
 //
 
 #import "ZYCPlaceholderTextView.h"
+@interface ZYCPlaceholderTextView()
 
+@property(nonatomic,weak)UILabel *placeholderLabel;
+@end
 @implementation ZYCPlaceholderTextView
+- (UILabel *)placeholderLabel
+{
+    if (!_placeholderLabel) {
+        //添加一个用来显示占位文字的label
+        UILabel *placeholderLabel = [[UILabel alloc]init];
+        placeholderLabel.numberOfLines = 0;
 
+        placeholderLabel.x = 3;
+        placeholderLabel.y = 7;
+        
+
+        _placeholderLabel = placeholderLabel;
+        [self addSubview:placeholderLabel];
+       
+    }
+    return _placeholderLabel;
+}
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self == [super initWithFrame:frame]) {
+        //垂直方向上永远有弹簧效果
+        self.alwaysBounceVertical = YES;
         //默认字体
         self.font = [UIFont systemFontOfSize:15];
         //默认占位文字颜色
@@ -20,8 +41,24 @@
         //监听文字改变
         [ZYCNoteCenter addObserver:self selector:@selector(textDidChange) name:UITextViewTextDidChangeNotification object:nil];
         
+        
+        self.placeholderLabel.text = self.placeholder;
+        self.placeholderLabel.textColor = self.placeholderColor;
+        self.placeholderLabel.font = self.font;
+        
+        
     }
     return self;
+}
+/**
+ *更新占位文字的尺寸
+ */
+- (void)updatePlaceholderLabelFrame
+{
+    CGSize maxSize = CGSizeMake(ZYCScreenW - 2*self.placeholderLabel.x, MAXFLOAT);
+    
+    self.placeholderLabel.size = [self.placeholder boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:self.font} context:nil].size;
+    
 }
 - (void)dealloc
 {
@@ -32,36 +69,41 @@
  */
 - (void)textDidChange
 {
-    [self setNeedsDisplay];
+//    [self setNeedsDisplay];
+    //只要有文字，就隐藏占位文字label
+    self.placeholderLabel.hidden = self.hasText;
     
 }
 
 /**
  *绘制占位文字
  */
-- (void)drawRect:(CGRect)rect {
-    
-    //如果有输入文字，直接返回，不绘制占位文字
-//    if (self.text.length || self.attributedText.length) return;
-    if (self.hasText) return;
-   //处理rect
-    rect.origin.x = 4;
-    rect.origin.y = 7;
-    rect.size.width -= 2*rect.origin.x;
-    
-    //文字属性
-    NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
-    attrs[NSFontAttributeName] = self.font;
-    attrs[NSForegroundColorAttributeName] = self.placeholderColor;
-    
-    [self.placeholder drawInRect:rect withAttributes:attrs];
-}
+//- (void)drawRect:(CGRect)rect {
+//    
+//    //如果有输入文字，直接返回，不绘制占位文字
+////    if (self.text.length || self.attributedText.length) return;
+//    if (self.hasText) return;
+//   //处理rect
+//    rect.origin.x = 4;
+//    rect.origin.y = 7;
+//    rect.size.width -= 2*rect.origin.x;
+//    
+//    //文字属性
+//    NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
+//    attrs[NSFontAttributeName] = self.font;
+//    attrs[NSForegroundColorAttributeName] = self.placeholderColor;
+//    
+//    [self.placeholder drawInRect:rect withAttributes:attrs];
+//}
 #pragma mark - 重写setter方法
 
 - (void)setPlaceholderColor:(UIColor *)placeholderColor
 {
     _placeholderColor = placeholderColor;
-    [self setNeedsDisplay];
+//    [self setNeedsDisplay];
+    
+    self.placeholderLabel.textColor = placeholderColor;
+    
     
 }
 
@@ -69,23 +111,30 @@
 {
     
     _placeholder = [placeholder copy];
-    [self setNeedsDisplay];
+//    [self setNeedsDisplay];
+    self.placeholderLabel.text = self.placeholder;
+    
+    [self updatePlaceholderLabelFrame];
 }
 
 - (void)setFont:(UIFont *)font
 {
     [super setFont:font ];
     
-    [self setNeedsDisplay];
+//    [self setNeedsDisplay];
+    self.placeholderLabel.font = font;
+    [self updatePlaceholderLabelFrame];
 }
 - (void)setText:(NSString *)text
 {
     [super setText:text];
-    [self setNeedsDisplay];
+//    [self setNeedsDisplay];
+    [self textDidChange];
 }
 - (void)setAttributedText:(NSAttributedString *)attributedText
 {
     [super setAttributedText:attributedText];
-    [self setNeedsDisplay];
+//    [self setNeedsDisplay];
+    [self textDidChange];
 }
 @end
