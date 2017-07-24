@@ -8,9 +8,12 @@
 
 #import "ZYCPostWordViewController.h"
 #import "ZYCPlaceholderTextView.h"
-@interface ZYCPostWordViewController ()
+#import "ZYCAddTagToolbar.h"
+@interface ZYCPostWordViewController ()<UITextViewDelegate>
 /** 文本输入控件 */
-@property(nonatomic,strong)ZYCPlaceholderTextView *textView;
+@property(nonatomic,weak)ZYCPlaceholderTextView *textView;
+/** 工具条 */
+@property(nonatomic,weak)ZYCAddTagToolbar *toolbar;
 @end
 
 @implementation ZYCPostWordViewController
@@ -22,14 +25,39 @@
     
     [self setUpTextView];
     
+    [self setUpToobar];
 }
-
+- (void)setUpToobar
+{
+    
+    ZYCAddTagToolbar *toolbar = [ZYCAddTagToolbar viewFromXib];
+    toolbar.width = self.view.width;
+    toolbar.y = self.view.height-toolbar.height;
+    [self.view addSubview:toolbar];
+    self.toolbar = toolbar;
+    
+    [ZYCNoteCenter addObserver:self selector:@selector(KeyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+}
+/**
+ *监听键盘的弹出和隐藏
+ */
+- (void)KeyboardWillChangeFrame:(NSNotification *)note
+{
+    //键盘最终的frame
+    CGRect keyboardFrame = [note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    //动画时间
+    CGFloat duration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    [UIView animateWithDuration:duration animations:^{
+        self.toolbar.transform = CGAffineTransformMakeTranslation(0, keyboardFrame.origin.y - ZYCScreenH);
+    }];
+    
+}
 - (void)setUpTextView
 {
    
     ZYCPlaceholderTextView *textView = [[ZYCPlaceholderTextView alloc]init];
     textView.frame = self.view.bounds;
-    
+    textView.delegate = self;
     textView.placeholder = @"发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子";
 //    textView.width = 230;
     [self.view addSubview:textView];
@@ -37,7 +65,18 @@
     
     self.textView = textView;
 }
-
+#pragma mark - UITextViewDelegate
+- (void)textViewDidChange:(UITextView *)textView
+{
+    self.navigationItem.rightBarButtonItem.enabled = textView.hasText;
+    
+}
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    
+    [self.view endEditing:YES];
+    
+}
 - (void)setUpNav
 {
     
@@ -57,13 +96,13 @@
 - (void)cancel
 {
     
-//    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 //    self.textView.placeholderColor = [UIColor blueColor];
 //    self.textView.placeholder = @"hehhehehhehhehhehehhe";
-    self.textView.font = [UIFont systemFontOfSize:30];
+//    self.textView.font = [UIFont systemFontOfSize:30];
     
     //注意以下方法修改文字不会被监听到，所以必须重写setter方法
-    self.textView.text = @"hhhhhhhhhhhhhhhhhh";
+//    self.textView.text = @"hhhhhhhhhhhhhhhhhh";
     
     
 }

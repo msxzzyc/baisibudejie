@@ -120,4 +120,10 @@
     return self.window == keyWindow && !self.isHidden && self.alpha>0.01 && intersects;
     
 }
+
++ (instancetype)viewFromXib
+{
+    return [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil] lastObject];
+    
+}
 @end
