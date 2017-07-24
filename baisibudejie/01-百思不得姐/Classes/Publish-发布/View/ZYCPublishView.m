@@ -125,6 +125,7 @@ static UIWindow *window_;
              
                 ZYCPostWordViewController *post = [[ZYCPostWordViewController alloc]init];
                 ZYCNavigationController *nav = [[ZYCNavigationController alloc]initWithRootViewController:post];
+            
                 //这里不能用self来弹出其他控制器，因为self执行了dismiss操作
                 UIViewController *root = [UIApplication sharedApplication].keyWindow.rootViewController;
                 [root presentViewController:nav animated:YES completion:nil];

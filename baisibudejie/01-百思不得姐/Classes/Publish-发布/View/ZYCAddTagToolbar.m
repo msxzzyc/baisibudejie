@@ -7,6 +7,7 @@
 //
 
 #import "ZYCAddTagToolbar.h"
+#import "ZYCAddTagViewController.h"
 @interface ZYCAddTagToolbar()
 @property (weak, nonatomic) IBOutlet UIView *topView;
 
@@ -33,6 +34,18 @@
 
 - (void)addButtonClick
 {
-    ZYCLogFunc;
+    ZYCAddTagViewController *addtagVc = [[ZYCAddTagViewController alloc]init];
+    UIViewController *root = [UIApplication sharedApplication].keyWindow.rootViewController;
+  
+    UINavigationController *nav = (UINavigationController *)root.presentedViewController;
+    [nav pushViewController:addtagVc animated:YES];
+    //a modal 出b
+//    a.presentedViewController ->b
+//    b.presentingViewController - >a
+    
 }
+
+
+
+
 @end
