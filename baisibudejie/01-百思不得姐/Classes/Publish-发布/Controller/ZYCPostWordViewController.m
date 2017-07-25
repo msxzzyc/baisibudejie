@@ -59,12 +59,19 @@
     textView.frame = self.view.bounds;
     textView.placeholder = @"发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子发好玩儿的段子";
     textView.delegate = self;
-    [textView becomeFirstResponder];
+    
 //    textView.width = 230;
     [self.view addSubview:textView];
     
     
     self.textView = textView;
+}
+//因为viewDidLoad只加载一次
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.textView becomeFirstResponder];
+    
 }
 #pragma mark - UITextViewDelegate
 - (void)textViewDidChange:(UITextView *)textView
