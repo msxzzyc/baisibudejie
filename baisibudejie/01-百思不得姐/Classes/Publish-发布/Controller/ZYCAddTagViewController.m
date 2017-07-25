@@ -15,10 +15,19 @@
 @property(nonatomic,weak)UITextField *textField;
 /** 添加按钮 */
 @property(nonatomic,weak)UIButton *addButton;
+/** 所有的标签按钮 */
+@property(nonatomic,strong)NSMutableArray *tagButtons;
 @end
 
 @implementation ZYCAddTagViewController
 
+- (NSMutableArray *)tagButtons
+{
+    if (!_tagButtons) {
+        _tagButtons = [NSMutableArray array];
+    }
+    return _tagButtons;
+}
 - (UIButton *)addButton
 {
     if (!_addButton) {
@@ -28,10 +37,10 @@
         [addButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         //让按钮内部的文字和图片都左对齐
         addButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-        addButton.contentEdgeInsets = UIEdgeInsetsMake(0, ZYCTopicCellMargin, 0, ZYCTopicCellMargin);
+        addButton.contentEdgeInsets = UIEdgeInsetsMake(0, ZYCTagMargin, 0, ZYCTagMargin);
         addButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [addButton addTarget:self action:@selector(addButtonClick) forControlEvents:UIControlEventTouchUpInside];
-        addButton.backgroundColor = ZYCRGBColor(74, 139, 209);
+        addButton.backgroundColor = ZYCTagBG;
         [self.contentView addSubview:addButton];
         _addButton = addButton;
     }
@@ -49,9 +58,9 @@
 - (void)setContentView
 {
     UIView *contentView = [[UIView alloc]init];
-    contentView.x = ZYCTopicCellMargin;
-    contentView.y = 64 + ZYCTopicCellMargin;
-    contentView.width = ZYCScreenW - 2*ZYCTopicCellMargin;
+    contentView.x = ZYCTagMargin;
+    contentView.y = 64 + ZYCTagMargin;
+    contentView.width = ZYCScreenW - 2*ZYCTagMargin;
     contentView.height = ZYCScreenH;
     [self.view addSubview:contentView];
     
@@ -79,7 +88,7 @@
     if (self.textField.hasText) {//有文字
         //显示"添加标签"的按钮
         self.addButton.hidden = NO;
-        self.addButton.y = CGRectGetMaxY(self.textField.frame) + ZYCTopicCellMargin;
+        self.addButton.y = CGRectGetMaxY(self.textField.frame) + ZYCTagMargin;
         [self.addButton setTitle:[NSString stringWithFormat:@"添加标签:%@",self.textField.text] forState:UIControlStateNormal];
         
         
@@ -94,9 +103,49 @@
  */
 - (void)addButtonClick
 {
-    ZYCLogFunc;
+    //添加一个"标签按钮"
+    UIButton *tagButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [tagButton setTitle:self.textField.text forState:UIControlStateNormal];
+    [tagButton setImage:[UIImage imageNamed:@"chose_tag_close_icon"] forState:UIControlStateNormal];
+    [tagButton sizeToFit];
+    tagButton.backgroundColor = ZYCTagBG;
+    [self.contentView addSubview:tagButton];
+    
+    [self.tagButtons addObject:tagButton];
+    //更新标签按钮的frame
+    [self updateTagButtonFrame];
+    //清空textField的文字
+    self.textField.text = nil;
+    self.addButton.hidden = YES;
+}
+/**
+ *专门用来更新标签按钮的frame
+ */
+- (void)updateTagButtonFrame
+{
+    for (int i=0; i<self.tagButtons.count; i++) {
+        UIButton *tagButton = self.tagButtons[i];
+        if (i==0) {//最前面的标签按钮
+            tagButton.x = 0;
+            tagButton.y = 0;
+        }else{//其他标签按钮
+            UIButton *lastTagButton = self.tagButtons[i-1];
+            //计算当前行右边的宽度
+            CGFloat leftWidth = CGRectGetMaxX(lastTagButton.frame)+ZYCTagMargin;
+            //计算当前行右边剩余的宽度
+            CGFloat rightWidth = self.contentView.width-CGRectGetMaxX(lastTagButton.frame) - ZYCTagMargin;
+            if (rightWidth >= tagButton.width) {//按钮显示在当前行
+                tagButton.x = leftWidth;
+                tagButton.y = lastTagButton.y;
+            }else{//按钮显示在下一行
+                tagButton.x = 0;
+                tagButton.y = CGRectGetMaxY(lastTagButton.frame)+ZYCTagMargin;
+            }
+        }
+    }
     
 }
+
 - (void)setUpNav
 {
     self.view.backgroundColor = [UIColor whiteColor];

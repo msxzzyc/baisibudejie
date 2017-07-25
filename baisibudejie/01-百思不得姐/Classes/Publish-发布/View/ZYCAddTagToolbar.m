@@ -26,7 +26,7 @@
 //    addButton.size = [UIImage imageNamed:@"tag_add_icon"].size;
 //    addButton.size = [addButton imageForState:UIControlStateNormal].size;
     addButton.size = addButton.currentImage.size;
-    addButton.x = ZYCTopicCellMargin;
+    addButton.x = ZYCTagMargin;
     [self.topView addSubview:addButton];
     
     

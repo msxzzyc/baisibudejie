@@ -37,4 +37,5 @@
 #define ZYCScreenW [UIScreen mainScreen].bounds.size.width
 #define ZYCScreenH [UIScreen mainScreen].bounds.size.height
 
+#define ZYCTagBG ZYCRGBColor(74, 139, 209)
 #endif /* PrefixHeader_pch */

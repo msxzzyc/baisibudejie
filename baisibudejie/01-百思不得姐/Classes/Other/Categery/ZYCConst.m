@@ -40,3 +40,6 @@ NSString * const ZYCDidSelectNotification = @"ZYCDidSelectNotification";
 NSString * const ZYCSelectedControllerIndexKey = @"ZYCSelectedControllerIndexKey";
 /** tabBar被选中的通知 - 被选中的控制器  key */
 NSString * const ZYCSelectedControllerKey = @"ZYCSelectedControllerKey";
+
+/** 标签-间距 */
+CGFloat const ZYCTagMargin = 5;
