@@ -7,7 +7,7 @@
 //
 
 #import "ZYCAddTagViewController.h"
-
+#import "ZYCTagButton.h"
 @interface ZYCAddTagViewController ()
 /** 内容 容器 */
 @property(nonatomic,weak)UIView *contentView;
@@ -69,9 +69,12 @@
 - (void)setTextField
 {
     UITextField *textField = [[UITextField alloc]init];
+    
     textField.width = ZYCScreenW;
     textField.height = 25;
     textField.placeholder = @"多个标签用逗号或者换行隔开";
+    //设置了占位文字内容以后，才可以设置其颜色
+    [textField setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
 
     [textField addTarget:self action:@selector(textDidChange) forControlEvents:UIControlEventEditingChanged];
     [textField becomeFirstResponder];
@@ -105,12 +108,11 @@
 - (void)addButtonClick
 {
     //添加一个"标签按钮"
-    UIButton *tagButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    ZYCTagButton *tagButton = [ZYCTagButton buttonWithType:UIButtonTypeCustom];
     [tagButton setTitle:self.textField.text forState:UIControlStateNormal];
-    [tagButton setImage:[UIImage imageNamed:@"chose_tag_close_icon"] forState:UIControlStateNormal];
-    [tagButton sizeToFit];
+    tagButton.height = self.textField.height;
     [tagButton addTarget:self action:@selector(tagButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    tagButton.backgroundColor = ZYCTagBG;
+    
     [self.contentView addSubview:tagButton];
     
     [self.tagButtons addObject:tagButton];
@@ -127,12 +129,12 @@
 {
     //更新标签按钮的frame
     for (int i=0; i<self.tagButtons.count; i++) {
-        UIButton *tagButton = self.tagButtons[i];
+        ZYCTagButton *tagButton = self.tagButtons[i];
         if (i==0) {//最前面的标签按钮
             tagButton.x = 0;
             tagButton.y = 0;
         }else{//其他标签按钮
-            UIButton *lastTagButton = self.tagButtons[i-1];
+            ZYCTagButton *lastTagButton = self.tagButtons[i-1];
             //计算当前行左边的宽度
             CGFloat leftWidth = CGRectGetMaxX(lastTagButton.frame)+ZYCTagMargin;
             //计算当前行右边剩余的宽度
@@ -150,7 +152,7 @@
     //更新textField的frame
     
     //最后一个标签按钮
-    UIButton *lastTagButton = [self.tagButtons lastObject];
+    ZYCTagButton *lastTagButton = [self.tagButtons lastObject];
     //计算当前行左边的宽度
     CGFloat leftWidth = CGRectGetMaxX(lastTagButton.frame)+ZYCTagMargin;
     if (self.contentView.width -leftWidth >= self.textFieldTextWid) {
@@ -163,7 +165,7 @@
 }
 - (CGFloat)textFieldTextWid
 {
-    CGFloat textW = [self.textField.text sizeWithAttributes:@{NSFontAttributeName:self.textField.font}].width;
+    CGFloat textW = [self.textField.text sizeWithAttributes:@{NSFontAttributeName:self.textField.font}].width;//不换行可用此方法算尺寸
     return MAX(100, textW);
 }
 /**
