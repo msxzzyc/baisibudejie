@@ -96,7 +96,8 @@
         //隐藏"添加标签"的按钮
         self.addButton.hidden = YES;
     }
-    
+    //更新标签按钮和textField的frame
+    [self updateTagButtonFrame];
 }
 /**
  *监听"添加标签"按钮的点击
@@ -132,7 +133,7 @@
             tagButton.y = 0;
         }else{//其他标签按钮
             UIButton *lastTagButton = self.tagButtons[i-1];
-            //计算当前行右边的宽度
+            //计算当前行左边的宽度
             CGFloat leftWidth = CGRectGetMaxX(lastTagButton.frame)+ZYCTagMargin;
             //计算当前行右边剩余的宽度
             CGFloat rightWidth = self.contentView.width-CGRectGetMaxX(lastTagButton.frame) - ZYCTagMargin;
@@ -147,8 +148,23 @@
         
     }
     //更新textField的frame
+    
+    //最后一个标签按钮
+    UIButton *lastTagButton = [self.tagButtons lastObject];
+    //计算当前行左边的宽度
+    CGFloat leftWidth = CGRectGetMaxX(lastTagButton.frame)+ZYCTagMargin;
+    if (self.contentView.width -leftWidth >= self.textFieldTextWid) {
+        self.textField.x = leftWidth;
+        self.textField.y = lastTagButton.y;
+    }else{
     self.textField.x = 0;
-    self.textField.y = CGRectGetMaxY([[self.tagButtons lastObject] frame])+ ZYCTagMargin;
+    self.textField.y = CGRectGetMaxY(lastTagButton.frame)+ ZYCTagMargin;
+    }
+}
+- (CGFloat)textFieldTextWid
+{
+    CGFloat textW = [self.textField.text sizeWithAttributes:@{NSFontAttributeName:self.textField.font}].width;
+    return MAX(100, textW);
 }
 /**
  *标签按钮的点击
