@@ -108,6 +108,7 @@
     [tagButton setTitle:self.textField.text forState:UIControlStateNormal];
     [tagButton setImage:[UIImage imageNamed:@"chose_tag_close_icon"] forState:UIControlStateNormal];
     [tagButton sizeToFit];
+    [tagButton addTarget:self action:@selector(tagButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     tagButton.backgroundColor = ZYCTagBG;
     [self.contentView addSubview:tagButton];
     
@@ -123,6 +124,7 @@
  */
 - (void)updateTagButtonFrame
 {
+    //更新标签按钮的frame
     for (int i=0; i<self.tagButtons.count; i++) {
         UIButton *tagButton = self.tagButtons[i];
         if (i==0) {//最前面的标签按钮
@@ -142,10 +144,25 @@
                 tagButton.y = CGRectGetMaxY(lastTagButton.frame)+ZYCTagMargin;
             }
         }
+        
     }
+    //更新textField的frame
+    self.textField.x = 0;
+    self.textField.y = CGRectGetMaxY([[self.tagButtons lastObject] frame])+ ZYCTagMargin;
+}
+/**
+ *标签按钮的点击
+ */
+- (void)tagButtonClick:(UIButton *)tagButton
+{
+    [tagButton removeFromSuperview];
+    [self.tagButtons removeObject:tagButton];
+    //重新更新所有标签按钮的frame
+    [UIView animateWithDuration:0.25 animations:^{
+        [self updateTagButtonFrame];
+    }];
     
 }
-
 - (void)setUpNav
 {
     self.view.backgroundColor = [UIColor whiteColor];
