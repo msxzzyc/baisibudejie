@@ -20,7 +20,7 @@
 @end
 
 @implementation ZYCAddTagViewController
-
+#pragma mark - 懒加载
 - (NSMutableArray *)tagButtons
 {
     if (!_tagButtons) {
@@ -47,7 +47,7 @@
     
     return _addButton;
 }
-
+#pragma mark - 初始化
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -70,7 +70,7 @@
 {
     UITextField *textField = [[UITextField alloc]init];
     
-    textField.width = ZYCScreenW;
+    textField.width = self.contentView.width;
     textField.height = 25;
     textField.placeholder = @"多个标签用逗号或者换行隔开";
     //设置了占位文字内容以后，才可以设置其颜色
@@ -83,25 +83,46 @@
     self.textField = textField;
     
 }
+- (void)setUpNav
+{
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.title = @"添加标签";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(Done)];
+}
+- (void)Done
+{
+    ZYCLogFunc;
+    
+}
+#pragma mark - 监听文字改变
 /**
  *监听文字改变
  */
 - (void)textDidChange
 {
+    //更新textField的frame
+    [self updateTextFieldFrame];
     if (self.textField.hasText) {//有文字
         //显示"添加标签"的按钮
         self.addButton.hidden = NO;
         self.addButton.y = CGRectGetMaxY(self.textField.frame) + ZYCTagMargin;
         [self.addButton setTitle:[NSString stringWithFormat:@"添加标签:%@",self.textField.text] forState:UIControlStateNormal];
         
-        
+        //获得最后一个字符串
+        NSUInteger len = self.textField.text.length;
+        NSString *lastLetter = [self.textField.text substringFromIndex:len-1];
+        if (([lastLetter isEqualToString:@","]||[lastLetter isEqualToString:@"，"])&& len > 1) {
+            //去掉逗号
+            self.textField.text = [self.textField.text substringToIndex:len-1];
+            [self addButtonClick];
+        }
     }else{//没有文字
         //隐藏"添加标签"的按钮
         self.addButton.hidden = YES;
     }
-    //更新标签按钮和textField的frame
-    [self updateTagButtonFrame];
+    
 }
+#pragma mark - 监听按钮点击
 /**
  *监听"添加标签"按钮的点击
  */
@@ -116,12 +137,28 @@
     [self.contentView addSubview:tagButton];
     
     [self.tagButtons addObject:tagButton];
-    //更新标签按钮的frame
+    //更新标签按钮和textField的frame
     [self updateTagButtonFrame];
+    [self updateTextFieldFrame];
     //清空textField的文字
     self.textField.text = nil;
     self.addButton.hidden = YES;
 }
+/**
+ *标签按钮的点击
+ */
+- (void)tagButtonClick:(UIButton *)tagButton
+{
+    [tagButton removeFromSuperview];
+    [self.tagButtons removeObject:tagButton];
+    //更新标签按钮和textField的frame
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        [self updateTagButtonFrame];
+        [self updateTextFieldFrame];
+    }];
+}
+#pragma mark - 子控件frame处理
 /**
  *专门用来更新标签按钮的frame
  */
@@ -147,50 +184,30 @@
                 tagButton.y = CGRectGetMaxY(lastTagButton.frame)+ZYCTagMargin;
             }
         }
-        
     }
-    //更新textField的frame
-    
+}
+/**
+ *更新textField的frame
+ */
+- (void)updateTextFieldFrame
+{
     //最后一个标签按钮
     ZYCTagButton *lastTagButton = [self.tagButtons lastObject];
     //计算当前行左边的宽度
     CGFloat leftWidth = CGRectGetMaxX(lastTagButton.frame)+ZYCTagMargin;
-    if (self.contentView.width -leftWidth >= self.textFieldTextWid) {
+    if (self.contentView.width -leftWidth >= self.textFieldTextWidth) {
         self.textField.x = leftWidth;
         self.textField.y = lastTagButton.y;
     }else{
-    self.textField.x = 0;
-    self.textField.y = CGRectGetMaxY(lastTagButton.frame)+ ZYCTagMargin;
+        self.textField.x = 0;
+        self.textField.y = CGRectGetMaxY(lastTagButton.frame)+ ZYCTagMargin;
     }
 }
-- (CGFloat)textFieldTextWid
+
+- (CGFloat)textFieldTextWidth
 {
     CGFloat textW = [self.textField.text sizeWithAttributes:@{NSFontAttributeName:self.textField.font}].width;//不换行可用此方法算尺寸
     return MAX(100, textW);
-}
-/**
- *标签按钮的点击
- */
-- (void)tagButtonClick:(UIButton *)tagButton
-{
-    [tagButton removeFromSuperview];
-    [self.tagButtons removeObject:tagButton];
-    //重新更新所有标签按钮的frame
-    [UIView animateWithDuration:0.25 animations:^{
-        [self updateTagButtonFrame];
-    }];
-    
-}
-- (void)setUpNav
-{
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.title = @"添加标签";
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(Done)];
-}
-- (void)Done
-{
-    ZYCLogFunc;
-    
 }
 
 
