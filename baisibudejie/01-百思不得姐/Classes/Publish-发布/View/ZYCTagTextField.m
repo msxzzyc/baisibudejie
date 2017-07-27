@@ -19,6 +19,13 @@
 //    ZYCLog(@"%d",[text isEqualToString:@"\n"]);
 //    
 //}
+- (void)deleteBackward
+{
+    
+    !self.deleteBlock ? :_deleteBlock();
+    [super deleteBackward];
+
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

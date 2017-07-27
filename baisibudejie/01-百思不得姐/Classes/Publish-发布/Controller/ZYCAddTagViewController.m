@@ -69,8 +69,14 @@
 }
 - (void)setTextField
 {
+    //防止循环引用
+    __weak typeof(self) weakSelf = self;
     ZYCTagTextField *textField = [[ZYCTagTextField alloc]init];
     textField.delegate = self;
+    textField.deleteBlock = ^{
+        if (weakSelf.textField.hasText) return ;
+        [weakSelf tagButtonClick:[weakSelf.tagButtons lastObject]];
+    };
     textField.width = self.contentView.width;
     textField.height = 25;
     textField.placeholder = @"多个标签用逗号或者换行隔开";

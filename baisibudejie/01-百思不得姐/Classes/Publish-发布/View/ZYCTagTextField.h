@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ZYCTagTextField : UITextField
-
+/** 按了删除键后的回调 */
+@property(nonatomic,copy)void(^deleteBlock)();
 @end
