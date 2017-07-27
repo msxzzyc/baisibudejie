@@ -9,6 +9,7 @@
 #import "ZYCAddTagViewController.h"
 #import "ZYCTagButton.h"
 #import "ZYCTagTextField.h"
+#import "SVProgressHUD.h"
 @interface ZYCAddTagViewController ()<UITextFieldDelegate>
 /** 内容 容器 */
 @property(nonatomic,weak)UIView *contentView;
@@ -39,7 +40,7 @@
         //让按钮内部的文字和图片都左对齐
         addButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         addButton.contentEdgeInsets = UIEdgeInsetsMake(0, ZYCTagMargin, 0, ZYCTagMargin);
-        addButton.titleLabel.font = [UIFont systemFontOfSize:14];
+        addButton.titleLabel.font = ZYCTagFont;
         [addButton addTarget:self action:@selector(addButtonClick) forControlEvents:UIControlEventTouchUpInside];
         addButton.backgroundColor = ZYCTagBG;
         [self.contentView addSubview:addButton];
@@ -78,10 +79,6 @@
         [weakSelf tagButtonClick:[weakSelf.tagButtons lastObject]];
     };
     textField.width = self.contentView.width;
-    textField.height = 25;
-    textField.placeholder = @"多个标签用逗号或者换行隔开";
-    //设置了占位文字内容以后，才可以设置其颜色
-    [textField setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
 
     [textField addTarget:self action:@selector(textDidChange) forControlEvents:UIControlEventEditingChanged];
     [textField becomeFirstResponder];
@@ -94,11 +91,18 @@
 {
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"添加标签";
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(Done)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(done)];
 }
-- (void)Done
+- (void)done
 {
-    ZYCLogFunc;
+//    NSMutableArray *tags = [NSMutableArray array];
+//    for (ZYCTagButton *tagButton in self.tagButtons) {
+//        [tags addObject: tagButton.currentTitle];
+//    }
+    //传递tags给这个block
+    NSArray *tags = [self.tagButtons valueForKeyPath:@"currentTitle"];
+    !self.tagsBlock ? : self.tagsBlock(tags);
+    [self.navigationController popViewControllerAnimated:YES];
     
 }
 #pragma mark - 监听文字改变
@@ -135,10 +139,14 @@
  */
 - (void)addButtonClick
 {
+    if (self.tagButtons.count == 5) {
+        [SVProgressHUD showErrorWithStatus:@"最多添加5个标签" maskType:SVProgressHUDMaskTypeBlack];
+        return;
+        
+    }
     //添加一个"标签按钮"
     ZYCTagButton *tagButton = [ZYCTagButton buttonWithType:UIButtonTypeCustom];
     [tagButton setTitle:self.textField.text forState:UIControlStateNormal];
-    tagButton.height = self.textField.height;
     [tagButton addTarget:self action:@selector(tagButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.contentView addSubview:tagButton];

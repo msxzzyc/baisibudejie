@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xdz-QR-K1s" userLabel="顶部">
-                    <rect key="frame" x="0.0" y="0.0" width="435" height="206"/>
+                    <rect key="frame" x="5" y="0.0" width="425" height="206"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5dU-AS-Zeh" userLabel="底部">
@@ -60,8 +60,8 @@
                 <constraint firstItem="Xdz-QR-K1s" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="AVV-fT-O11"/>
                 <constraint firstItem="HhH-1Y-yrE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="206" id="G5q-X9-ZzK"/>
                 <constraint firstItem="5dU-AS-Zeh" firstAttribute="top" secondItem="Xdz-QR-K1s" secondAttribute="bottom" id="K1P-QW-cuR"/>
-                <constraint firstAttribute="trailing" secondItem="Xdz-QR-K1s" secondAttribute="trailing" id="buc-7h-OW5"/>
-                <constraint firstItem="Xdz-QR-K1s" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="kYX-PH-Bp1"/>
+                <constraint firstAttribute="trailing" secondItem="Xdz-QR-K1s" secondAttribute="trailing" constant="5" id="buc-7h-OW5"/>
+                <constraint firstItem="Xdz-QR-K1s" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="kYX-PH-Bp1"/>
                 <constraint firstAttribute="bottom" secondItem="HhH-1Y-yrE" secondAttribute="bottom" id="rQo-Vd-Et3"/>
                 <constraint firstAttribute="bottom" secondItem="5dU-AS-Zeh" secondAttribute="bottom" id="u3k-Uc-YN0"/>
                 <constraint firstAttribute="trailing" secondItem="5dU-AS-Zeh" secondAttribute="trailing" id="uBv-Jm-Diw"/>

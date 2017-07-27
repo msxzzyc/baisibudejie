@@ -38,4 +38,5 @@
 #define ZYCScreenH [UIScreen mainScreen].bounds.size.height
 
 #define ZYCTagBG ZYCRGBColor(74, 139, 209)
+#define ZYCTagFont [UIFont systemFontOfSize:14] 
 #endif /* PrefixHeader_pch */

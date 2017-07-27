@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ZYCAddTagViewController : UIViewController
-
+/** 获取tags的block */
+@property(nonatomic,copy)void(^tagsBlock)(NSArray *tags);
 @end

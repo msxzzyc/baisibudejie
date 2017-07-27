@@ -15,7 +15,7 @@
     if (self = [super initWithFrame:frame]) {
         
         [self setImage:[UIImage imageNamed:@"chose_tag_close_icon"] forState:UIControlStateNormal];
-        self.titleLabel.font = [UIFont systemFontOfSize:14];
+        self.titleLabel.font = ZYCTagFont;
         self.backgroundColor = ZYCTagBG;
     }
     return self;
@@ -26,6 +26,7 @@
     [super setTitle:title forState:state];
     [self sizeToFit];
     self.width += 3*ZYCTagMargin;
+    self.height = ZYCTagH;
 }
 - (void)layoutSubviews
 {

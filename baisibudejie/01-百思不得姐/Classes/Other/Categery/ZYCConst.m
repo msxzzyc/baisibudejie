@@ -43,3 +43,5 @@ NSString * const ZYCSelectedControllerKey = @"ZYCSelectedControllerKey";
 
 /** 标签-间距 */
 CGFloat const ZYCTagMargin = 5;
+/** 标签-高度 */
+CGFloat const ZYCTagH = 25;
