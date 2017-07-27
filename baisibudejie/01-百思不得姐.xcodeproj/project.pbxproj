@@ -119,6 +119,7 @@
 		1297E2FF1F2604100002E50E /* ZYCAddTagToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1297E2FE1F2604100002E50E /* ZYCAddTagToolbar.m */; };
 		1297E3011F2604470002E50E /* ZYCAddTagToolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1297E3001F2604470002E50E /* ZYCAddTagToolbar.xib */; };
 		1297E3041F264C0C0002E50E /* ZYCAddTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1297E3031F264C0C0002E50E /* ZYCAddTagViewController.m */; };
+		129B494A1F29FF75008557E7 /* ZYCTagTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 129B49491F29FF75008557E7 /* ZYCTagTextField.m */; };
 		12A2FDC61E8147F8007BF7FE /* ZYCFriendTrendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12A2FDC51E8147F8007BF7FE /* ZYCFriendTrendsViewController.xib */; };
 		12B03D451F04A887002339B8 /* ZYCCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B03D431F04A887002339B8 /* ZYCCommentViewController.m */; };
 		12B03D461F04A887002339B8 /* ZYCCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12B03D441F04A887002339B8 /* ZYCCommentViewController.xib */; };
@@ -388,6 +389,8 @@
 		1297E3001F2604470002E50E /* ZYCAddTagToolbar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZYCAddTagToolbar.xib; sourceTree = "<group>"; };
 		1297E3021F264C0C0002E50E /* ZYCAddTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCAddTagViewController.h; sourceTree = "<group>"; };
 		1297E3031F264C0C0002E50E /* ZYCAddTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCAddTagViewController.m; sourceTree = "<group>"; };
+		129B49481F29FF75008557E7 /* ZYCTagTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCTagTextField.h; sourceTree = "<group>"; };
+		129B49491F29FF75008557E7 /* ZYCTagTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCTagTextField.m; sourceTree = "<group>"; };
 		12A2FDC51E8147F8007BF7FE /* ZYCFriendTrendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZYCFriendTrendsViewController.xib; sourceTree = "<group>"; };
 		12B03D421F04A887002339B8 /* ZYCCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCCommentViewController.h; sourceTree = "<group>"; };
 		12B03D431F04A887002339B8 /* ZYCCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCCommentViewController.m; sourceTree = "<group>"; };
@@ -727,6 +730,8 @@
 				1297E3001F2604470002E50E /* ZYCAddTagToolbar.xib */,
 				12C406FE1F28D436001B31CC /* ZYCTagButton.h */,
 				12C406FF1F28D436001B31CC /* ZYCTagButton.m */,
+				129B49481F29FF75008557E7 /* ZYCTagTextField.h */,
+				129B49491F29FF75008557E7 /* ZYCTagTextField.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1596,6 +1601,7 @@
 				1289B5641EDFCBA400571E14 /* UIImage+MultiFormat.m in Sources */,
 				1289B55D1EDFCBA400571E14 /* SDWebImageDecoder.m in Sources */,
 				1289B56C1EDFCBA400571E14 /* SVProgressHUD.m in Sources */,
+				129B494A1F29FF75008557E7 /* ZYCTagTextField.m in Sources */,
 				125980021EE3036700FF00D1 /* MJRefreshBackNormalFooter.m in Sources */,
 				1289B5A01EDFCBB000571E14 /* README.md in Sources */,
 				12CDFC171E7EA7E50056401F /* ZYCNavigationController.m in Sources */,

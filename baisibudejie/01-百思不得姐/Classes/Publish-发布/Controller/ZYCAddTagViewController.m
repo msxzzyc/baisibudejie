@@ -8,11 +8,12 @@
 
 #import "ZYCAddTagViewController.h"
 #import "ZYCTagButton.h"
-@interface ZYCAddTagViewController ()
+#import "ZYCTagTextField.h"
+@interface ZYCAddTagViewController ()<UITextFieldDelegate>
 /** 内容 容器 */
 @property(nonatomic,weak)UIView *contentView;
 /** 文本输入框 */
-@property(nonatomic,weak)UITextField *textField;
+@property(nonatomic,weak)ZYCTagTextField *textField;
 /** 添加按钮 */
 @property(nonatomic,weak)UIButton *addButton;
 /** 所有的标签按钮 */
@@ -68,8 +69,8 @@
 }
 - (void)setTextField
 {
-    UITextField *textField = [[UITextField alloc]init];
-    
+    ZYCTagTextField *textField = [[ZYCTagTextField alloc]init];
+    textField.delegate = self;
     textField.width = self.contentView.width;
     textField.height = 25;
     textField.placeholder = @"多个标签用逗号或者换行隔开";
@@ -209,8 +210,18 @@
     CGFloat textW = [self.textField.text sizeWithAttributes:@{NSFontAttributeName:self.textField.font}].width;//不换行可用此方法算尺寸
     return MAX(100, textW);
 }
-
-
+#pragma mark - UITextFieldDelegate
+/**
+ *监听键盘最右下角按钮的点击（return key，换行or完成等）
+ */
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField.hasText) {
+        [self addButtonClick];
+    }
+    return YES;
+    
+}
 /*
 #pragma mark - Navigation
 
