@@ -41,6 +41,8 @@
     [self.topView addSubview:addButton];
     
     self.addButton = addButton;
+    //默认就拥有两个标签
+    [self creatTagLabels:@[@"吐槽",@"糗事高度繁华过后覆盖魂返关塞"]];
 }
 
 - (void)addButtonClick
@@ -62,26 +64,11 @@
 //    b.presentingViewController - >a
     
 }
-
-//创建标签
-- (void)creatTagLabels:(NSArray *)tags
+//注意：在layoutSubviews中拿到的自己的宽度是最准确的（从xib中加载的是固定的，会有问题）
+- (void)layoutSubviews
 {
-    //清空tagLabels
-    [self.tagLabels makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    [self.tagLabels removeAllObjects];
-    for (int i = 0; i<tags.count; i++) {
-        UILabel *tagLabel = [[UILabel alloc]init];
-        [self.tagLabels addObject:tagLabel];
-        tagLabel.text = tags[i];
-        tagLabel.textColor = [UIColor whiteColor];
-        tagLabel.backgroundColor = ZYCTagBG;
-        tagLabel.textAlignment = NSTextAlignmentCenter;
-        tagLabel.font = ZYCTagFont;
-        //先设置文字和字体后，再进行计算
-        [tagLabel sizeToFit];
-        tagLabel.width += 2*ZYCTagMargin;
-        tagLabel.height = ZYCTagH;
-        [self.topView addSubview:tagLabel];
+    for (int i = 0; i<self.tagLabels.count; i++) {
+        UILabel *tagLabel = self.tagLabels[i];
         
         //设置位置
         if (i==0) {//最前面的标签
@@ -91,7 +78,7 @@
             UILabel *lastTagLabel = self.tagLabels[i-1];
             //计算当前行左边的宽度
             CGFloat leftWidth = CGRectGetMaxX(lastTagLabel.frame)+ZYCTagMargin;
-            //计算当前行右边剩余的宽度
+            //计算当前行右边剩余的宽度 注意：在layoutSubviews中拿到的自己的宽度是最准确的（从xib中加载的是固定的，会有问题）
             CGFloat rightWidth = self.topView.width-CGRectGetMaxX(lastTagLabel.frame) - ZYCTagMargin;
             if (rightWidth >= tagLabel.width) {//按钮显示在当前行
                 tagLabel.x = leftWidth;
@@ -113,10 +100,34 @@
         self.addButton.x = 0;
         self.addButton.y = CGRectGetMaxY(lastTagLabel.frame)+ ZYCTagMargin;
     }
-
-
+    //设置整体的高度
+    CGFloat oldH = self.height;
+    self.height = CGRectGetMaxY(self.addButton.frame) + 45;
+    self.y -= self.height - oldH;
     
-    
+}
+//创建标签
+- (void)creatTagLabels:(NSArray *)tags
+{
+    //清空tagLabels
+    [self.tagLabels makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self.tagLabels removeAllObjects];
+    for (int i = 0; i<tags.count; i++) {
+        UILabel *tagLabel = [[UILabel alloc]init];
+        [self.tagLabels addObject:tagLabel];
+        tagLabel.text = tags[i];
+        tagLabel.textColor = [UIColor whiteColor];
+        tagLabel.backgroundColor = ZYCTagBG;
+        tagLabel.textAlignment = NSTextAlignmentCenter;
+        tagLabel.font = ZYCTagFont;
+        //先设置文字和字体后，再进行计算
+        [tagLabel sizeToFit];
+        tagLabel.width += 2*ZYCTagMargin;
+        tagLabel.height = ZYCTagH;
+        [self.topView addSubview:tagLabel];
+    }
+    //重写布局子控件
+    [self setNeedsLayout];
 }
 
 
