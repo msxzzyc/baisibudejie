@@ -9,7 +9,10 @@
 #import "ZYCAddTagToolbar.h"
 #import "ZYCAddTagViewController.h"
 @interface ZYCAddTagToolbar()
+/** 顶部控件 */
 @property (weak, nonatomic) IBOutlet UIView *topView;
+/** 添加按钮 */
+@property (weak, nonatomic) IBOutlet UIButton *addButton;
 /** 存放所有的标签label */
 @property(nonatomic,strong)NSMutableArray *tagLabels;
 @end
@@ -37,7 +40,7 @@
     addButton.x = ZYCTagMargin;
     [self.topView addSubview:addButton];
     
-    
+    self.addButton = addButton;
 }
 
 - (void)addButtonClick
@@ -48,8 +51,10 @@
 
     __weak typeof(self) weakSelf = self;
     addtagVc.tagsBlock = ^(NSArray *tags) {
-        [weakSelf creatTags:tags];
+        [weakSelf creatTagLabels:tags];
+        
     };
+    addtagVc.tags = [self.tagLabels valueForKeyPath:@"text"];
     UINavigationController *nav = (UINavigationController *)root.presentedViewController;
     [nav pushViewController:addtagVc animated:YES];
     //a modal 出b
@@ -59,15 +64,20 @@
 }
 
 //创建标签
-- (void)creatTags:(NSArray *)tags
+- (void)creatTagLabels:(NSArray *)tags
 {
+    //清空tagLabels
+    [self.tagLabels makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self.tagLabels removeAllObjects];
     for (int i = 0; i<tags.count; i++) {
         UILabel *tagLabel = [[UILabel alloc]init];
         [self.tagLabels addObject:tagLabel];
         tagLabel.text = tags[i];
         tagLabel.textColor = [UIColor whiteColor];
         tagLabel.backgroundColor = ZYCTagBG;
+        tagLabel.textAlignment = NSTextAlignmentCenter;
         tagLabel.font = ZYCTagFont;
+        //先设置文字和字体后，再进行计算
         [tagLabel sizeToFit];
         tagLabel.width += 2*ZYCTagMargin;
         tagLabel.height = ZYCTagH;
@@ -92,6 +102,18 @@
             }
         }
     }
+    //最后一个标签按钮
+    UILabel *lastTagLabel = [self.tagLabels lastObject];
+    //计算当前行左边的宽度
+    CGFloat leftWidth = CGRectGetMaxX(lastTagLabel.frame)+ZYCTagMargin;
+    if (self.topView.width -leftWidth >= self.addButton.width) {
+        self.addButton.x = leftWidth;
+        self.addButton.y = lastTagLabel.y;
+    }else{
+        self.addButton.x = 0;
+        self.addButton.y = CGRectGetMaxY(lastTagLabel.frame)+ ZYCTagMargin;
+    }
+
 
     
     

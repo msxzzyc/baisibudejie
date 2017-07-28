@@ -56,6 +56,17 @@
     [self setUpNav];
     [self setContentView];
     [self setTextField];
+    [self setTags];
+}
+- (void)setTags
+{
+    for (NSString *tag in self.tags) {
+        //模拟文本框输入来初始化标签文字
+        self.textField.text = tag;
+        [self addButtonClick];
+        
+    }
+    
 }
 - (void)setContentView
 {
