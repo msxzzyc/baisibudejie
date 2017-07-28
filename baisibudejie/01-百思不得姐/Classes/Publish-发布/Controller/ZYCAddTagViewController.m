@@ -23,6 +23,34 @@
 
 @implementation ZYCAddTagViewController
 #pragma mark - 懒加载
+- (UIView *)contentView
+{
+    if (!_contentView) {
+       UIView *contentView = [[UIView alloc]init];
+        [self.view addSubview:contentView];
+        self.contentView = contentView;
+    }
+    return _contentView;
+}
+- (ZYCTagTextField *)textField
+{
+    if (!_textField) {
+        ZYCTagTextField *textField = [[ZYCTagTextField alloc]init];
+        //防止循环引用
+        __weak typeof(self) weakSelf = self;
+        textField.delegate = self;
+        textField.deleteBlock = ^{
+            if (weakSelf.textField.hasText) return ;
+            [weakSelf tagButtonClick:[weakSelf.tagButtons lastObject]];
+        };
+        
+        [textField addTarget:self action:@selector(textDidChange) forControlEvents:UIControlEventEditingChanged];
+        [textField becomeFirstResponder];
+        [self.contentView addSubview:textField];
+        self.textField = textField;
+    }
+    return _textField;
+}
 - (NSMutableArray *)tagButtons
 {
     if (!_tagButtons) {
@@ -34,7 +62,6 @@
 {
     if (!_addButton) {
         UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        addButton.width = self.contentView.width;
         addButton.height = 35;
         [addButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         //让按钮内部的文字和图片都左对齐
@@ -54,48 +81,37 @@
     [super viewDidLoad];
     
     [self setUpNav];
-    [self setContentView];
-    [self setTextField];
+   
+}
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    self.contentView.x = ZYCTagMargin;
+    self.contentView.y = 64 + ZYCTagMargin;
+    self.contentView.width = ZYCScreenW - 2*ZYCTagMargin;
+    self.contentView.height = ZYCScreenH;
+   
+    self.textField.width = self.contentView.width;
+    
+    self.addButton.width = self.contentView.width;
+    
     [self setTags];
+    
+    
 }
 - (void)setTags
 {
-    for (NSString *tag in self.tags) {
-        //模拟文本框输入来初始化标签文字
-        self.textField.text = tag;
-        [self addButtonClick];
-        
+    //确保只调用一次
+    if (self.tags.count) {
+        for (NSString *tag in self.tags) {
+            //模拟文本框输入来初始化标签文字
+            self.textField.text = tag;
+            [self addButtonClick];
+            
+        }
+        self.tags = nil;
     }
     
-}
-- (void)setContentView
-{
-    UIView *contentView = [[UIView alloc]init];
-    contentView.x = ZYCTagMargin;
-    contentView.y = 64 + ZYCTagMargin;
-    contentView.width = ZYCScreenW - 2*ZYCTagMargin;
-    contentView.height = ZYCScreenH;
-    [self.view addSubview:contentView];
-    
-    self.contentView = contentView;
-}
-- (void)setTextField
-{
-    //防止循环引用
-    __weak typeof(self) weakSelf = self;
-    ZYCTagTextField *textField = [[ZYCTagTextField alloc]init];
-    textField.delegate = self;
-    textField.deleteBlock = ^{
-        if (weakSelf.textField.hasText) return ;
-        [weakSelf tagButtonClick:[weakSelf.tagButtons lastObject]];
-    };
-    textField.width = self.contentView.width;
-
-    [textField addTarget:self action:@selector(textDidChange) forControlEvents:UIControlEventEditingChanged];
-    [textField becomeFirstResponder];
-    [self.contentView addSubview:textField];
-    
-    self.textField = textField;
     
 }
 - (void)setUpNav
@@ -228,6 +244,8 @@
         self.textField.x = 0;
         self.textField.y = CGRectGetMaxY(lastTagButton.frame)+ ZYCTagMargin;
     }
+    //更新添加标签按钮的frame
+    self.addButton.y = CGRectGetMaxY(self.textField.frame) + ZYCTagMargin;
 }
 
 - (CGFloat)textFieldTextWidth

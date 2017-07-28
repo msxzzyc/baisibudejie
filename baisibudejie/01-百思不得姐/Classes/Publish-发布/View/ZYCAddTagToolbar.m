@@ -42,7 +42,7 @@
     
     self.addButton = addButton;
     //默认就拥有两个标签
-    [self creatTagLabels:@[@"吐槽",@"糗事高度繁华过后覆盖魂返关塞"]];
+    [self creatTagLabels:@[@"吐槽",@"糗事"]];
 }
 
 - (void)addButtonClick
