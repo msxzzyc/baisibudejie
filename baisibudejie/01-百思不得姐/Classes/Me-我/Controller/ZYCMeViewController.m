@@ -9,7 +9,7 @@
 #import "ZYCMeViewController.h"
 #import "ZYCMeCell.h"
 #import "ZYCMeFooterView.h"
-
+#import "ZYCSettingViewController.h"
 static NSString *ZYCMeId = @"me";
 
 @interface ZYCMeViewController ()
@@ -64,7 +64,7 @@ static NSString *ZYCMeId = @"me";
 }
 - (void)settingClick
 {
-    NSLog(@"%s",__func__);
+    [self.navigationController pushViewController:[[ZYCSettingViewController alloc]initWithStyle:UITableViewStyleGrouped] animated:YES];
     
 }
 

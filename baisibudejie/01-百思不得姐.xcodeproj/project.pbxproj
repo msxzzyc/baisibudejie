@@ -116,6 +116,7 @@
 		1289B5CD1EDFD72000571E14 /* NSObject+MJProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1289B5C21EDFD72000571E14 /* NSObject+MJProperty.m */; };
 		1289B5CE1EDFD72000571E14 /* NSString+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1289B5C41EDFD72000571E14 /* NSString+MJExtension.m */; };
 		1289B5CF1EDFD72000571E14 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 1289B5C51EDFD72000571E14 /* README.md */; };
+		129539C21F2CB5CD008B1784 /* ZYCSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 129539C11F2CB5CD008B1784 /* ZYCSettingViewController.m */; };
 		1297E2FF1F2604100002E50E /* ZYCAddTagToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1297E2FE1F2604100002E50E /* ZYCAddTagToolbar.m */; };
 		1297E3011F2604470002E50E /* ZYCAddTagToolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1297E3001F2604470002E50E /* ZYCAddTagToolbar.xib */; };
 		1297E3041F264C0C0002E50E /* ZYCAddTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1297E3031F264C0C0002E50E /* ZYCAddTagViewController.m */; };
@@ -384,6 +385,8 @@
 		1289B5C31EDFD72000571E14 /* NSString+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MJExtension.h"; sourceTree = "<group>"; };
 		1289B5C41EDFD72000571E14 /* NSString+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MJExtension.m"; sourceTree = "<group>"; };
 		1289B5C51EDFD72000571E14 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		129539C01F2CB5CD008B1784 /* ZYCSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCSettingViewController.h; sourceTree = "<group>"; };
+		129539C11F2CB5CD008B1784 /* ZYCSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCSettingViewController.m; sourceTree = "<group>"; };
 		1297E2FD1F2604100002E50E /* ZYCAddTagToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCAddTagToolbar.h; sourceTree = "<group>"; };
 		1297E2FE1F2604100002E50E /* ZYCAddTagToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCAddTagToolbar.m; sourceTree = "<group>"; };
 		1297E3001F2604470002E50E /* ZYCAddTagToolbar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZYCAddTagToolbar.xib; sourceTree = "<group>"; };
@@ -578,6 +581,8 @@
 				12B1B59C1F0E30B5004084BC /* ZYCWebViewController.h */,
 				12B1B59D1F0E30B5004084BC /* ZYCWebViewController.m */,
 				12B1B59E1F0E30B5004084BC /* ZYCWebViewController.xib */,
+				129539C01F2CB5CD008B1784 /* ZYCSettingViewController.h */,
+				129539C11F2CB5CD008B1784 /* ZYCSettingViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1566,6 +1571,7 @@
 				1200CA8B1E7E4BEE00A96469 /* main.m in Sources */,
 				12597FF91EE3036700FF00D1 /* MJRefreshAutoFooter.m in Sources */,
 				12DA59B71F03E2D500AA5E4C /* ZYCComment.m in Sources */,
+				129539C21F2CB5CD008B1784 /* ZYCSettingViewController.m in Sources */,
 				125980081EE3036700FF00D1 /* MJRefreshConst.m in Sources */,
 				1289B5631EDFCBA400571E14 /* UIImage+GIF.m in Sources */,
 				12C5FDDA1F0694C20042F266 /* ZYCCommentCell.m in Sources */,

@@ -98,7 +98,8 @@ static UIWindow *window_;
     CGFloat sloganCenterEndY = ZYCScreenH *0.2;
     CGFloat sloganCenterStartY = sloganCenterEndY - ZYCScreenH;
     [self addSubview:slogan];
-    
+    slogan.centerY = sloganCenterStartY;
+    slogan.centerX = sloganCenterX;
     //为slogan添加动画
     POPSpringAnimation *sloganAnim = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
     sloganAnim.fromValue = [NSValue valueWithCGPoint:CGPointMake(sloganCenterX, sloganCenterStartY)];
