@@ -28,4 +28,11 @@
     UIGraphicsEndImageContext();
     return image;
 }
++ (UIImage *)imageWithName:(NSString *)name
+{
+//    [name stringByAppendingString:@"N"];
+    NSString *dir = [[NSUserDefaults standardUserDefaults] stringForKey:@"SkinDirName"];
+    NSString *path = [NSString stringWithFormat:@"Skins/%@/%@",dir,name];
+    return [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:path ofType:nil]];
+}
 @end

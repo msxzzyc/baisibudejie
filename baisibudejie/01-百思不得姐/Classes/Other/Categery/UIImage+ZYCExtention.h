@@ -10,4 +10,5 @@
 
 @interface UIImage (ZYCExtention)
 - (UIImage *)circleImage;
++ (UIImage *)imageWithName:(NSString *)name
 @end
