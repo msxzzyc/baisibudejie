@@ -11,6 +11,7 @@
 #import <POP.h>
 #import "ZYCPostWordViewController.h"
 #import "ZYCNavigationController.h"
+#import "ZYCLoginTool.h"
 #define ZYCRootView [UIApplication sharedApplication].keyWindow.rootViewController.view
 static CGFloat const ZYCAnimationDelay = 0.1;
 static CGFloat const ZYCSpringFactor = 6;
@@ -122,7 +123,9 @@ static UIWindow *window_;
     
         [self cancelWithCompletionBlock:^{
             if (button.tag == 2) {
-//            ZYCLog(@"发视频");
+                //判断是否登录
+                if ([ZYCLoginTool getUid:YES]==nil) return ;
+  
              
                 ZYCPostWordViewController *post = [[ZYCPostWordViewController alloc]init];
                 ZYCNavigationController *nav = [[ZYCNavigationController alloc]initWithRootViewController:post];

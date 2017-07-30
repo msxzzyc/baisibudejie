@@ -16,7 +16,9 @@
 #import "ZYCTopicPictureView.h"
 #import "ZYCTopicVoiceView.h"
 #import "ZYCTopicVideoView.h"
-@interface ZYCTopicCell()
+#import "ZYCLoginTool.h"
+
+@interface ZYCTopicCell()<UIActionSheetDelegate>
 
 /** 头像 */
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
@@ -51,11 +53,22 @@
 @implementation ZYCTopicCell
 - (IBAction)more:(id)sender {
     
-    UIActionSheet *sheet = [[UIActionSheet alloc]initWithTitle:nil delegate:nil cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"收藏",@"举报",nil];
+    UIActionSheet *sheet = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"收藏",@"举报",nil];
     
     [sheet showInView:self.window];
 }
-
+#pragma mark - UIActionSheetDelegate
+//- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+//{
+//   
+//}
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 2) return;
+    if ([ZYCLoginTool getUid:YES] == nil) return;
+    //开始执行举报\收藏操作
+    
+}
 + (instancetype)cell
 {
     return [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil] firstObject];

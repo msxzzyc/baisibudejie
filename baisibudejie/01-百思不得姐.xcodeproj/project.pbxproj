@@ -152,6 +152,7 @@
 		12DA59B11F03A7FE00AA5E4C /* ZYCTopicVideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12DA59B01F03A7FE00AA5E4C /* ZYCTopicVideoView.xib */; };
 		12DA59B41F03DF1B00AA5E4C /* ZYCUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 12DA59B31F03DF1B00AA5E4C /* ZYCUser.m */; };
 		12DA59B71F03E2D500AA5E4C /* ZYCComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 12DA59B61F03E2D500AA5E4C /* ZYCComment.m */; };
+		12E113831F2D871600CDE3AC /* ZYCLoginTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E113821F2D871600CDE3AC /* ZYCLoginTool.m */; };
 		12EAA4311F089DDC00C2CF3D /* ZYCTopWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 12EAA4301F089DDC00C2CF3D /* ZYCTopWindow.m */; };
 		12EB7E631F0F949000D2BD2C /* ZYCPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12EB7E621F0F949000D2BD2C /* ZYCPlaceholderTextView.m */; };
 		12F21B241EF26886000EB24E /* ZYCConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F21B231EF26886000EB24E /* ZYCConst.m */; };
@@ -448,6 +449,8 @@
 		12DA59B31F03DF1B00AA5E4C /* ZYCUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCUser.m; sourceTree = "<group>"; };
 		12DA59B51F03E2D500AA5E4C /* ZYCComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCComment.h; sourceTree = "<group>"; };
 		12DA59B61F03E2D500AA5E4C /* ZYCComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCComment.m; sourceTree = "<group>"; };
+		12E113811F2D871600CDE3AC /* ZYCLoginTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZYCLoginTool.h; path = "01-百思不得姐/Classes/Other/Categery/ZYCLoginTool.h"; sourceTree = SOURCE_ROOT; };
+		12E113821F2D871600CDE3AC /* ZYCLoginTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZYCLoginTool.m; path = "01-百思不得姐/Classes/Other/Categery/ZYCLoginTool.m"; sourceTree = SOURCE_ROOT; };
 		12EAA42F1F089DDC00C2CF3D /* ZYCTopWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCTopWindow.h; sourceTree = "<group>"; };
 		12EAA4301F089DDC00C2CF3D /* ZYCTopWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYCTopWindow.m; sourceTree = "<group>"; };
 		12EB7E611F0F949000D2BD2C /* ZYCPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYCPlaceholderTextView.h; sourceTree = "<group>"; };
@@ -647,6 +650,8 @@
 				1200CA7A1E7E4BEE00A96469 /* ZYCTabBarController.m */,
 				12CDFC151E7EA7E50056401F /* ZYCNavigationController.h */,
 				12CDFC161E7EA7E50056401F /* ZYCNavigationController.m */,
+				12E113811F2D871600CDE3AC /* ZYCLoginTool.h */,
+				12E113821F2D871600CDE3AC /* ZYCLoginTool.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1527,6 +1532,7 @@
 				1289B5CE1EDFD72000571E14 /* NSString+MJExtension.m in Sources */,
 				124AFD111EDF1C4000F26593 /* ZYCRecommendViewController.m in Sources */,
 				1289B5A41EDFCBB000571E14 /* UIButton+AFNetworking.m in Sources */,
+				12E113831F2D871600CDE3AC /* ZYCLoginTool.m in Sources */,
 				1289B55B1EDFCBA400571E14 /* SDImageCache.m in Sources */,
 				1231C2171EF7E74C00082B13 /* ZYCTopicPictureView.m in Sources */,
 				12597FFD1EE3036700FF00D1 /* MJRefreshHeader.m in Sources */,

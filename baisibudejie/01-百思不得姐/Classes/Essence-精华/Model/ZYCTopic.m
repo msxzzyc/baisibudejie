@@ -60,24 +60,27 @@
         
         if (self.type == ZYCTopicTypePicture)
         {//图片帖子
-            
-            //图片显示出来的宽度
-            CGFloat pictureW = maxSize.width;
-            //图片显示出来的高度
-            CGFloat pictureH = pictureW * self.height/self.width;
-            //判断图片高度是否超出最大高度
-            if (pictureH >= ZYCTopicPictureMaxH) {//图片高度过长
+
+            if (self.height!=0 && self.width!=0) {
+                //图片显示出来的宽度
+                CGFloat pictureW = maxSize.width;
+                //图片显示出来的高度
+                CGFloat pictureH = pictureW * self.height/self.width;
+                //判断图片高度是否超出最大高度
+                if (pictureH >= ZYCTopicPictureMaxH) {//图片高度过长
+                    
+                    pictureH = ZYCTopicPictureBreakH;
+                    self.isBigPicture = YES;
+                }
                 
-                pictureH = ZYCTopicPictureBreakH;
-                self.isBigPicture = YES;
+                //计算图片控件的frame
+                CGFloat pictureX = ZYCTopicCellMargin;
+                CGFloat pictureY = ZYCTopicCellTextY + textH + ZYCTopicCellMargin;
+                _pictureViewFrame = CGRectMake(pictureX, pictureY, pictureW, pictureH);
+                
+                _cellHeight += pictureH + ZYCTopicCellMargin;
             }
             
-            //计算图片控件的frame
-            CGFloat pictureX = ZYCTopicCellMargin;
-            CGFloat pictureY = ZYCTopicCellTextY + textH + ZYCTopicCellMargin;
-            _pictureViewFrame = CGRectMake(pictureX, pictureY, pictureW, pictureH);
-            
-            _cellHeight += pictureH + ZYCTopicCellMargin;
             
         }else if (self.type == ZYCTopicTypeVoice)//声音帖子
         {
