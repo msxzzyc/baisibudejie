@@ -4,3 +4,5 @@
 1.项目基本配置。设置启动页面，修改项目名称，创建窗口并设置其根控制器。	
 2.搭建基本骨架。设置tabbarController为窗口根控制器，添加子控制器，注意tabbaritem由对应的子控制器决定，设置图片不被渲染的两种方法，及利用nsattribute字典设置item的字体、文字颜色等。	
 3.通过appearance统一设置UITabBarItem所有文字属性，注意后面带有UI_APPEARANCE_SELECTOR的方法，都可以通过appearance对象统一设置。
+4.通过抽取方法自定义子控制器。
+5.自定义tabbar。利用kvc更换系统tabbar。在layoutSubviews中布局子控件，用for循环拿到子控件设置尺寸，注意判断子控件是否UITabBarButton的两种方法，以及利用index计算x值。
