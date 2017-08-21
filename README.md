@@ -6,3 +6,4 @@
 3.通过appearance统一设置UITabBarItem所有文字属性，注意后面带有UI_APPEARANCE_SELECTOR的方法，都可以通过appearance对象统一设置。
 4.通过抽取方法自定义子控制器。
 5.自定义tabbar。利用kvc更换系统tabbar。在layoutSubviews中布局子控件，用for循环拿到子控件设置尺寸，注意判断子控件是否UITabBarButton的两种方法，以及利用index计算x值。
+6.通过为UIView添加分类封装frame的修改。注意在分类中声明@property，只会生成方法的声明，不会生成方法的实现和带有_下划线的成员变量，以及配置pch文件时需要在buildsetting添加文件路径。
