@@ -9,3 +9,4 @@
 6.通过为UIView添加分类封装frame的修改。注意在分类中声明@property，只会生成方法的声明，不会生成方法的实现和带有_下划线的成员变量，以及配置pch文件时需要在buildsetting添加文件路径。
 7.设置导航栏。以各个子控制器为根控制器包装成导航控制器，添加导航控制器为tabbarcontroller的子控制器。通过navigationItem设置导航栏标题和左右按钮。注意右边按钮有两个用rightBarButtonItems设置，以及可通过定义宏设置打印。
 8.抽取创建uibarbuttonitem的方法，并封装到其分类中，注意需要传控制器作为target。
+9.调整项目文件结构，设置统一背景色，注意可在pch中定义统一色的宏，但不能在tabbarcontroller中统一设置子控制器背景色，因为子控制器的view是懒加载，会导致其过早创建。设置tabbar和navigationbar的背景图片。
