@@ -13,3 +13,4 @@
 10.通过自定义导航控制器，在push方法中拦截所有被push的控制器，为其leftBarButtonItem自定义一个按钮以配置返回按钮。注意判断是否为第一次push，以及要先设置再push，让viewController可以覆盖上面设置的leftBarButtonItem。设置按钮内部所有内容左对齐、内边距以及在第一次push后隐藏tabbar。
 11.调整初始化代码。一些只需要调用一次的方法，可以放在initialize方法中。注意对appearance适用范围限制的方法。
 12.颜色说明。注意rgb传的值为0到1之间且为cgfloat格式。可使用颜色对照表和取色计设置颜色。
+13.设置我的关注模块。注意为控制器新建xib要设置File's Owner的class为控制器，且连线File's Owner和view控件。注意storyboard中控件文字换行要用option+return。
