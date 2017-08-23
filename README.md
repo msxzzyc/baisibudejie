@@ -14,3 +14,4 @@
 11.调整初始化代码。一些只需要调用一次的方法，可以放在initialize方法中。注意对appearance适用范围限制的方法。
 12.颜色说明。注意rgb传的值为0到1之间且为cgfloat格式。可使用颜色对照表和取色计设置颜色。
 13.设置我的关注模块。注意为控制器新建xib要设置File's Owner的class为控制器，且连线File's Owner和view控件。注意storyboard中控件文字换行要用option+return。
+14.显示推荐关注数据。利用afn发请求获取数据。注意使jason数据显示中文的分类Foundation+Log。
