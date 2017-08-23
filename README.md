@@ -11,3 +11,4 @@
 8.抽取创建uibarbuttonitem的方法，并封装到其分类中，注意需要传控制器作为target。
 9.调整项目文件结构，设置统一背景色，注意可在pch中定义统一色的宏，但不能在tabbarcontroller中统一设置子控制器背景色，因为子控制器的view是懒加载，会导致其过早创建。设置tabbar和navigationbar的背景图片。
 10.通过自定义导航控制器，在push方法中拦截所有被push的控制器，为其leftBarButtonItem自定义一个按钮以配置返回按钮。注意判断是否为第一次push，以及要先设置再push，让viewController可以覆盖上面设置的leftBarButtonItem。设置按钮内部所有内容左对齐、内边距以及在第一次push后隐藏tabbar。
+11.调整初始化代码。一些只需要调用一次的方法，可以放在initialize方法中。注意对appearance适用范围限制的方法。
